@@ -12,7 +12,7 @@ Status flow: `BACKLOG → READY → ACTIVE → BLOCKED → ACCEPTANCE-PENDING �
 | OUT-001 | Inventory Current Graduate Outcome and Placement Process | 03 | Outcomes | READY | P0 | GREEN | — | Lane 03 | Required | Required | baseline pending | Observe current process | 2026-08-12 |
 | LRN-001 | Inventory Current Student Journey and Completion Measurement | 04 | Learning | READY | P0 | GREEN | — | Lane 04 | Required | Required | baseline pending | Observe current journey | 2026-08-12 |
 | ENR-001 | Inventory Current Inquiry-to-Enrollment Process | 05 | Enrollment | READY | P0 | GREEN | — | Lane 05 | Required | Required | baseline pending | Observe actual vs intended process | 2026-08-12 |
-| MKT-001 | Inventory Current Demand Sources and Marketing Measurement | 06 | Demand | READY | P1 | GREEN | — | Lane 06 | Required | Required | baseline pending | Inventory actual channels/data | 2026-08-12 |
+| MKT-001 | Inventory Current Demand Sources and Marketing Measurement | 06 | Demand | ACTIVE | P1 | GREEN | — | Lane 06 | Required | Required | `evidence/marketing/MKT-001-current-demand-inventory-2026-08-12.md` — public baseline partial | Inspect authoritative analytics/channel/form data; converge attribution via SHR-003; coordinate course/enrollment truth with 05 | 2026-08-12 |
 | PART-001 | Inventory Current Referral, Employer, Agency, and Strategic Channels | 07 | Partnerships | ACTIVE | P1 | GREEN | — | Lane 07 | Required | Required | lanes/07-partnerships/PART-001_CURRENT_CHANNEL_INVENTORY.md | Obtain authoritative relationship roster; validate employer/veteran channels and contribution traceability | 2026-08-12 |
 
 `CLOSED` requires completed work plus required acceptance/integration/operational evidence; implementation stopping is not closure.
