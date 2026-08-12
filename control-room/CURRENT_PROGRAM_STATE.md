@@ -14,11 +14,13 @@
 - Actual operating baseline: **UNKNOWN — BASELINE REQUIRED**.
 - Unsupported pipeline-performance claims: not authorized.
 - Independent Acceptance and Journey Integration protocols are now governing for subsequent functional work.
+- Lane 05 enrollment discovery has begun from de-identified public-path evidence; internal admissions system/process truth remains unverified.
 
 ## Active work
 
 - SHR-001 — Inventory Current Pipeline Systems and Sources of Truth.
 - BASE-001 — Establish Current Pipeline Baseline.
+- ENR-001 — Inventory Current Inquiry-to-Enrollment Process.
 
 The remaining functional discovery packets are READY and may proceed safely in parallel where their dependency class permits.
 
@@ -53,7 +55,8 @@ No functional component integration is currently pending. Lane 09 owns the seede
 ## Next Control Room priorities
 
 1. Execute SHR-001 and BASE-001 from actual business/system evidence.
-2. Run the functional discovery packets concurrently where GREEN.
-3. Convert unknown lifecycle and attribution assumptions into validated shared contracts through SHR-002 and SHR-003.
-4. Establish which Pipeline Health Scorecard metrics are actually computable and at what confidence.
-5. Reassess the current pipeline bottleneck and Wave 2 readiness from evidence, not assumptions.
+2. Continue ENR-001 internal admissions-process validation without treating the public path as proof of internal execution.
+3. Run the remaining functional discovery packets concurrently where GREEN.
+4. Convert unknown lifecycle and attribution assumptions into validated shared contracts through SHR-002 and SHR-003.
+5. Establish which Pipeline Health Scorecard metrics are actually computable and at what confidence.
+6. Reassess the current pipeline bottleneck and Wave 2 readiness from evidence, not assumptions.
