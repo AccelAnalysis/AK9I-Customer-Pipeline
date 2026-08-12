@@ -3,7 +3,7 @@
 - **Objective:** Inventory external relationships and whether they produce repeatable measurable pipeline value.
 - **Original requirements:** PART-001, ATTR-001, PRIV-001
 - **Business reason:** Contacts are not the same as active relationships or pipeline contribution.
-- **Current state:** UNKNOWN — BASELINE REQUIRED.
+- **Current state:** Discovery active. Initial public evidence identifies one reciprocally evidenced active strategic relationship and several channel/relationship claims requiring authoritative verification; no relationship currently has repository evidence of measurable pipeline contribution. See `lanes/07-partnerships/PART-001_CURRENT_CHANNEL_INVENTORY.md`.
 - **Owner lane:** 07
 - **Human accountable owner:** UNKNOWN — BASELINE REQUIRED
 - **Inputs:** current relationship/channel records and functional-lane evidence.
@@ -18,5 +18,5 @@
 - **Integration requirement:** 07→01/05 and 07↔03.
 - **Explicit non-ownership:** individual graduate outcome execution.
 - **Stop boundary:** do not manufacture relationship status or contribution.
-- **Status:** READY
-- **Next action:** inventory current external relationships.
+- **Status:** ACTIVE
+- **Next action:** obtain/identify the authoritative current relationship roster and owners; validate named employer network, GI Bill/SAA and SkillBridge channels, and relationship contribution traceability while SHR-003 resolves physical attribution truth.
