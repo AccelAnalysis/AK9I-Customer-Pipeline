@@ -1,0 +1,28 @@
+name: Integration Defect
+description: Record a cross-lane customer-journey seam failure
+title: "[INTEGRATION] "
+body:
+  - type: input
+    id: journey
+    attributes: {label: Journey/scenario}
+    validations: {required: true}
+  - type: input
+    id: stages
+    attributes: {label: Originating stage → receiving stage}
+    validations: {required: true}
+  - type: textarea
+    id: expected
+    attributes: {label: Expected behavior}
+    validations: {required: true}
+  - type: textarea
+    id: observed
+    attributes: {label: Observed behavior and evidence}
+    validations: {required: true}
+  - type: input
+    id: requirement
+    attributes: {label: Affected requirement}
+    validations: {required: true}
+  - type: dropdown
+    id: severity
+    attributes: {label: Severity, options: [Critical, High, Medium, Low]}
+    validations: {required: true}

@@ -1,0 +1,31 @@
+name: Pipeline Contract Request
+description: Request a governed cross-lane shared contract/interface decision
+title: "[PCR] "
+body:
+  - type: input
+    id: lane
+    attributes: {label: Requesting lane}
+    validations: {required: true}
+  - type: input
+    id: contract
+    attributes: {label: Affected contract}
+    validations: {required: true}
+  - type: textarea
+    id: problem
+    attributes: {label: Problem and why current contract is insufficient}
+    validations: {required: true}
+  - type: textarea
+    id: decision
+    attributes: {label: Required decision/interface}
+    validations: {required: true}
+  - type: textarea
+    id: affected
+    attributes: {label: Affected work packets and requirements}
+    validations: {required: true}
+  - type: dropdown
+    id: blocking
+    attributes: {label: Blocking classification, options: [GREEN, YELLOW, RED]}
+    validations: {required: true}
+  - type: textarea
+    id: proposal
+    attributes: {label: Proposed resolution, owner, and disposition}
