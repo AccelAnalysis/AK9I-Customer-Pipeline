@@ -19,6 +19,7 @@
 
 - SHR-001 — Inventory Current Pipeline Systems and Sources of Truth.
 - BASE-001 — Establish Current Pipeline Baseline.
+- PART-001 — Inventory Current Referral, Employer, Agency, and Strategic Channels. Lane 07 initial evidence-backed discovery is active; current contribution measurement remains unverified.
 
 The remaining functional discovery packets are READY and may proceed safely in parallel where their dependency class permits.
 

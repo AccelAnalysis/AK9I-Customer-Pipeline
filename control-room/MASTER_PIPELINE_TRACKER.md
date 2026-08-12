@@ -13,6 +13,6 @@ Status flow: `BACKLOG → READY → ACTIVE → BLOCKED → ACCEPTANCE-PENDING �
 | LRN-001 | Inventory Current Student Journey and Completion Measurement | 04 | Learning | READY | P0 | GREEN | — | Lane 04 | Required | Required | baseline pending | Observe current journey | 2026-08-12 |
 | ENR-001 | Inventory Current Inquiry-to-Enrollment Process | 05 | Enrollment | READY | P0 | GREEN | — | Lane 05 | Required | Required | baseline pending | Observe actual vs intended process | 2026-08-12 |
 | MKT-001 | Inventory Current Demand Sources and Marketing Measurement | 06 | Demand | READY | P1 | GREEN | — | Lane 06 | Required | Required | baseline pending | Inventory actual channels/data | 2026-08-12 |
-| PART-001 | Inventory Current Referral, Employer, Agency, and Strategic Channels | 07 | Partnerships | READY | P1 | GREEN | — | Lane 07 | Required | Required | baseline pending | Inventory current relationships | 2026-08-12 |
+| PART-001 | Inventory Current Referral, Employer, Agency, and Strategic Channels | 07 | Partnerships | ACTIVE | P1 | GREEN | — | Lane 07 | Required | Required | lanes/07-partnerships/PART-001_CURRENT_CHANNEL_INVENTORY.md | Obtain authoritative relationship roster; validate employer/veteran channels and contribution traceability | 2026-08-12 |
 
 `CLOSED` requires completed work plus required acceptance/integration/operational evidence; implementation stopping is not closure.
