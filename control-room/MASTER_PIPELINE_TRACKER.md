@@ -11,7 +11,7 @@ Status flow: `BACKLOG → READY → ACTIVE → BLOCKED → ACCEPTANCE-PENDING �
 | ADV-001 | Inventory Current Feedback, Reviews, Testimonials, and Referral Practices | 02 | Advocacy | READY | P1 | GREEN | — | Lane 02 | Required | Required | baseline pending | Observe current practice | 2026-08-12 |
 | OUT-001 | Inventory Current Graduate Outcome and Placement Process | 03 | Outcomes | READY | P0 | GREEN | — | Lane 03 | Required | Required | baseline pending | Observe current process | 2026-08-12 |
 | LRN-001 | Inventory Current Student Journey and Completion Measurement | 04 | Learning | READY | P0 | GREEN | — | Lane 04 | Required | Required | baseline pending | Observe current journey | 2026-08-12 |
-| ENR-001 | Inventory Current Inquiry-to-Enrollment Process | 05 | Enrollment | READY | P0 | GREEN | — | Lane 05 | Required | Required | baseline pending | Observe actual vs intended process | 2026-08-12 |
+| ENR-001 | Inventory Current Inquiry-to-Enrollment Process | 05 | Enrollment | ACTIVE | P0 | GREEN→YELLOW | — | Lane 05 | Required | Required | `evidence/enrollment/ENR-001_PUBLIC_PATH_BASELINE_2026-08-12.md`; internal baseline pending | Validate internal routing/ownership/stages and candidate enrolled definition via SHR-002 | 2026-08-12 |
 | MKT-001 | Inventory Current Demand Sources and Marketing Measurement | 06 | Demand | READY | P1 | GREEN | — | Lane 06 | Required | Required | baseline pending | Inventory actual channels/data | 2026-08-12 |
 | PART-001 | Inventory Current Referral, Employer, Agency, and Strategic Channels | 07 | Partnerships | READY | P1 | GREEN | — | Lane 07 | Required | Required | baseline pending | Inventory current relationships | 2026-08-12 |
 
