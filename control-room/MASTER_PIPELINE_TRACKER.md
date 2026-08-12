@@ -6,7 +6,7 @@ Status flow: `BACKLOG → READY → ACTIVE → BLOCKED → ACCEPTANCE-PENDING �
 |---|---|---:|---|---|---|---|---|---|---|---|---|---|---|
 | SHR-001 | Inventory Current Pipeline Systems and Sources of Truth | 01 | Shared | ACTIVE | P0 | GREEN | — | Lane 01 | Required | Required | baseline pending | Inventory actual systems | 2026-08-12 |
 | SHR-002 | Establish Canonical Customer Lifecycle Definitions | 01 | Shared | READY | P0 | YELLOW | SHR-001 | Lane 01 | Required | Required | stage contracts initial only | Validate definitions with AK9I/lanes | 2026-08-12 |
-| SHR-003 | Establish Current Source Attribution Model | 01 | Demand/Shared | READY | P0 | YELLOW | SHR-001 | Lane 01 | Required | Required | attribution baseline pending | Inspect original/latest source behavior and physical fields | 2026-08-12 |
+| SHR-003 | Establish Current Source Attribution Model | 01 | Demand/Shared | READY | P0 | YELLOW | SHR-001 | Lane 01 | Required | Required | attribution baseline pending | Inspect actual source fields/behavior | 2026-08-12 |
 | BASE-001 | Establish Current Pipeline Baseline | 00/01 | All | ACTIVE | P0 | YELLOW | SHR-001 | Control Room + Lane 01 | Required | Required | baseline not established | Gather evidence without inventing values | 2026-08-12 |
 | ADV-001 | Inventory Current Feedback, Reviews, Testimonials, and Referral Practices | 02 | Advocacy | READY | P1 | GREEN | — | Lane 02 | Required | Required | baseline pending | Observe current practice | 2026-08-12 |
 | OUT-001 | Inventory Current Graduate Outcome and Placement Process | 03 | Outcomes | READY | P0 | GREEN | — | Lane 03 | Required | Required | baseline pending | Observe current process | 2026-08-12 |
