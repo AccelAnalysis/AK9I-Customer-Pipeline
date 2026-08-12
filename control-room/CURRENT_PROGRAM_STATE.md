@@ -19,6 +19,7 @@
 
 - SHR-001 — Inventory Current Pipeline Systems and Sources of Truth.
 - BASE-001 — Establish Current Pipeline Baseline.
+- OUT-001 — Inventory Current Graduate Outcome and Placement Process. Lane 03 has established a de-identified evidence-backed discovery baseline: current public career/placement assistance and employer-facing mechanisms are observable, historical placement-verification controls are documented, but the current 2026 operating process, systems, accountable owner, stage tracking, follow-up, and outcome metrics remain unverified.
 - PART-001 — Inventory Current Referral, Employer, Agency, and Strategic Channels. Lane 07 initial evidence-backed discovery is active; current contribution measurement remains unverified.
 
 The remaining functional discovery packets are READY and may proceed safely in parallel where their dependency class permits.
