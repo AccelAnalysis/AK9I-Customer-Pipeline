@@ -13,6 +13,7 @@
 - Shared contracts: established at initial-governance level; physical CRM/system implementation is **not verified**.
 - Actual operating baseline: **UNKNOWN — BASELINE REQUIRED** overall.
 - Advocacy baseline: partial public evidence is now recorded under ADV-001; internal process/system evidence, ownership, consent/provenance, request events, and closed-loop referral measurement remain **UNKNOWN — INTERNAL BASELINE REQUIRED**.
+- Outcomes baseline: partial evidence now confirms public career/placement assistance, employer-facing recruiting capability, and historical verification controls; the current 2026 operating process, systems, accountable owner, stage tracking, verification workflow, follow-up, and outcome metrics remain **UNKNOWN — INTERNAL BASELINE REQUIRED**.
 - Marketing baseline: partial public-channel evidence is recorded under MKT-001; authoritative channel/account analytics, source persistence, qualified-pipeline contribution, and acquisition economics remain **UNKNOWN — INTERNAL/SYSTEM BASELINE REQUIRED**.
 - Unsupported pipeline-performance claims: not authorized.
 - Independent Acceptance and Journey Integration protocols are now governing for subsequent functional work.
@@ -22,6 +23,7 @@
 - SHR-001 — Inventory Current Pipeline Systems and Sources of Truth.
 - BASE-001 — Establish Current Pipeline Baseline.
 - ADV-001 — Inventory Current Feedback, Reviews, Testimonials, and Referral Practices. Lane 02 has established a partial public baseline; the internal operating baseline remains active discovery.
+- OUT-001 — Inventory Current Graduate Outcome and Placement Process. Lane 03 has established a de-identified evidence-backed discovery baseline; no current placement-rate or verified-outcome performance claim is authorized.
 - MKT-001 — Inventory Current Demand Sources and Marketing Measurement. Lane 06 public-channel baseline discovery is active; authoritative performance and qualified-attributable entrant measurement remain unverified.
 - PART-001 — Inventory Current Referral, Employer, Agency, and Strategic Channels. Lane 07 initial evidence-backed discovery is active; current contribution measurement remains unverified.
 
@@ -29,7 +31,7 @@ Other functional discovery packets are READY and may proceed safely in parallel 
 
 ## Blocked work
 
-No work packet is marked BLOCKED. Several items are YELLOW contract-dependent and cannot be authoritatively completed until sufficient baseline/system truth exists. ADV-001 discovery is not blocked, but outcome-triggered advocacy implementation has a RED dependency on validated advocacy eligibility/timing from Lane 03, and authoritative advocacy/referral reporting has a YELLOW dependency on Lane 01 system/source/consent implementation truth. MKT-001 discovery is not blocked, but authoritative source contribution remains YELLOW on SHR-003 and correction/amplification of unresolved course/enrollment content is YELLOW on Lane 05/authorized AK9I truth.
+No work packet is marked BLOCKED. Several items are YELLOW contract-dependent and cannot be authoritatively completed until sufficient baseline/system truth exists. ADV-001 discovery is not blocked, but outcome-triggered advocacy implementation has a RED dependency on validated advocacy eligibility/timing from Lane 03, and authoritative advocacy/referral reporting has a YELLOW dependency on Lane 01 system/source/consent implementation truth. OUT-001 discovery is not blocked, but authoritative outcome reporting remains YELLOW pending current operating-source/SOP truth, lifecycle/evidence semantics, and validated completion/employer seams. MKT-001 discovery is not blocked, but authoritative source contribution remains YELLOW on SHR-003 and correction/amplification of unresolved course/enrollment content is YELLOW on Lane 05/authorized AK9I truth.
 
 ## Major decisions
 
@@ -40,6 +42,7 @@ No work packet is marked BLOCKED. Several items are YELLOW contract-dependent an
 - Initial improvement sequencing works backward from advocacy/outcomes before acquisition scale, while allowing safe parallel discovery.
 - Wave 0 bootstrap was merged through PR #1 after repository validation passed.
 - Public reviews/testimonials and a referral-source capture point are evidence of existing assets/capability, not by themselves evidence of a defined measurable advocacy operating process.
+- Public career-support/employer-recruiting mechanisms are evidence of capability, not by themselves evidence that an individual graduate reached interview, offer, acceptance, start, or a verified outcome.
 - Public channel availability and attention metrics are evidence of active surfaces, not by themselves evidence of qualified attributable pipeline contribution.
 
 ## Top risks
@@ -49,20 +52,21 @@ No work packet is marked BLOCKED. Several items are YELLOW contract-dependent an
 3. Risk of reporting conversion before enrollment/stage definitions are validated.
 4. Risk of sensitive information entering a public repository; the privacy boundary must be enforced.
 5. Risk of treating visible testimonials/reviews as current, consent-valid, outcome-verified, or pipeline-attributed proof without authoritative provenance and eligibility evidence.
-6. Risk of optimizing demand against attention metrics before source continuity and qualified-pipeline contribution are verifiable.
+6. Risk of treating employer contact, recruiter interest, graduate intent, interview, offer, alumni participation, or self-employment intent as a verified placement/outcome without current verification evidence.
+7. Risk of optimizing demand against attention metrics before source continuity and qualified-pipeline contribution are verifiable.
 
 ## Acceptance pending
 
-No functional work is currently acceptance-pending. ADV-001 and MKT-001 are active discovery and are not claimed complete. The bootstrap installation was the one-time installation exception; lane 08 governs subsequent acceptance claims.
+No functional work is currently acceptance-pending. ADV-001, OUT-001, and MKT-001 are active discovery and are not claimed complete. The bootstrap installation was the one-time installation exception; lane 08 governs subsequent acceptance claims.
 
 ## Integration pending
 
-No functional component integration is currently pending. Lane 09 owns the seeded journey/handoff matrices and should mature them as baseline evidence and accepted work become available. The future advocacy integration seam remains 03 → 02 → 06/01 plus referral return to qualified demand; the future marketing seam remains 06 → 01 → 05 with source/lifecycle/owner/next-action continuity.
+No functional component integration is currently pending. Lane 09 owns the seeded journey/handoff matrices and should mature them as baseline evidence and accepted work become available. The future advocacy integration seam remains 03 → 02 → 06/01 plus referral return to qualified demand; the outcome seam remains 04 → 03 with 03 ↔ 07 employer coordination; the future marketing seam remains 06 → 01 → 05 with source/lifecycle/owner/next-action continuity.
 
 ## Next Control Room priorities
 
 1. Execute SHR-001 and BASE-001 from actual business/system evidence.
-2. Continue ADV-001 and MKT-001 with de-identified internal process/system evidence and run the remaining GREEN functional discovery packets concurrently.
+2. Continue ADV-001, OUT-001, and MKT-001 with de-identified internal process/system evidence and run the remaining GREEN functional discovery packets concurrently.
 3. Convert unknown lifecycle and attribution assumptions into validated shared contracts through SHR-002 and SHR-003.
 4. Establish which Pipeline Health Scorecard metrics are actually computable and at what confidence.
 5. Reassess the current pipeline bottleneck and Wave 2 readiness from evidence, not assumptions.
