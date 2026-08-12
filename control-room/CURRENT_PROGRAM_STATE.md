@@ -19,12 +19,13 @@
 
 - SHR-001 — Inventory Current Pipeline Systems and Sources of Truth.
 - BASE-001 — Establish Current Pipeline Baseline.
+- MKT-001 — Inventory Current Demand Sources and Marketing Measurement; public-channel baseline discovery is underway, while authoritative account/analytics/CRM performance remains unknown.
 
-The remaining functional discovery packets are READY and may proceed safely in parallel where their dependency class permits.
+Other functional discovery packets remain READY and may proceed safely in parallel where their dependency class permits.
 
 ## Blocked work
 
-No work packet is marked BLOCKED. Several items are YELLOW contract-dependent and cannot be authoritatively completed until sufficient baseline/system truth exists.
+No work packet is marked BLOCKED. Several items are YELLOW contract-dependent and cannot be authoritatively completed until sufficient baseline/system truth exists. Lane 06 also has a YELLOW dependency on Lane 05/authorized AK9I ownership to establish canonical course/enrollment content truth before correcting or amplifying conflicting public conversion content.
 
 ## Major decisions
 
@@ -41,6 +42,7 @@ No work packet is marked BLOCKED. Several items are YELLOW contract-dependent an
 2. Risk of prematurely treating conceptual fields as implemented CRM fields.
 3. Risk of reporting conversion before enrollment/stage definitions are validated.
 4. Risk of sensitive information entering a public repository; the privacy boundary must be enforced.
+5. Risk of optimizing demand against attention metrics before source continuity and qualified-pipeline contribution are verifiable.
 
 ## Acceptance pending
 
