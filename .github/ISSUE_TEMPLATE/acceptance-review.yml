@@ -1,0 +1,20 @@
+name: Acceptance Review
+description: Request independent requirement-based acceptance
+title: "[ACCEPTANCE] "
+body:
+  - type: input
+    id: requirement
+    attributes: {label: Requirement ID(s)}
+    validations: {required: true}
+  - type: input
+    id: candidate
+    attributes: {label: Exact candidate / work packet / PR}
+    validations: {required: true}
+  - type: textarea
+    id: authority
+    attributes: {label: Governing authority and required observable behavior}
+    validations: {required: true}
+  - type: textarea
+    id: evidence
+    attributes: {label: Evidence supplied}
+    validations: {required: true}

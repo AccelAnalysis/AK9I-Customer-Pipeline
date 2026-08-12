@@ -1,0 +1,22 @@
+# BASE-001 — Establish Current Pipeline Baseline
+
+- **Objective:** Establish evidence-backed current pipeline health and measurement confidence.
+- **Original requirements:** PIPE-001, PIPE-002, DATA-001, ATTR-001, PRIV-001
+- **Business reason:** Bottleneck decisions require baseline truth.
+- **Current state:** BASELINE NOT YET ESTABLISHED.
+- **Owner lane:** 00/01
+- **Human accountable owner:** UNKNOWN — BASELINE REQUIRED
+- **Inputs:** SHR-001 and all functional inventory packets.
+- **Dependencies:** SHR-001 plus source access.
+- **Dependency classification:** YELLOW
+- **Shared contracts consumed:** all applicable shared/stage contracts and scorecard definitions.
+- **Authorized actions:** define computable metrics, collect aggregate/de-identified evidence, assess completeness/confidence.
+- **Expected output:** baseline findings and populated scorecard fields only where authoritative.
+- **KPI / observable outcome affected:** program-wide.
+- **Evidence required:** reproducible source/report definitions and date windows.
+- **Acceptance criteria:** no invented values/targets; each claim states source and confidence.
+- **Integration requirement:** yes.
+- **Explicit non-ownership:** no executive target-setting without authority.
+- **Stop boundary:** unknown remains unknown when evidence is insufficient.
+- **Status:** ACTIVE
+- **Next action:** gather functional/system baseline evidence.

@@ -1,0 +1,24 @@
+name: Risk / Blocker
+description: Record a program risk or active blocker
+title: "[RISK] "
+body:
+  - type: textarea
+    id: risk
+    attributes: {label: Risk/blocker and consequence}
+    validations: {required: true}
+  - type: input
+    id: owner
+    attributes: {label: Owner}
+    validations: {required: true}
+  - type: input
+    id: lanes
+    attributes: {label: Affected lanes}
+    validations: {required: true}
+  - type: textarea
+    id: mitigation
+    attributes: {label: Mitigation}
+    validations: {required: true}
+  - type: textarea
+    id: trigger
+    attributes: {label: Trigger / next action}
+    validations: {required: true}

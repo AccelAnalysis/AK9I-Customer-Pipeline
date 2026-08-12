@@ -1,0 +1,22 @@
+# PART-001 — Inventory Current Referral, Employer, Agency, and Strategic Channels
+
+- **Objective:** Inventory external relationships and whether they produce repeatable measurable pipeline value.
+- **Original requirements:** PART-001, ATTR-001, PRIV-001
+- **Business reason:** Contacts are not the same as active relationships or pipeline contribution.
+- **Current state:** UNKNOWN — BASELINE REQUIRED.
+- **Owner lane:** 07
+- **Human accountable owner:** UNKNOWN — BASELINE REQUIRED
+- **Inputs:** current relationship/channel records and functional-lane evidence.
+- **Dependencies:** none for discovery; attribution YELLOW on SHR-003.
+- **Dependency classification:** GREEN for inventory
+- **Shared contracts consumed:** partner identity, attribution, lifecycle, privacy.
+- **Authorized actions:** distinguish contact→active relationship→opportunity→candidate/customer/outcome where applicable.
+- **Expected output:** current partner/channel inventory and evidence-backed contribution model gaps.
+- **KPI / observable outcome affected:** partner-produced pipeline/outcomes/credibility.
+- **Evidence required:** de-identified/organizational evidence, no private customer records.
+- **Acceptance criteria:** outreach counts are not presented as relationship value; contribution traceability documented where possible.
+- **Integration requirement:** 07→01/05 and 07↔03.
+- **Explicit non-ownership:** individual graduate outcome execution.
+- **Stop boundary:** do not manufacture relationship status or contribution.
+- **Status:** READY
+- **Next action:** inventory current external relationships.

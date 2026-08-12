@@ -1,0 +1,47 @@
+name: Work Packet
+description: Create or track bounded pipeline improvement work
+title: "[WORK] "
+body:
+  - type: input
+    id: packet
+    attributes: {label: Work Packet ID, placeholder: "e.g. ENR-008"}
+    validations: {required: true}
+  - type: input
+    id: requirements
+    attributes: {label: Requirement IDs}
+    validations: {required: true}
+  - type: textarea
+    id: objective
+    attributes: {label: Objective and business reason}
+    validations: {required: true}
+  - type: textarea
+    id: current
+    attributes: {label: Current state and evidence}
+    validations: {required: true}
+  - type: input
+    id: lane
+    attributes: {label: Owner lane}
+    validations: {required: true}
+  - type: textarea
+    id: deps
+    attributes: {label: Dependencies and GREEN/YELLOW/RED classification}
+    validations: {required: true}
+  - type: textarea
+    id: contracts
+    attributes: {label: Shared contracts consumed}
+  - type: textarea
+    id: actions
+    attributes: {label: Authorized actions and explicit non-ownership}
+    validations: {required: true}
+  - type: textarea
+    id: output
+    attributes: {label: Expected output, KPI/observable outcome, evidence required}
+    validations: {required: true}
+  - type: textarea
+    id: acceptance
+    attributes: {label: Acceptance criteria and integration requirement}
+    validations: {required: true}
+  - type: textarea
+    id: boundary
+    attributes: {label: Stop boundary, status, and next action}
+    validations: {required: true}
