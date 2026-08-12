@@ -19,13 +19,14 @@
 
 - SHR-001 — Inventory Current Pipeline Systems and Sources of Truth.
 - BASE-001 — Establish Current Pipeline Baseline.
+- LRN-001 — Inventory Current Student Journey and Completion Measurement; Lane 04 discovery framework established, actual operating evidence still required.
 - PART-001 — Inventory Current Referral, Employer, Agency, and Strategic Channels. Lane 07 initial evidence-backed discovery is active; current contribution measurement remains unverified.
 
 The remaining functional discovery packets are READY and may proceed safely in parallel where their dependency class permits.
 
 ## Blocked work
 
-No work packet is marked BLOCKED. Several items are YELLOW contract-dependent and cannot be authoritatively completed until sufficient baseline/system truth exists.
+No work packet is marked BLOCKED. Several items are YELLOW contract-dependent and cannot be authoritatively completed until sufficient baseline/system truth exists. LRN-001 discovery is GREEN, while authoritative shared lifecycle semantics for STARTED/ACTIVE STUDENT/PROGRAM COMPLETION remain dependent on SHR-002 validation.
 
 ## Major decisions
 
@@ -42,6 +43,7 @@ No work packet is marked BLOCKED. Several items are YELLOW contract-dependent an
 2. Risk of prematurely treating conceptual fields as implemented CRM fields.
 3. Risk of reporting conversion before enrollment/stage definitions are validated.
 4. Risk of sensitive information entering a public repository; the privacy boundary must be enforced.
+5. Student start, active, withdrawal/non-completion, completion, support, and 04→03 handoff evidence are not yet verified.
 
 ## Acceptance pending
 
@@ -49,12 +51,12 @@ No functional work is currently acceptance-pending. The bootstrap installation w
 
 ## Integration pending
 
-No functional component integration is currently pending. Lane 09 owns the seeded journey/handoff matrices and should mature them as baseline evidence and accepted work become available.
+No functional component integration is currently pending. Lane 09 owns the seeded journey/handoff matrices and should mature them as baseline evidence and accepted work become available. The 05→04 and 04→03 scenarios remain BASELINE REQUIRED / NOT RUN.
 
 ## Next Control Room priorities
 
 1. Execute SHR-001 and BASE-001 from actual business/system evidence.
-2. Run the functional discovery packets concurrently where GREEN.
+2. Continue LRN-001 and run the remaining functional discovery packets concurrently where GREEN.
 3. Convert unknown lifecycle and attribution assumptions into validated shared contracts through SHR-002 and SHR-003.
 4. Establish which Pipeline Health Scorecard metrics are actually computable and at what confidence.
 5. Reassess the current pipeline bottleneck and Wave 2 readiness from evidence, not assumptions.
