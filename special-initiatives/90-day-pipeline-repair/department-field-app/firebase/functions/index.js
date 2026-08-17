@@ -21,7 +21,6 @@ const YES_NO_UNSURE = new Set(['Yes','No','Not sure']);
 const RISK_STATUS = new Set(['GREEN','YELLOW','RED','UNKNOWN']);
 const RISK_AREAS = ['Staffing/capacity','Student continuity','Safety','Canine welfare','Facility/equipment','Systems/data','Compliance/records','Spending/control','Customer or contract commitments'];
 const TENURE = new Set(['Less than 3 months','3–11 months','1–2 years','3–5 years','More than 5 years']);
-const PERSPECTIVE = new Set(['Primarily my own work','Primarily my department','Both my own work and my department']);
 const DEPARTMENT_LABELS = new Set(['Kennels','Training / Instruction','Grounds & Maintenance','Office / Admissions / Student Services','Sales / Business Development / Marketing','Finance / Administration','Leadership','Other']);
 const OUTSIDE_ROLE = new Set(['0–10%','11–25%','26–50%','51–75%','More than 75%','Not sure']);
 const FREQUENCY = new Set(['Never','Less than monthly','Monthly','Weekly','Daily or almost daily','Not sure']);
@@ -60,7 +59,7 @@ const DEPARTMENT_CONFIG = {
     extra: new Set(['Less than 1 hour','Same business day','Next business day','2–3 business days','More than 3 business days','Not tracked','Not sure']), ratingCount: 8
   }
 };
-const PULSE_KEYS = new Set(['email','name','department','role','tenure','perspective','otherDepartments','rapid','tasks','outsideRole','cracks','waiting','delayCauses','systems','friction','currentMeasures','desiredMeasures','waste','singleDependency','dependencyFunction','immediateRisk','riskAreas','riskUrgency','deptRatings','constraint','deptExtra','professionalDevelopment','deptImprovement','priorities','sevenDay','stopStartContinue','stopStartText','evidenceSource','willingness','privateFollowup']);
+const PULSE_KEYS = new Set(['email','firstName','lastName','department','role','tenure','otherDepartments','otherDepartmentsOther','rapid','tasks','outsideRole','cracks','waiting','delayCauses','systems','friction','currentMeasures','desiredMeasures','waste','singleDependency','dependencyFunction','immediateRisk','riskAreas','riskUrgency','deptRatings','constraint','deptExtra','professionalDevelopment','deptImprovement','priorities','sevenDay','stopStartContinue','stopStartText','evidenceSource','willingness','privateFollowup']);
 const SUMMARY_KEYS = new Set(['facilitatorEmail','department','meetingDate','startTime','endTime','attendees','responseCount','sessionDisplay','purpose','recurringWork','accountableRole','ownershipClarity','overlapping','orphaned','systems','authoritativeSource','handoffs','currentMeasured','kpis','failures','risks','fixes','evidenceRequests','unresolved','escalation']);
 
 exports.submitFieldResponse = onRequest({
@@ -116,18 +115,20 @@ function validateEnvelope(raw) {
   ensureOnlyKeys(clientMeta, new Set(['appVersion','submittedAt','timezone','online']), 'clientMeta');
   validateRecursive(clientMeta, 'clientMeta', 0);
 
-  return { formType, sessionId, department, workEmail, answers: raw.answers, clientSubmissionId, clientMeta, schemaVersion: '1.0' };
+  return { formType, sessionId, department, workEmail, answers: raw.answers, clientSubmissionId, clientMeta, schemaVersion: '2.0' };
 }
 
 function validatePulse(a, department, email) {
   ensureOnlyKeys(a, PULSE_KEYS, 'answers');
   if (String(a.email || '').trim().toLowerCase() !== email) throw httpError(400, 'Email fields do not match.');
   if (a.department !== department) throw httpError(400, 'Department fields do not match.');
-  optionalString(a.name, 'answers.name', 120);
+  optionalString(a.firstName, 'answers.firstName', 80);
+  optionalString(a.lastName, 'answers.lastName', 80);
   assertString(a.role, 'answers.role', 1, 140);
   assertEnum(a.tenure, TENURE, 'answers.tenure');
-  assertEnum(a.perspective, PERSPECTIVE, 'answers.perspective');
   assertArraySubset(a.otherDepartments, DEPARTMENT_LABELS, 'answers.otherDepartments', 0, 8);
+  if (a.otherDepartments.includes('Other')) assertString(a.otherDepartmentsOther, 'answers.otherDepartmentsOther', 1, 120);
+  else optionalString(a.otherDepartmentsOther, 'answers.otherDepartmentsOther', 120);
   validateRatingObject(a.rapid, 11, 'answers.rapid');
   const deptConfig = DEPARTMENT_CONFIG[department];
   assertArraySubset(a.tasks, deptConfig?.tasks || GENERIC_TASKS, 'answers.tasks', 1, 5);
