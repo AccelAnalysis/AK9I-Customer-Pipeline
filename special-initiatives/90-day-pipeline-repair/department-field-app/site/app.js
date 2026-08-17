@@ -60,14 +60,25 @@ function validateCurrentStep() {
   return e;
 }
 function validateRatings(obj,count,e,label) { for(let i=1;i<=count;i++) if(!obj?.[i]) { e.push(`Answer every ${label} statement.`); break; } }
+function isDemoMode(){ return !String(config.submissionEndpoint || '').trim(); }
 
 async function submitCurrent() {
-  if (!sessionId) { errorMessages=['This form does not have a meeting session ID. Open the distributed department link or QR code.']; return render(); }
-  if (!sessionToken) { errorMessages=['This form link does not contain a meeting-session token. Open the distributed department link or QR code before submitting.']; return render(); }
+  if (!sessionId) { errorMessages=['This form does not have a meeting session ID. Open a department link from the fieldwork home page.']; return render(); }
+  const demo = isDemoMode();
+  if (!sessionToken && !demo) { errorMessages=['This form link does not contain a meeting-session token. Open the distributed department link or QR code before submitting.']; return render(); }
   const endpoint = String(config.submissionEndpoint || '').trim();
-  if (!endpoint) { errorMessages=['Submission service is not configured yet. The form draft is safe on this device, but Firebase deployment/configuration must be completed before live use.']; return render(); }
-  submitting=true; render();
   const payload = buildSubmission();
+  if (demo) {
+    const stored = loadDemoSubmissions();
+    stored.push({payload, savedAt:new Date().toISOString()});
+    localStorage.setItem('ak9i-field-demo-submissions-v1', JSON.stringify(stored.slice(-20)));
+    confirmation={demo:true,confirmationNumber:`DEMO-${payload.clientSubmissionId.slice(-8).toUpperCase()}`,revision:1,current:true};
+    clearDrafts();
+    render();
+    return;
+  }
+  if (!endpoint) { errorMessages=['Submission service is not configured yet.']; return render(); }
+  submitting=true; render();
   if (!navigator.onLine) { submitting=false; queueSubmission(payload); pendingSubmission={localId:payload.clientSubmissionId}; return render(); }
   try {
     const result = await sendSubmission(payload, sessionToken);
@@ -78,6 +89,7 @@ async function submitCurrent() {
     else { errorMessages=[err.message || 'Submission failed. Review the meeting link and try again.']; render(); }
   }
 }
+function loadDemoSubmissions(){try{return JSON.parse(localStorage.getItem('ak9i-field-demo-submissions-v1')||'[]')}catch(_){return []}}
 function buildSubmission() {
   const email = formType==='pulse'?answers.pulse.email:answers.summary.facilitatorEmail;
   return { formType, sessionId, department: formType==='pulse'?answers.pulse.department:answers.summary.department, workEmail: email.trim().toLowerCase(), answers: structuredClone(answers[formType]), clientSubmissionId: crypto.randomUUID ? crypto.randomUUID() : `local-${Date.now()}-${Math.random().toString(36).slice(2)}`, clientMeta: { appVersion: config.appVersion || 'dev', submittedAt: new Date().toISOString(), timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, online: navigator.onLine } };
@@ -114,7 +126,10 @@ function loadQueue(){try{return JSON.parse(localStorage.getItem(queueKey())||'[]
 function removeQueued(id){ const q=loadQueue().filter(x=>x.payload.clientSubmissionId!==id); localStorage.setItem(queueKey(),JSON.stringify(q)); }
 async function retryQueue(){ if(!navigator.onLine||!sessionToken||!config.submissionEndpoint)return; const matching=loadQueue().filter(x=>x.payload.sessionId===sessionId && x.payload.department===(formType==='pulse'?answers.pulse.department:answers.summary.department) && x.payload.formType===formType); for(const item of matching){ try{const r=await sendSubmission(item.payload,sessionToken); removeQueued(item.payload.clientSubmissionId); confirmation=r; pendingSubmission=null; clearDrafts(); render(); break;}catch(err){if(!isRetryable(err))removeQueued(item.payload.clientSubmissionId);} } }
 function renderPending(){ app.innerHTML=`<section class="step-card confirmation"><p class="step-kicker">Pending submission</p><h2>Your response is saved on this device</h2><div class="notice warning">The response has not yet been accepted by the private submission service. Keep this meeting link available; the app will retry when connectivity returns.</div><p>Local pending reference</p><div class="confirmation-number">${esc(pendingSubmission.localId)}</div><button class="button" id="retry-now">Retry now</button><button class="button secondary" id="back-to-review" style="margin-left:8px">Back to review</button></section>`; document.getElementById('retry-now').onclick=()=>{pendingSubmission=null;retryQueue();render();};document.getElementById('back-to-review').onclick=()=>{pendingSubmission=null;render();}; }
-function renderConfirmation(){ app.innerHTML=`<section class="step-card confirmation"><p class="step-kicker">Submission received</p><h2>Thank you</h2><div class="notice success">Your response was accepted by the private submission service.</div><p>Confirmation number</p><div class="confirmation-number">${esc(confirmation.confirmationNumber || confirmation.responseId || 'Received')}</div><p>${confirmation.revision>1?`This is revision ${esc(confirmation.revision)}; the latest response is marked current.`:'This response is marked current.'}</p><a class="button-link" href="${esc(window.location.pathname)}">Return to fieldwork home</a></section>`; }
+function renderConfirmation(){
+  if(confirmation.demo){app.innerHTML=`<section class="step-card confirmation"><p class="step-kicker">Demo complete</p><h2>Thank you</h2><div class="notice warning"><strong>Demo mode:</strong> this response was saved only on this device for today's demonstration. It was not transmitted to or stored in a central database.</div><p>Demo confirmation</p><div class="confirmation-number">${esc(confirmation.confirmationNumber || 'DEMO')}</div><p>Firebase-backed private collection will be enabled separately for live field use.</p><a class="button-link" href="${esc(window.location.pathname)}">Return to fieldwork home</a></section>`;return;}
+  app.innerHTML=`<section class="step-card confirmation"><p class="step-kicker">Submission received</p><h2>Thank you</h2><div class="notice success">Your response was accepted by the private submission service.</div><p>Confirmation number</p><div class="confirmation-number">${esc(confirmation.confirmationNumber || confirmation.responseId || 'Received')}</div><p>${confirmation.revision>1?`This is revision ${esc(confirmation.revision)}; the latest response is marked current.`:'This response is marked current.'}</p><a class="button-link" href="${esc(window.location.pathname)}">Return to fieldwork home</a></section>`;
+}
 
 window.addEventListener('online',()=>{ if(formType) retryQueue(); else render(); });
 window.addEventListener('offline',render);
