@@ -15,7 +15,6 @@ const DEPARTMENTS = {
 
 const TUESDAY_DEPARTMENTS = ['kennels', 'training', 'maintenance', 'office'];
 const TENURE = ['Less than 3 months', '3–11 months', '1–2 years', '3–5 years', 'More than 5 years'];
-const PERSPECTIVE = ['Primarily my own work', 'Primarily my department', 'Both my own work and my department'];
 const SCALE = [
   ['1', '1 — Not working'],
   ['2', '2 — Weak'],
@@ -102,7 +101,7 @@ function normalizeDepartment(value) {
 }
 function defaultSession(dept) { return `2026-08-18-${dept}`; }
 function cleanShort(value) { return String(value || '').trim().slice(0, 120); }
-function esc(value) { return String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+function esc(value) { return String(value ?? '').replace(/[&<>'\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c])); }
 function get(path) { return path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), answers); }
 function set(path, value) {
   const keys = path.split('.');
@@ -115,7 +114,7 @@ function hasValue(v) { return !(v === undefined || v === null || v === '' || (Ar
 function defaultAnswers() {
   return {
     pulse: {
-      email: localStorage.getItem('ak9i-field-email') || '', name: '', department: '', role: '', tenure: '', perspective: '', otherDepartments: [],
+      email: localStorage.getItem('ak9i-field-email') || '', firstName: '', lastName: '', department: '', role: '', tenure: '', otherDepartments: [], otherDepartmentsOther: '',
       rapid: {}, tasks: [], outsideRole: '', cracks: '', waiting: '', delayCauses: [], systems: [], friction: '',
       currentMeasures: [], desiredMeasures: [], waste: [], singleDependency: '', dependencyFunction: '', immediateRisk: '', riskAreas: [], riskUrgency: '',
       deptRatings: {}, constraint: '', deptExtra: '', professionalDevelopment: '', deptImprovement: '', priorities: [], sevenDay: '', stopStartContinue: '', stopStartText: '', evidenceSource: '', willingness: '', privateFollowup: ''
