@@ -16,7 +16,7 @@ function validateCurrentStep() {
       if (!dept) e.push('Select a primary department.');
       if (!p.role.trim()) e.push('Enter your role or job title.');
       if (!p.tenure) e.push('Select time with AK9I.');
-      if (!p.perspective) e.push('Select the perspective represented.');
+      if (p.otherDepartments.includes('Other') && !p.otherDepartmentsOther.trim()) e.push('Enter the other department you support.');
     } else if (step===1) validateRatings(p.rapid,RAPID_STATEMENTS.length,e,'general feedback');
     else if (step===2) {
       if (!p.tasks.length) e.push('Select at least one regular responsibility.');
@@ -131,8 +131,7 @@ function renderConfirmation(){
   app.innerHTML=`<section class="step-card confirmation"><p class="step-kicker">Response received</p><h2>Thank you</h2><div class="notice success">Your response was received.</div><p>Confirmation number</p><div class="confirmation-number">${esc(confirmation.confirmationNumber || confirmation.responseId || 'Received')}</div><a class="button-link" href="${esc(window.location.pathname)}">Return to department selection</a></section>`;
 }
 
-window.addEventListener('online',()=>{ if(formType) retryQueue(); else render(); });
-window.addEventListener('offline',render);
+window.addEventListener('online',()=>{ if(formType) retryQueue(); });
 window.addEventListener('beforeunload',saveDraft);
 
 if (formType === 'summary') answers.summary.sessionDisplay = sessionId;
