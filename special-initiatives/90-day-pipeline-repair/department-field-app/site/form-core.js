@@ -6,11 +6,11 @@ function applyPrefills() {
 }
 function draftKey() {
   const dept = formType ? (get(`${formType}.department`) || initialDepartment || 'unassigned') : 'home';
-  return `ak9i-field-draft-v2:${formType || 'none'}:${sessionId || 'no-session'}:${dept}`;
+  return `ak9i-field-draft-v3:${formType || 'none'}:${sessionId || 'no-session'}:${dept}`;
 }
 function loadDraft() {
   if (!formType) return;
-  const keys = Object.keys(localStorage).filter(k => k.startsWith(`ak9i-field-draft-v2:${formType}:${sessionId || 'no-session'}:`));
+  const keys = Object.keys(localStorage).filter(k => k.startsWith(`ak9i-field-draft-v3:${formType}:${sessionId || 'no-session'}:`));
   const preferred = keys.find(k => initialDepartment && k.endsWith(`:${initialDepartment}`)) || keys[0];
   if (!preferred) return;
   try {
@@ -25,7 +25,7 @@ function saveDraft() {
 }
 function queueDraftSave() { clearTimeout(draftTimer); draftTimer = setTimeout(saveDraft, 180); }
 function clearDrafts() {
-  const prefix = `ak9i-field-draft-v2:${formType}:${sessionId || 'no-session'}:`;
+  const prefix = `ak9i-field-draft-v3:${formType}:${sessionId || 'no-session'}:`;
   Object.keys(localStorage).filter(k => k.startsWith(prefix)).forEach(k => localStorage.removeItem(k));
 }
 
@@ -46,9 +46,9 @@ function fieldRadio(path, label, options, { required=false, rerender=false }={})
   const value = get(path) || '';
   return `<fieldset class="field"><legend class="${required?'required':''}">${esc(label)}</legend><div class="choice-grid">${options.map(o=>{ const [val,text] = Array.isArray(o)?o:[o,o]; return `<label class="choice"><input type="radio" name="${id(path)}" data-field="${esc(path)}" value="${esc(val)}" ${val===value?'checked':''} ${rerender?'data-rerender="1"':''}><span>${esc(text)}</span></label>`;}).join('')}</div></fieldset>`;
 }
-function fieldChecks(path, label, options, { required=false, max=null, hint='' }={}) {
+function fieldChecks(path, label, options, { required=false, max=null, hint='', rerender=false }={}) {
   const selected = Array.isArray(get(path)) ? get(path) : [];
-  return `<fieldset class="field"><legend class="${required?'required':''}">${esc(label)}</legend>${hint?`<small class="hint">${esc(hint)}</small>`:''}<div class="choice-grid two">${options.map(o=>`<label class="choice"><input type="checkbox" data-field="${esc(path)}" value="${esc(o)}" ${selected.includes(o)?'checked':''} ${max?`data-max="${max}"`:''}><span>${esc(o)}</span></label>`).join('')}</div></fieldset>`;
+  return `<fieldset class="field"><legend class="${required?'required':''}">${esc(label)}</legend>${hint?`<small class="hint">${esc(hint)}</small>`:''}<div class="choice-grid two">${options.map(o=>`<label class="choice"><input type="checkbox" data-field="${esc(path)}" value="${esc(o)}" ${selected.includes(o)?'checked':''} ${max?`data-max="${max}"`:''} ${rerender?'data-rerender="1"':''}><span>${esc(o)}</span></label>`).join('')}</div></fieldset>`;
 }
 function ratingCards(prefix, statements) {
   return `<div class="rating-list">${statements.map((statement,i)=>{
@@ -61,7 +61,7 @@ function departmentFeedbackTitle(dept) { return `${DEPARTMENTS[dept] || 'Departm
 function departmentMeetingTitle(dept) { return `${DEPARTMENTS[dept] || 'Department'} Meeting Notes`; }
 
 function introNotice() {
-  return `<div class="notice info"><strong>6–8 minutes.</strong> Your response is associated with the work email you enter and is not anonymous. Answer only from what you directly observe or perform. Select “Not sure / Not applicable” rather than guessing.</div>
+  return `<div class="notice info"><strong>6–8 minutes.</strong> Please answer from your own perspective, based on the work you directly perform or observe. Your response is associated with the work email you enter and is not anonymous. Select “Not sure / Not applicable” rather than guessing.</div>
   <div class="notice warning"><strong>Do not enter</strong> student/customer names, passwords, medical information, confidential personnel information, or allegations about another person. Use “Private follow-up requested” for sensitive concerns.</div>`;
 }
 
