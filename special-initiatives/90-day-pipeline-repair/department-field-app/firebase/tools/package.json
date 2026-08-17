@@ -1,0 +1,13 @@
+{
+  "name": "ak9i-fieldwork-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "create-sessions": "node create-meeting-sessions.mjs",
+    "export": "node export-responses.mjs"
+  },
+  "dependencies": {
+    "firebase-admin": "14.2.0",
+    "qrcode": "1.5.4"
+  }
+}

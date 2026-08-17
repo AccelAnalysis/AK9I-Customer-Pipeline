@@ -68,6 +68,11 @@ No customer/student PII belongs in this folder. Personnel allegations, protected
 - `07_REVIEWER_FINDINGS_AND_REQUIRED_REVISIONS.md` — formal disposition and required industry-practice revisions.
 - `08_FINAL_EXECUTIVE_90_DAY_PLAN.md` — integrated governing executive edition.
 
+### Fieldwork implementation
+
+- `09_DEPARTMENT_FIELDWORK_APP.md` — durable architecture/field-use decision for Tuesday's two-form mobile workflow.
+- `department-field-app/` — static mobile client, Firebase submission service/rules, private session/QR and export tools, and deployment runbook for work packet `BASE-002`.
+
 ## Reviewer additions incorporated
 
 - payroll-calendar and wage-payment governance;

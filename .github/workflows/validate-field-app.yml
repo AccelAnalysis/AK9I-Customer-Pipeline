@@ -1,0 +1,79 @@
+name: Validate department field app
+
+on:
+  pull_request:
+    paths:
+      - "special-initiatives/90-day-pipeline-repair/department-field-app/**"
+      - "special-initiatives/90-day-pipeline-repair/09_DEPARTMENT_FIELDWORK_APP.md"
+      - "work-packets/active/BASE-002.md"
+      - ".github/workflows/validate-field-app.yml"
+      - ".github/workflows/deploy-field-app-pages.yml"
+  push:
+    branches: [main]
+    paths:
+      - "special-initiatives/90-day-pipeline-repair/department-field-app/**"
+      - ".github/workflows/validate-field-app.yml"
+      - ".github/workflows/deploy-field-app-pages.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check JavaScript syntax
+        run: |
+          set -euo pipefail
+          app="special-initiatives/90-day-pipeline-repair/department-field-app"
+          for file in "$app"/site/*.js; do node --check "$file"; done
+          node --check "$app/firebase/functions/index.js"
+          node --check "$app/firebase/tools/create-meeting-sessions.mjs"
+          node --check "$app/firebase/tools/export-responses.mjs"
+
+      - name: Check JSON configuration
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("special-initiatives/90-day-pipeline-repair/department-field-app")
+          for path in [
+              root / "firebase/firebase.json",
+              root / "firebase/functions/package.json",
+              root / "firebase/tools/package.json",
+              root / "firebase/.firebaserc.example",
+          ]:
+              json.loads(path.read_text())
+              print(f"valid json: {path}")
+          PY
+
+      - name: Check field and privacy invariants
+        run: |
+          set -euo pipefail
+          app="special-initiatives/90-day-pipeline-repair/department-field-app"
+          grep -q "Individual Department Operating Pulse" "$app/site/form-render.js"
+          grep -q "Department Meeting Summary" "$app/site/form-render.js"
+          grep -q "Not sure / Not applicable" "$app/site/form-data.js"
+          grep -q "Private follow-up" "$app/site/form-render.js"
+          grep -q "X-Firebase-AppCheck" "$app/firebase/functions/index.js"
+          grep -q "X-AK9I-Session-Token" "$app/firebase/functions/index.js"
+          grep -q "allow read, write: if false" "$app/firebase/firestore.rules"
+          grep -q "tokenHash" "$app/firebase/tools/create-meeting-sessions.mjs"
+          grep -q "generated/" "$app/firebase/tools/.gitignore"
+          ! grep -R --line-number -E --exclude-dir=.git --exclude='validate-field-app.yml' '(BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|service_account|private_key_id)' "$app"
+
+      - name: Verify Pages source references
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          site = Path("special-initiatives/90-day-pipeline-repair/department-field-app/site")
+          html = (site / "index.html").read_text()
+          scripts = re.findall(r'<script[^>]+src="([^"]+)"', html)
+          missing = [src for src in scripts if not (site / src).exists()]
+          if missing:
+              raise SystemExit(f"Missing script source(s): {missing}")
+          print("script sources present:", ", ".join(scripts))
+          PY
