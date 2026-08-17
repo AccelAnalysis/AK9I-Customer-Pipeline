@@ -1,0 +1,125 @@
+async function handleContinue() {
+  const steps = formType==='pulse'?PULSE_STEPS:SUMMARY_STEPS;
+  errorMessages = validateCurrentStep();
+  if (errorMessages.length) { window.scrollTo({top:0,behavior:'smooth'}); return render(); }
+  saveDraft();
+  if (step < steps.length-1) { step++; window.scrollTo({top:0,behavior:'smooth'}); return render(); }
+  await submitCurrent();
+}
+
+function validateCurrentStep() {
+  const e=[];
+  if (formType==='pulse') {
+    const p=answers.pulse; const dept=p.department;
+    if (step===0) {
+      if (!/^\S+@\S+\.\S+$/.test(p.email.trim())) e.push('Enter a valid work email.');
+      if (!dept) e.push('Select a primary department.');
+      if (!p.role.trim()) e.push('Enter your role or job title.');
+      if (!p.tenure) e.push('Select time with AK9I.');
+      if (!p.perspective) e.push('Select the perspective represented.');
+    } else if (step===1) validateRatings(p.rapid,RAPID_STATEMENTS.length,e,'rapid operating pulse');
+    else if (step===2) {
+      if (!p.tasks.length) e.push('Select at least one regular responsibility.');
+      if (p.tasks.length>5) e.push('Select no more than five regular responsibilities.');
+      [['outsideRole','time outside your primary role'],['cracks','task fall-through frequency'],['waiting','waiting frequency']].forEach(([k,l])=>{if(!p[k])e.push(`Select ${l}.`)});
+      if (!p.delayCauses.length) e.push('Select at least one delay cause.');
+      if (p.delayCauses.length>3) e.push('Select no more than three delay causes.');
+      if (!p.systems.length) e.push('Select at least one system or method used.');
+    } else if (step===3) {
+      if (!p.currentMeasures.length) e.push('Select what is currently measured.');
+      if (!p.desiredMeasures.length || p.desiredMeasures.length>3) e.push('Select one to three items that should be measured.');
+      if (!p.waste.length || p.waste.length>3) e.push('Select one to three waste categories.');
+      if (!p.singleDependency) e.push('Answer the single-person dependency question.');
+      if (p.singleDependency==='Yes' && !p.dependencyFunction.trim()) e.push('Identify the dependent function or responsibility.');
+      if (!p.immediateRisk) e.push('Answer the immediate operating risk question.');
+      if (p.immediateRisk==='Yes' && !p.riskAreas.length) e.push('Select at least one immediate risk category.');
+      if (p.immediateRisk==='Yes' && !p.riskUrgency) e.push('Select immediate risk urgency.');
+    } else if (step===4) {
+      const d=DEPT[dept]; if (d) validateRatings(p.deptRatings,d.ratings.length,e,'department ratings');
+      if (d && !p.constraint) e.push('Select the most urgent department constraint.');
+      if (d?.extraChoice && !p.deptExtra) e.push(`Select ${d.extraChoice.label.toLowerCase()}.`);
+      if (!p.deptImprovement.trim()) e.push('Enter the highest-impact seven-day department improvement.');
+    } else if (step===5) {
+      if (p.priorities.length!==3) e.push('Select exactly three top priorities.');
+      if (!p.sevenDay.trim()) e.push('Enter one practical seven-day improvement.');
+      if (!p.stopStartContinue) e.push('Choose stop, start, or continue.');
+      if (!p.willingness) e.push('Select willingness to participate.');
+      if (!p.privateFollowup) e.push('Select whether you want private follow-up.');
+    }
+  } else {
+    const s=answers.summary;
+    if (step===0) {
+      if (!/^\S+@\S+\.\S+$/.test(s.facilitatorEmail.trim())) e.push('Enter a valid facilitator email.');
+      if (!s.department) e.push('Select a department.'); if(!s.meetingDate)e.push('Enter the meeting date.'); if(!s.startTime||!s.endTime)e.push('Enter meeting start and end time.');
+      if (!hasValue(s.attendees) || Number(s.attendees)<1) e.push('Enter the number of attendees.'); if(!hasValue(s.responseCount))e.push('Enter the response count received.');
+    } else if (step===1) { if(!s.purpose.trim())e.push('Enter the department purpose.'); if(s.recurringWork.some(x=>!String(x).trim()))e.push('Enter all five recurring work activities.'); }
+    else if (step===2) { if(!s.accountableRole.trim())e.push('Enter the accountable role.'); if(!s.ownershipClarity)e.push('Select ownership clarity.'); if(!s.systems.length)e.push('Select at least one system containing the work.'); }
+    else if (step===4) { s.failures.forEach((f,i)=>{ if(Object.values(f).some(v=>!String(v).trim()))e.push(`Complete all fields for failure point ${i+1}.`); }); if(s.failures.filter(f=>f.point.trim()).length!==3)e.push('Record all three most material failure points.'); RISK_AREAS.forEach(a=>{if(!s.risks[a])e.push(`Set risk status for ${a}.`)}); }
+    else if (step===5) { const f=s.fixes[0]; if(!f.action.trim()||!f.owner.trim()||!f.due||!f.priority||!f.evidence.trim())e.push('Complete all fields for Immediate fix 1.'); if(!s.escalation)e.push('Select private escalation status.'); }
+  }
+  return e;
+}
+function validateRatings(obj,count,e,label) { for(let i=1;i<=count;i++) if(!obj?.[i]) { e.push(`Answer every ${label} statement.`); break; } }
+
+async function submitCurrent() {
+  if (!sessionId) { errorMessages=['This form does not have a meeting session ID. Open the distributed department link or QR code.']; return render(); }
+  if (!sessionToken) { errorMessages=['This form link does not contain a meeting-session token. Open the distributed department link or QR code before submitting.']; return render(); }
+  const endpoint = String(config.submissionEndpoint || '').trim();
+  if (!endpoint) { errorMessages=['Submission service is not configured yet. The form draft is safe on this device, but Firebase deployment/configuration must be completed before live use.']; return render(); }
+  submitting=true; render();
+  const payload = buildSubmission();
+  if (!navigator.onLine) { submitting=false; queueSubmission(payload); pendingSubmission={localId:payload.clientSubmissionId}; return render(); }
+  try {
+    const result = await sendSubmission(payload, sessionToken);
+    submitting=false; confirmation=result; clearDrafts(); removeQueued(payload.clientSubmissionId); render();
+  } catch (err) {
+    submitting=false;
+    if (isRetryable(err)) { queueSubmission(payload); pendingSubmission={localId:payload.clientSubmissionId,error:err.message}; render(); }
+    else { errorMessages=[err.message || 'Submission failed. Review the meeting link and try again.']; render(); }
+  }
+}
+function buildSubmission() {
+  const email = formType==='pulse'?answers.pulse.email:answers.summary.facilitatorEmail;
+  return { formType, sessionId, department: formType==='pulse'?answers.pulse.department:answers.summary.department, workEmail: email.trim().toLowerCase(), answers: structuredClone(answers[formType]), clientSubmissionId: crypto.randomUUID ? crypto.randomUUID() : `local-${Date.now()}-${Math.random().toString(36).slice(2)}`, clientMeta: { appVersion: config.appVersion || 'dev', submittedAt: new Date().toISOString(), timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, online: navigator.onLine } };
+}
+async function sendSubmission(payload, token) {
+  const headers={'Content-Type':'application/json','X-AK9I-Session-Token':token};
+  const appCheck = await getAppCheckToken(); if(appCheck) headers['X-Firebase-AppCheck']=appCheck;
+  let response;
+  try { response=await fetch(config.submissionEndpoint,{method:'POST',headers,body:JSON.stringify(payload),mode:'cors',cache:'no-store'}); }
+  catch (e) { const err=new Error('Network connection failed. Your response has been queued on this device for retry.'); err.retryable=true; throw err; }
+  let body={}; try{body=await response.json();}catch(_){ }
+  if(!response.ok){ const err=new Error(body.error || `Submission failed (${response.status}).`); err.retryable=response.status>=500||response.status===429; throw err; }
+  return body;
+}
+let appCheckPromise;
+async function getAppCheckToken() {
+  if (!config.appCheckSiteKey || !config.firebaseConfig?.apiKey || !config.firebaseConfig?.projectId) return '';
+  if (!appCheckPromise) appCheckPromise=(async()=>{
+    const [{initializeApp},{initializeAppCheck,ReCaptchaEnterpriseProvider,getToken}] = await Promise.all([
+      import('https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js'),
+      import('https://www.gstatic.com/firebasejs/12.16.0/firebase-app-check.js')
+    ]);
+    const firebaseApp=initializeApp(config.firebaseConfig);
+    const appCheck=initializeAppCheck(firebaseApp,{provider:new ReCaptchaEnterpriseProvider(config.appCheckSiteKey),isTokenAutoRefreshEnabled:true});
+    return {appCheck,getToken};
+  })();
+  try { const {appCheck,getToken}=await appCheckPromise; const t=await getToken(appCheck,false); return t.token || ''; }
+  catch (e) { console.warn('App Check token unavailable',e); return ''; }
+}
+function isRetryable(err){return Boolean(err?.retryable)}
+function queueKey(){return 'ak9i-field-submit-queue-v1'}
+function queueSubmission(payload){ const q=loadQueue().filter(x=>x.payload.clientSubmissionId!==payload.clientSubmissionId); q.push({payload,queuedAt:new Date().toISOString()}); localStorage.setItem(queueKey(),JSON.stringify(q)); }
+function loadQueue(){try{return JSON.parse(localStorage.getItem(queueKey())||'[]')}catch(_){return []}}
+function removeQueued(id){ const q=loadQueue().filter(x=>x.payload.clientSubmissionId!==id); localStorage.setItem(queueKey(),JSON.stringify(q)); }
+async function retryQueue(){ if(!navigator.onLine||!sessionToken||!config.submissionEndpoint)return; const matching=loadQueue().filter(x=>x.payload.sessionId===sessionId && x.payload.department===(formType==='pulse'?answers.pulse.department:answers.summary.department) && x.payload.formType===formType); for(const item of matching){ try{const r=await sendSubmission(item.payload,sessionToken); removeQueued(item.payload.clientSubmissionId); confirmation=r; pendingSubmission=null; clearDrafts(); render(); break;}catch(err){if(!isRetryable(err))removeQueued(item.payload.clientSubmissionId);} } }
+function renderPending(){ app.innerHTML=`<section class="step-card confirmation"><p class="step-kicker">Pending submission</p><h2>Your response is saved on this device</h2><div class="notice warning">The response has not yet been accepted by the private submission service. Keep this meeting link available; the app will retry when connectivity returns.</div><p>Local pending reference</p><div class="confirmation-number">${esc(pendingSubmission.localId)}</div><button class="button" id="retry-now">Retry now</button><button class="button secondary" id="back-to-review" style="margin-left:8px">Back to review</button></section>`; document.getElementById('retry-now').onclick=()=>{pendingSubmission=null;retryQueue();render();};document.getElementById('back-to-review').onclick=()=>{pendingSubmission=null;render();}; }
+function renderConfirmation(){ app.innerHTML=`<section class="step-card confirmation"><p class="step-kicker">Submission received</p><h2>Thank you</h2><div class="notice success">Your response was accepted by the private submission service.</div><p>Confirmation number</p><div class="confirmation-number">${esc(confirmation.confirmationNumber || confirmation.responseId || 'Received')}</div><p>${confirmation.revision>1?`This is revision ${esc(confirmation.revision)}; the latest response is marked current.`:'This response is marked current.'}</p><a class="button-link" href="${esc(window.location.pathname)}">Return to fieldwork home</a></section>`; }
+
+window.addEventListener('online',()=>{ if(formType) retryQueue(); else render(); });
+window.addEventListener('offline',render);
+window.addEventListener('beforeunload',saveDraft);
+
+if (formType === 'summary') answers.summary.sessionDisplay = sessionId;
+render();
+retryQueue();
