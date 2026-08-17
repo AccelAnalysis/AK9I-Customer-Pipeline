@@ -59,7 +59,8 @@ function ratingCards(prefix, statements) {
 function id(path) { return path.replace(/[^a-zA-Z0-9_-]/g,'-'); }
 
 function introNotice() {
-  return `<div class="notice info"><strong>6–8 minutes.</strong> Your response is associated with the work email you enter and is not anonymous. Answer only from what you directly observe or perform. Select “Not sure / Not applicable” rather than guessing.</div>
+  const demo = !String(config.submissionEndpoint || '').trim() ? `<div class="notice warning"><strong>Demo mode today.</strong> The full form is interactive, but responses are saved only on this device and are not sent to a central database.</div>` : '';
+  return `${demo}<div class="notice info"><strong>6–8 minutes.</strong> Your response is associated with the work email you enter and is not anonymous. Answer only from what you directly observe or perform. Select “Not sure / Not applicable” rather than guessing.</div>
   <div class="notice warning"><strong>Do not enter</strong> student/customer names, passwords, medical information, confidential personnel information, or allegations about another person. Use “Private follow-up requested” for sensitive concerns.</div>`;
 }
 
@@ -67,7 +68,8 @@ function renderHome() {
   document.title = 'AK9I Department Fieldwork';
   const pulseLinks = TUESDAY_DEPARTMENTS.map(d => `<a class="department-link" href="${linkFor('pulse', d)}"><span>${esc(DEPARTMENTS[d])}</span><span aria-hidden="true">→</span></a>`).join('');
   const summaryLinks = TUESDAY_DEPARTMENTS.map(d => `<a class="department-link" href="${linkFor('summary', d)}"><span>${esc(DEPARTMENTS[d])}</span><span aria-hidden="true">→</span></a>`).join('');
-  app.innerHTML = `<section class="hero"><h1>Tuesday department fieldwork</h1><p>Two connected mobile forms turn individual perceptions into a comparable operating pulse, then capture the facilitator’s agreed department map and immediate actions.</p><p><strong>Tuesday, August 18, 2026</strong></p></section>
+  const demo = !String(config.submissionEndpoint || '').trim() ? `<div class="notice warning"><strong>Demonstration mode — August 17.</strong> Explore both workflows freely. Demo responses stay on the current device only. Private Firebase-backed collection will be enabled separately for live field use.</div>` : '';
+  app.innerHTML = `<section class="hero"><h1>Tuesday department fieldwork</h1><p>Two connected mobile forms turn individual perceptions into a comparable operating pulse, then capture the facilitator’s agreed department map and immediate actions.</p><p><strong>Tuesday, August 18, 2026</strong></p>${demo}</section>
     <div class="grid-2">
       <section class="card launch-card"><h2>Individual Department Operating Pulse</h2><p>Completed by each participant. Designed for 6–8 minutes on a phone.</p><div class="department-links">${pulseLinks}</div></section>
       <section class="card launch-card"><h2>Department Meeting Summary</h2><p>Completed once by the facilitator after each meeting.</p><div class="department-links">${summaryLinks}</div></section>
@@ -75,7 +77,9 @@ function renderHome() {
     <section class="card"><h2>Meeting workflow</h2><ol><li>0–5 min: purpose and confidentiality boundaries.</li><li>5–12 min: individual pulse.</li><li>12–30 min: current work, systems, and handoffs.</li><li>30–45 min: repeated failure points and lowest-rated areas.</li><li>45–55 min: agree immediate fixes and evidence requests.</li><li>After: facilitator completes the summary.</li></ol><p class="hint">Responses are signals for discussion, not verified facts until compared with systems, records, and direct observation.</p></section>`;
 }
 function linkFor(type, dept) {
-  const p = new URLSearchParams({ form:type, department:dept, session:defaultSession(dept) });
+  const values = { form:type, department:dept, session:defaultSession(dept) };
+  if (!String(config.submissionEndpoint || '').trim()) values.token = 'demo';
+  const p = new URLSearchParams(values);
   return `?${p.toString()}`;
 }
 
