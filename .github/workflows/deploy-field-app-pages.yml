@@ -1,0 +1,96 @@
+name: Deploy AK9I department field app
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "special-initiatives/90-day-pipeline-repair/department-field-app/site/**"
+      - ".github/workflows/deploy-field-app-pages.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "ak9i-field-app-pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Verify runtime configuration
+        env:
+          SUBMISSION_ENDPOINT: ${{ vars.AK9I_FIELD_SUBMISSION_ENDPOINT }}
+          FIREBASE_API_KEY: ${{ vars.AK9I_FIREBASE_API_KEY }}
+          FIREBASE_AUTH_DOMAIN: ${{ vars.AK9I_FIREBASE_AUTH_DOMAIN }}
+          FIREBASE_PROJECT_ID: ${{ vars.AK9I_FIREBASE_PROJECT_ID }}
+          FIREBASE_APP_ID: ${{ vars.AK9I_FIREBASE_APP_ID }}
+          APP_CHECK_SITE_KEY: ${{ vars.AK9I_APP_CHECK_SITE_KEY }}
+        run: |
+          set -euo pipefail
+          for name in SUBMISSION_ENDPOINT FIREBASE_API_KEY FIREBASE_AUTH_DOMAIN FIREBASE_PROJECT_ID FIREBASE_APP_ID APP_CHECK_SITE_KEY; do
+            test -n "${!name:-}" || { echo "Missing required repository variable: ${name}" >&2; exit 1; }
+          done
+
+      - name: Build static Pages artifact
+        env:
+          SUBMISSION_ENDPOINT: ${{ vars.AK9I_FIELD_SUBMISSION_ENDPOINT }}
+          FIREBASE_API_KEY: ${{ vars.AK9I_FIREBASE_API_KEY }}
+          FIREBASE_AUTH_DOMAIN: ${{ vars.AK9I_FIREBASE_AUTH_DOMAIN }}
+          FIREBASE_PROJECT_ID: ${{ vars.AK9I_FIREBASE_PROJECT_ID }}
+          FIREBASE_APP_ID: ${{ vars.AK9I_FIREBASE_APP_ID }}
+          APP_CHECK_SITE_KEY: ${{ vars.AK9I_APP_CHECK_SITE_KEY }}
+        run: |
+          set -euo pipefail
+          src="special-initiatives/90-day-pipeline-repair/department-field-app/site"
+          rm -rf dist
+          mkdir -p dist
+          cp -R "${src}/." dist/
+          cp "${src}/config.template.js" dist/config.js
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          path = Path("dist/config.js")
+          text = path.read_text()
+          replacements = {
+              "__APP_VERSION__": os.environ["GITHUB_SHA"][:12],
+              "__SUBMISSION_ENDPOINT__": os.environ["SUBMISSION_ENDPOINT"],
+              "__FIREBASE_API_KEY__": os.environ["FIREBASE_API_KEY"],
+              "__FIREBASE_AUTH_DOMAIN__": os.environ["FIREBASE_AUTH_DOMAIN"],
+              "__FIREBASE_PROJECT_ID__": os.environ["FIREBASE_PROJECT_ID"],
+              "__FIREBASE_APP_ID__": os.environ["FIREBASE_APP_ID"],
+              "__APP_CHECK_SITE_KEY__": os.environ["APP_CHECK_SITE_KEY"],
+          }
+          for old, new in replacements.items():
+              text = text.replace(old, new.replace("\\", "\\\\").replace('"', '\\"'))
+          if "__" in text:
+              raise SystemExit("Unresolved runtime configuration placeholder")
+          path.write_text(text)
+          PY
+          rm -f dist/config.template.js
+          touch dist/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
