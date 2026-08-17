@@ -1,0 +1,22 @@
+# BASE-002 — Deploy Department Fieldwork Capture Application
+
+- **Objective:** Provide a privacy-bounded, mobile-first instrument for Tuesday department fieldwork that captures comparable individual operating signals and a facilitator operating map without storing submissions in GitHub.
+- **Original requirements:** PRIV-001; supports evidence gathering relevant to PIPE-001, PIPE-002, LRN-001, ENR-001, and BASE-001 but does not by itself satisfy those requirements.
+- **Business reason:** Day-2 fieldwork requires fast, comparable input plus a durable department-level synthesis; a long unstructured employee interview form would create excessive burden and weak comparability.
+- **Current state:** IMPLEMENTATION CANDIDATE BUILT; external deployment/configuration and independent verification remain required.
+- **Owner lane:** 00/01 special initiative support
+- **Human accountable owner:** Transformation Lead / authorized AK9I executive for field use; exact Firebase administrative owner to be established during deployment.
+- **Inputs:** `special-initiatives/90-day-pipeline-repair/06_DAY_1_TO_DAY_14_FIELDWORK.md`, `08_FINAL_EXECUTIVE_90_DAY_PLAN.md`, executive/user field-ready specification, current privacy/governance contracts.
+- **Dependencies:** GitHub Pages enablement; AK9I-controlled Firebase project; Firestore; Cloud Functions; App Check/reCAPTCHA Enterprise; authorized private administrative credentials for session creation/export; mobile smoke test.
+- **Dependency classification:** GREEN implementation; YELLOW live deployment/readiness.
+- **Shared contracts consumed:** `governance/PRIVACY_AND_DATA_BOUNDARIES.md`, `governance/AK9I_PIPELINE_PROGRAM_AUTHORITY.md`; shared lifecycle terms remain unchanged.
+- **Authorized actions:** implement static field client, private submission endpoint, validation, meeting-session tooling, private export tooling, Pages deployment workflow, and deployment documentation.
+- **Expected output:** four department Pulse links/QR codes, four facilitator Summary links, private revisioned responses, server confirmation IDs, and data suitable for Day-2 comparison and follow-on evidence verification.
+- **KPI / observable outcome affected:** department response count; completion of department operating maps; observability of delay/waste/role/authority/system/continuity/risk signals; evidence-request capture.
+- **Evidence required:** source review; static/mobile smoke checks; server validation checks; App Check verification; Firestore deny-all client test; synthetic submit/revision/retry test; Pages workflow success.
+- **Acceptance criteria:** all specified questions present; department-specific conditional logic works; prefilled department/session cannot be accidentally changed; drafts/retry/review/confirmation/revision behavior works; no file uploads; no respondent data in GitHub; public Firestore reads/writes denied; server validates allowed fields/values; session tokens are not committed; private follow-up captures no sensitive explanation.
+- **Integration requirement:** yes for Day-2 fieldwork process and subsequent BASE-001 evidence reconciliation; does not modify customer lifecycle integration.
+- **Explicit non-ownership:** does not verify respondent identity; does not adjudicate allegations; does not make employee-performance findings; does not itself verify submitted perceptions as facts; does not authorize HR/legal/financial actions.
+- **Stop boundary:** do not distribute live QR codes until Firebase, App Check, Pages, and synthetic mobile submission checks pass. Do not place session tokens, exports, or respondent data in GitHub.
+- **Status:** ACTIVE
+- **Next action:** deploy the private Firebase backend, enable/configure GitHub Pages runtime variables, generate the four private Tuesday sessions/QR codes, then run the field-day smoke test.
