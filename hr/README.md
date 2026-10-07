@@ -1,10 +1,10 @@
 # HR folder (staged) — BGK9 / AK9I job descriptions by position
 
-**Purpose:** Stand up an actual **HR** tree (org chart + job descriptions **by position**, not by person) aligned to Ron’s corrected organizational report, for use in the ACCET/accreditation strategic plan staffing appendix and day-to-day role clarity.
+**Purpose:** Stand up an actual **HR** tree (org chart + job descriptions **by position**, not by person) aligned to Ron’s Sept 25, 2026 Org Chart email, for use in the ACCET/accreditation strategic plan staffing appendix and day-to-day role clarity.
 
-**Repo path:** `hr/` in AK9I-Customer-Pipeline. Copied from the Sep 18 staging pack. The staging note `READY-FOR-PR.md` is not part of this tree.
+**Repo path:** `hr/` in AK9I-Customer-Pipeline. Canonical source is Ron’s Sept 25, 2026 Org Chart email. The staging note `READY-FOR-PR.md` is not part of this tree.
 
-**Structure baseline:** BGK9 Corrected Organizational Report — Confidential Leadership Working Draft | **September 18, 2026** (emailed Sep 25, 2026 as “Org Chart” with `BGK9_Corrected_Organizational_Report.docx`).
+**Structure baseline:** Ron’s Sept 25, 2026 Org Chart email (subject “Org Chart”), with attachment `BGK9_Corrected_Organizational_Report.docx`. That Word file’s internal header is a Confidential Leadership Working Draft dated September 18, 2026. Cite the Sept 25 email, not that header, as the source of record.
 
 **Hard reporting rule (explicit in report):** Director, Compliance and Marketing reports **only** to Vice President of Finance and Administration (Peggy). That role does **not** report to Vice President of Operations (Tim).
 
@@ -25,16 +25,16 @@
 5. Responsibilities  
 6. Authority and restrictions  
 7. Collaboration  
-8. Open questions (incl. Nigel CFO/COO; Aug 18 vs Sep 18 Chris reporting)  
+8. Open questions (incl. Nigel CFO/COO; Aug 18 vs Sept 25 email Chris reporting)  
 9. Sources  
 
 ## Source priority
 
-1. **Sep 18 corrected org report** — reporting structure and position list (authoritative for hierarchy).  
+1. **Ron’s Sept 25, 2026 Org Chart email** — reporting structure and position list (authoritative for hierarchy). The attachment’s internal header date is Sep 18, 2026; that date is provenance only.  
 2. **Aug 18 Position Description email** — duty **seeds** only; conflicts noted; do not treat as current org truth.  
 3. **Oct 2026 meeting / role split** — flagged as open questions (Nigel CFO/COO; Michelle logistics; Accel CRM lane).
 
-**Do not invent duties.** Thin Sep 18 rows are stubbed with “needs Ron confirmation.”
+**Do not invent duties.** Thin rows in Ron’s Sept 25 Org Chart email are stubbed with “needs Ron confirmation.”
 
 ## Local source copies (not in this repository)
 

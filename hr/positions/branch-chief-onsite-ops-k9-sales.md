@@ -1,6 +1,6 @@
 # Branch Chief, On-Site Operations and K-9 Sales
 
-**Sources:** BGK9 Corrected Organizational Report (Sep 18, 2026 draft; emailed Sep 25 as “Org Chart”); Aug 18 Position Description email (duty seeds only where noted). Prefer Sep 18 for reporting structure.
+**Sources:** Ron’s Sept 25, 2026 Org Chart email (subject “Org Chart”; attachment `BGK9_Corrected_Organizational_Report.docx`, internal header dated Sep 18, 2026 draft). Aug 18 Position Description email is duty seeds only where noted. Prefer Ron’s Sept 25 Org Chart email for reporting structure.
 
 ## Position title
 Branch Chief, On-Site Operations and K-9 Sales
@@ -31,6 +31,6 @@ On-site operations, kennel operations, K-9 sales, dog logistics, and assigned op
 VP Operations; Kennel Ops Manager; VP Finance on budgets; Facilities Design Committee with Director Compliance & Marketing and Branch Chief Instructors.
 
 ## Open questions
-- **Nigel CFO/COO:** Oct meeting treats Nigel as CFO/COO; Sep 18 leadership list does not title this role — needs Ron confirmation (title, reports to, oversees).
-- **Chris reporting:** Aug 18 says Chris answers only to Ronald; Sep 18 places Hybrid Instruction/LMS/Tech under Tim — needs Ron confirmation which is current.
+- **Nigel CFO/COO:** Oct meeting treats Nigel as CFO/COO; Ron’s Sept 25 Org Chart email leadership list does not title this role — needs Ron confirmation (title, reports to, oversees).
+- **Chris reporting:** Aug 18 vs Sept 25 email — Aug 18 says Chris answers only to Ronald; Ron’s Sept 25 Org Chart email places Hybrid Instruction/LMS/Tech under Tim — needs Ron confirmation which is current.
 - Duties marked stub / thin: confirm with Ron before treating as final HR policy.

@@ -1,6 +1,6 @@
 # Organizational chart (by position)
 
-**Source:** BGK9 Corrected Organizational Report — Sep 18, 2026 draft (emailed Sep 25).  
+**Source:** Ron’s Sept 25, 2026 Org Chart email (subject “Org Chart”). Attachment `BGK9_Corrected_Organizational_Report.docx` internal header: Sep 18, 2026 draft. Prefer Ron’s Sept 25 Org Chart email for reporting structure.  
 **Key correction:** Director, Compliance and Marketing → **VP Finance & Administration only**. No reporting line to VP Operations.
 
 ```
@@ -60,8 +60,8 @@ Cross-functional collaboration (e.g. Field Ops coordinating marketing events wit
 | HR administration | Automate where practical (Paylocity); Peggy leads; Michelle coordinates assigned HR |
 | Instructor staffing | Possible future consolidation after compliance/LMS/coverage stabilize |
 
-## Open org questions (not on Sep 18 chart)
+## Open org questions (not on Ron’s Sept 25 Org Chart email)
 
-- **Nigel — CFO/COO:** referenced in Oct meeting role split; **not** titled on Sep 18 leadership list — ask Ron for title, reports-to, oversees.
-- **Chris reporting:** Aug 18 = CEO only; Sep 18 = under VP Operations — confirm current.
+- **Nigel — CFO/COO:** referenced in Oct meeting role split; **not** titled on Ron’s Sept 25 Org Chart email leadership list — ask Ron for title, reports-to, oversees.
+- **Chris reporting:** Aug 18 vs Sept 25 email — Aug 18 = CEO only; Ron’s Sept 25 Org Chart email = under VP Operations — confirm current.
 - **Incumbent names** in the report are context only; JDs are **by position**.
