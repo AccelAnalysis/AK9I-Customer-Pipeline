@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Consent_Source__c</fullName>
+    <description>L08. Where consent was captured.</description>
+    <externalId>false</externalId>
+    <label>Consent Source</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Web-to-Lead Form</fullName>
+                <default>false</default>
+                <label>Web-to-Lead Form</label>
+            </value>
+            <value>
+                <fullName>Enrollment Form</fullName>
+                <default>false</default>
+                <label>Enrollment Form</label>
+            </value>
+            <value>
+                <fullName>Webinar Registration</fullName>
+                <default>false</default>
+                <label>Webinar Registration</label>
+            </value>
+            <value>
+                <fullName>Email Reply</fullName>
+                <default>false</default>
+                <label>Email Reply</label>
+            </value>
+            <value>
+                <fullName>Text Reply</fullName>
+                <default>false</default>
+                <label>Text Reply</label>
+            </value>
+            <value>
+                <fullName>Phone Call</fullName>
+                <default>false</default>
+                <label>Phone Call</label>
+            </value>
+            <value>
+                <fullName>In Person / Event</fullName>
+                <default>false</default>
+                <label>In Person / Event</label>
+            </value>
+            <value>
+                <fullName>Rep / Event Form</fullName>
+                <default>false</default>
+                <label>Rep / Event Form</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

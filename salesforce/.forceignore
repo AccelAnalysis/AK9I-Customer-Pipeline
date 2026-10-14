@@ -1,0 +1,16 @@
+# Local CLI state is not metadata.
+**/.sf/**
+**/.sfdx/**
+
+# Placeholders that keep empty metadata folders in git.
+**/.gitkeep
+
+# Local backup written by scripts/merge_lead_convert.py
+**/*.before-merge
+
+# Standard DX tooling noise
+**/jsconfig.json
+**/.eslintrc.json
+**/__tests__/**
+**/*.js.map
+*.log

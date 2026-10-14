@@ -1,0 +1,12 @@
+# Salesforce CLI org authorization and local cache. Never commit.
+.sf/
+.sfdx/
+
+# Local Python bytecode from syntax checks
+__pycache__/
+*.pyc
+
+# Local backups of a retrieved LeadConvertSettings file.
+# scripts/merge_lead_convert.py writes <retrieved-file>.before-merge beside it.
+*.before-merge
+LeadConvertSettings.sandbox-original.xml

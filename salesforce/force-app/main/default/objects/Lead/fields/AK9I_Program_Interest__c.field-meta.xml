@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Program_Interest__c</fullName>
+    <description>L05. Mirrors Contact.Course__c values so it maps at conversion.</description>
+    <externalId>false</externalId>
+    <label>Program Interest</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Detector Dog Handler 001</fullName>
+                <default>false</default>
+                <label>Detector Dog Handler 001</label>
+            </value>
+            <value>
+                <fullName>AK9ITA-005, P/D Dog Handler</fullName>
+                <default>false</default>
+                <label>AK9ITA-005, P/D Dog Handler</label>
+            </value>
+            <value>
+                <fullName>AK9ITA-006, P/D Dog Trainer</fullName>
+                <default>false</default>
+                <label>AK9ITA-006, P/D Dog Trainer</label>
+            </value>
+            <value>
+                <fullName>AK9ITA-010, LEO P/D Dog Handler</fullName>
+                <default>false</default>
+                <label>AK9ITA-010, LEO P/D Dog Handler</label>
+            </value>
+            <value>
+                <fullName>AK9ITA-011, Static Mobile Detector Dog Handler</fullName>
+                <default>false</default>
+                <label>AK9ITA-011, Static Mobile Detector Dog Handler</label>
+            </value>
+            <value>
+                <fullName>AK9ITA-012, Pet Dog Trainer</fullName>
+                <default>false</default>
+                <label>AK9ITA-012, Pet Dog Trainer</label>
+            </value>
+            <value>
+                <fullName>AK9ITA-013, Detector Dog Trainer</fullName>
+                <default>false</default>
+                <label>AK9ITA-013, Detector Dog Trainer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

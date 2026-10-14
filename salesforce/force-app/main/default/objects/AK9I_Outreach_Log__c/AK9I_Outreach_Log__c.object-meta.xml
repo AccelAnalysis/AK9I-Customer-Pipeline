@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>X01-X06. One row per outreach touch (email, text, call). Required before F0 guarded send; feeds the 2-per-30-day unsolicited cap audit (R2).</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <label>Outreach Log</label>
+    <nameField>
+        <displayFormat>OL-{000000}</displayFormat>
+        <label>Outreach Log Number</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Outreach Logs</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>
