@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Next_Action_Date__c</fullName>
+    <description>L04. Due date for Next Action.</description>
+    <externalId>false</externalId>
+    <label>Next Action Date</label>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>

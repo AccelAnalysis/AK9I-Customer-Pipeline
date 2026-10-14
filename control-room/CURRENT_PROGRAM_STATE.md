@@ -1,6 +1,6 @@
 # Current Program State
 
-**As of:** 2026-08-17
+**As of:** 2026-08-17 (Salesforce source note added 2026-10-14; the August baseline below was not re-verified)
 
 ## Current wave
 
@@ -11,6 +11,7 @@
 - Control Room operating model: installed and merged to `main`.
 - Customer journey architecture: established at initial-governance level.
 - Shared contracts: established at initial-governance level; physical CRM/system implementation is **not verified**.
+- Salesforce DX source (2026-10-14): `salesforce/` now holds undeployed pipeline metadata (phase-1 Lead/Contact fields, `AK9I_Outreach_Log__c`, the `AK9I_Pipeline_Fields` permission set, and lead-conversion merge inputs). Empty homes exist for phase 1b fields, flows F0–F13, email templates T01–T20, reports, and layouts. This repository has not deployed that metadata and has not connected to any org. The later sandbox target named in that source is alias `ak9i-sandbox` (sandbox name cleanpipe). Files in git are not CRM implementation.
 - Actual operating baseline: **UNKNOWN — BASELINE REQUIRED** overall.
 - Advocacy baseline: partial public evidence is now recorded under ADV-001; internal process/system evidence, ownership, consent/provenance, request events, and closed-loop referral measurement remain **UNKNOWN — INTERNAL BASELINE REQUIRED**.
 - Outcomes baseline: partial evidence now confirms public career/placement assistance, employer-facing recruiting capability, and historical verification controls; the current 2026 operating process, systems, accountable owner, stage tracking, verification workflow, follow-up, and outcome metrics remain **UNKNOWN — INTERNAL BASELINE REQUIRED**.

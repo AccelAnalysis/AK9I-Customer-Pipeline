@@ -17,3 +17,5 @@ Status flow: `BACKLOG → READY → ACTIVE → BLOCKED → ACCEPTANCE-PENDING �
 | PART-001 | Inventory Current Referral, Employer, Agency, and Strategic Channels | 07 | Partnerships | ACTIVE | P1 | GREEN | — | Lane 07 | Required | Required | lanes/07-partnerships/PART-001_CURRENT_CHANNEL_INVENTORY.md | Obtain authoritative relationship roster; validate employer/veteran channels and contribution traceability | 2026-08-12 |
 
 `CLOSED` requires completed work plus required acceptance/integration/operational evidence; implementation stopping is not closure.
+
+2026-10-14 note: undeployed Salesforce DX source was added at `salesforce/`. No work-packet status changed. Physical CRM implementation remains unverified.

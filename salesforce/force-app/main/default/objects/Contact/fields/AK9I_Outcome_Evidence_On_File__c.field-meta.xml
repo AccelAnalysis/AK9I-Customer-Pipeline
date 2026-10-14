@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Outcome_Evidence_On_File__c</fullName>
+    <description>L21. ACCET outcome evidence.</description>
+    <externalId>false</externalId>
+    <label>Outcome Evidence On File</label>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+</CustomField>

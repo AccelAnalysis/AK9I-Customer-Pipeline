@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Consent_Evidence__c</fullName>
+    <description>L08. Exact consent wording / form version / reply text.</description>
+    <externalId>false</externalId>
+    <label>Consent Evidence</label>
+    <required>false</required>
+    <type>LongTextArea</type>
+    <length>32768</length>
+    <visibleLines>4</visibleLines>
+</CustomField>

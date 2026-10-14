@@ -33,6 +33,10 @@ Meaningful improvement work is bounded in work packets. Functional lanes may rep
 
 Current authoritative briefing: `control-room/CURRENT_PROGRAM_STATE.md`.
 
+## Salesforce metadata
+
+Undeployed Salesforce DX source for the pipeline lives in `salesforce/`. It is not connected to an org and is not evidence that any field exists in Salesforce. See `salesforce/README.md`.
+
 ## New chat bootstrap
 
 A new project chat should start from its copy-ready prompt in `governance/chat-prompts/`, then read current merged repository state in the sequence defined by `AGENTS.md` and its lane charter.
