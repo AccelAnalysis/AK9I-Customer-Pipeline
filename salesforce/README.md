@@ -97,8 +97,6 @@ Phase 1b repeats this retrieve-backup-merge-dry-run-deploy sequence for its new 
 
 Use the same dry-run-then-deploy pattern for phase 1b fields, flows, templates, and reports. Retrieve an existing flow, template, or picklist before changing it (`sf project retrieve start --metadata "Flow:<ApiName>" --target-org ak9i-sandbox`). Every email flow goes through F0. F0 is not in source yet.
 
-`python3 gen.py` rewrites the phase-1 field XML, the Outreach Log, the permission set, and `lead-convert-mappings.json` from the lists in that script. It does not deploy, and it does not rewrite `sfdx-project.json`.
-
 ## Not in this tree yet
 
 Picklist edits on fields that already exist in the org, contract-lane Opportunity fields, queues, roles, the F0–F13 flow definitions, T01–T20 template bodies, and reports. Those wait for a later change in the homes above. Urgent org fixes (opt-outs, the enrollment form, Stripe triggers, record ownership) are sandbox or production operations, not files in this commit.
