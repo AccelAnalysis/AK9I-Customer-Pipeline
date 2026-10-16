@@ -82,6 +82,24 @@
 - **Stripe:** there's no test account, so the fee link step is skipped.
 - **DocuSign:** not installed, so the survey sends only the email.
 
+## 1d. Fourth build (Oct 16, ~8:15 AM ET): proofreading, Nurture spacing, call notification
+| # | Dry run | Real deploy | Contents |
+|---|---|---|---|
+| L13 | 0AfO300000jP3iOKAS (the first attempt, 0AfO300000jP8QHKA0, failed on element order) | 0AfO300000jP8bZKAS | **Label:** AK9I_Enrollment_Inbox (= enrollment@ak9i.com). **Templates:** 11 existing templates with typo fixes; 2 AK9I_C_NU subjects. **Flows:** Generate_Stripe_Payment_Link v2→v3 (cancel URL adkk9i.edu → ak9i.edu); Nurture_Email_Scheduler v5→v6 (spacing); AK9I_Consideration_Series v2→v3 (call task + enrollment-inbox notification after Nurture 0) |
+| Apex | rollback dry run | real update | HtmlValue fixes in K9_Sales and Sorry_we_missed_you (Lightning-builder templates the Metadata API didn't return). The originals are in b11/seven.json |
+
+**Fixes:** 23 in total; the full before → after list is in `ak9i-email-copy.md` (Proofreading fixes).
+
+**Spacing:** Nurture 0 on day 0, then Emails 1–12 at days 16, 32, 48, 64, 80, 96, 112, 130, 180, 200, 250 and 275. Sends are at least 16 days apart, so at most 2 fall in any 30 days.
+
+**Call notification:** after F0 allows Nurture 0, the flow creates a task for the lead owner and emails the enrollment inbox (ungated). It runs even when the email isn't delivered.
+
+**Address:** the request said enrollment@ak9i.edu, but the org has only one verified org-wide address, enrollment@ak9i.com, so .com is used.
+
+**Open item:** staff must get consent on these calls, and the team needs training on that.
+
+**Test (record deleted):** a Job Fair lead with consent, inserted as Nurture, was logged as AK9I_C_NU_Job_Fair Allowed. A High-priority task "Call Nurture lead - obtain email consent" was created for the owner, due the next day. Email 1 now contains "a few reasons" and the duplicated "recently" is gone. Delivery is still off, so no email was delivered. Nurture Start Date stayed blank, so Emails 1–12 would not be scheduled. It's probably set by the failing campaign flow; open question.
+
 ## 2. Tests (anonymous Apex in cleanpipe; all test records deleted afterwards)
 **Leads:**
 - New Lead → 1-Awareness; Interested, Nurture or Applicant → 2-Consideration.

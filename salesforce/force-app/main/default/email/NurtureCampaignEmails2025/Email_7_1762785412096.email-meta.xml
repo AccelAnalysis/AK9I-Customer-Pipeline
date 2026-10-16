@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Tier 3 (91-180  days since last interaction)</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email 7</name>
+    <pageDevName>Email_7</pageDevName>
+    <relatedEntityType>Lead</relatedEntityType>
+    <style>none</style>
+    <subject>Is 2026 your year?</subject>
+    <textOnly>Hi {{{Recipient.FirstName}}},
+
+Its the perfect time to set new goals. Our upcoming classes has limited opening. If you&apos;ve been considering a career working with dogs, this is your sign to act.
+
+View our Upcoming Start Dates:
+
+Calendar &lt; https://ak9i.edu/calender/ &gt; 
+
+All the best,
+
+The AK9I Team
+
+4007 Burdette Rd
+
+Carrsville, VA, 23315
+
+www.ak9i.edu &lt; https://www.ak9i.edu &gt; 
+
+p: 757-304-9600 
+
+This message was sent to you because you have expressed interest in our company AK9I.
+
+To stop receiving further emails, please reply with &quot;Unsubscribe&quot;and we will remove you from our list.</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

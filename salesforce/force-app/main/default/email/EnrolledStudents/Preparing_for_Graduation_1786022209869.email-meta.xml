@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>One week before graduation</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Preparing for Graduation</name>
+    <pageDevName>Preparing_for_Graduation</pageDevName>
+    <style>none</style>
+    <subject>Preparing for Graduation</subject>
+    <textOnly>Hello {{{Recipient.FirstName}}},
+
+Congratulations on nearing completion of the K9 Detection Program.
+
+As graduation approaches, we want tot help you prepare for the next phase of your professional journey.
+
+Please begin thinking about: 
+ - Certification requirements
+ - Graduation logistics
+ - Employment opportunities
+ - Additional career goals within the K9 industry
+
+Our team is available to help connect you with resources and employment pathways following graduation.
+
+We look forward to celebrating your achievement.
+
+Best regards
+
+The AK9I Team</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

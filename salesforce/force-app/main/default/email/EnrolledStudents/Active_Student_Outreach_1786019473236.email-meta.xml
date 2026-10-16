@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>End of Week 2</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Active Student Outreach</name>
+    <pageDevName>Active_Student_Outreach</pageDevName>
+    <style>none</style>
+    <subject>Keep up the Great Work!</subject>
+    <textOnly>Hello {{{Recipient.FirstName}}},
+
+Congratulations on reaching the midpoint of your training.
+
+Over the past two weeks, you&apos;ve been building essential skills in scent mechanics, canine health, and detection fundamentals. This phase of the program lays the foundation for successful certification.
+
+As you continue training: 
+ - Stay focused on daily training
+ - Reach out if you need support
+ - Continue preparing for certification requirments.
+
+We&apos;re proud of the work you&apos;ve put in so far and look forward to seeing your continued progress.
+
+Keep up the great work!
+
+Best regards,
+
+The AK9I Team</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

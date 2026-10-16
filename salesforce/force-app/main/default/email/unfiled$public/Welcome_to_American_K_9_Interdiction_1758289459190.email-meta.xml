@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send immediately after enrollment documents are received</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Welcome to American K-9 Interdiction</name>
+    <pageDevName>Welcome_to_American_K_9_Interdiction1</pageDevName>
+    <relatedEntityType>Lead</relatedEntityType>
+    <style>none</style>
+    <subject>Welcome to American K-9 Interdiction!</subject>
+    <textOnly>Hi {{{Recipient.FirstName}}},
+
+Welcome to the AK9I Family! We&apos;re thrilled to have you on board.
+
+What&apos;s Next:
+ 1. Phone Interview with Michelle
+ 2. Acceptance Letter will be sent via email upon completion of phone interview. Please allow 3-5 business day for processing.
+ 3. Submit the following:
+
+ - Highschool or College diploma/transcript or GED (only one of these items is required)
+ - If using veteran&apos;s benefits, submit a copy of a Certificate of Eligibility or a Statement of Benefits
+ - If using veteran&apos;s benefits, submit a copy of your Joint Service Transcript
+
+mhartman@ak9i.com &lt; mailto:mhartman@ak9i.com &gt; 
+
+You&apos;ve taken the first step toward an exciting journey, and we can&apos;t wait to see what you accomplish!Best Regards,
+
+{{{Sender.FirstName}}}
+
+{{{Sender.Name}}}
+
+{{{Sender.Title}}}
+
+4007 Burdette Rd.
+
+Carrsville, VA, 23315
+
+www.ak9i.edu &lt; https://www.ak9i.edu &gt; 
+
+p: 757-304-9600
+
+f: 757-304-9678
+
+This message was sent to you because you have expressed interest in our company AK9I.
+
+To stop receiving further emails, please reply with &quot;Unsubscribe&quot;and we will remove you from our list.</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

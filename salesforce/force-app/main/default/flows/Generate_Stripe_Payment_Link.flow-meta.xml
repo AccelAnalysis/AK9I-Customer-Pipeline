@@ -29,7 +29,7 @@
             <name>cancelUrl</name>
             <value>
                 <inputConfiguratorMode>Resource</inputConfiguratorMode>
-                <stringValue>https://www.adkk9i.edu/?payment=cancelled</stringValue>
+                <stringValue>https://www.ak9i.edu/?payment=cancelled</stringValue>
             </value>
         </inputParameters>
         <inputParameters>

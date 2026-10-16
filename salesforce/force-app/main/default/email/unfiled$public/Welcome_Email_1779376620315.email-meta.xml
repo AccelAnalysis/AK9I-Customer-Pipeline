@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Welcome Email</name>
+    <pageDevName>Welcome_Email</pageDevName>
+    <relatedEntityType>Lead</relatedEntityType>
+    <style>none</style>
+    <textOnly>Hi {{{Recipient.FirstName}}},
+
+I am Pastor Paul, School Administrator for AK9I. Thank you for stopping by our booth at the Ft. Bragg job fair. I hope my representative was thorough and informative in explaining our K-9 training programs and the post-graduation employment opportunities that are available to you. 
+
+To begin your new career journey and discover your post-military purpose, enrollment is a simple process. Simply fill out the student enrollment form, email it back to me or Michelle Hartman along with a copy of your high school diploma, GED or college transcripts.. Additionally, you can fill out 
+
+If you have never applied for your Post 9-11 G.I. Bill education benefits, go to www.va.gov &lt; https://www.va.gov &gt; , fill out and electronically submit VA FORM 22-1990 (initial application for GI Bill benefits). That&apos;s really all there is to enroll. We do all the VA processing for you. 
+
+We are also approved to accept Skillbridge and VR&amp;E. Classes start the first Monday of every month except July which will be Tuesday July 7. 
+
+If you have any additional questions about our K-9 training program and post-graduation employment opportunities, or if you would like to schedule a tour of our facility, please call me or sign up online. 
+
+Schedule a Tour &lt; https://outlook.office365.com/book/Bookings@ccasora.onmicrosoft.com/?ismsaljsauthenabled=true &gt; 
+
+Warm regards,
+
+Pastor Paul
+
+LT Paul Roushia, USN (Retired)
+
+School Administrator
+
+AK9I
+
+757-788-1524</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

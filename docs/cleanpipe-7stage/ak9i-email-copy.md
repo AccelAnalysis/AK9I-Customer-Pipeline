@@ -1,6 +1,6 @@
-# AK9I pipeline email copy (DRAFT for Jonathan's approval)
+# AK9I pipeline email copy (approved by Jonathan; active in cleanpipe only)
 
-Status (updated Oct 16, ~7:55 AM ET): all 58 new templates are **available (active) in cleanpipe only**, approved as-is by Jonathan; production is untouched. Originally deployed as classic text templates with `available=false`, in the hidden folder "AK9I Pipeline (Drafts)". No flow sends them yet. Every email-sending flow is inactive.
+Status (updated Oct 16, ~7:55 AM ET): all 58 new templates are **available (active) in cleanpipe only**, approved as-is by Jonathan; production is untouched. They are classic text templates in the hidden folder "AK9I Pipeline (Drafts)" (folder name unchanged) and are sent by the active flows in cleanpipe, each send through F0.
 
 Placeholders: `{ENROLLMENT_FORM_URL}` (form link; production domain pending) `{BOOKINGS_URL}`, `{DOC_UPLOAD_URL}`, `{EMPLOYMENT_SURVEY_URL}`, `{ALUMNI_URL}` (matching custom labels AK9I_Bookings_URL etc. exist for flows; replace when the real URLs are known).
 
@@ -18,7 +18,7 @@ Facts used only from existing AK9I emails: address, phone, enrollment@ak9i.com, 
 | Graduation: 2 weeks before / day of | Preparing for Graduation, Graduation Day Email |
 | Nurture | Nurture Campaign Emails 1-12 (after the new N0 first touch) |
 
-Notes on existing copy for Jonathan: "Preparing for Graduation" has a typo ("want tot help"); "Active Student Outreach" says "midpoint" at 2 weeks, which is not the midpoint of 8- or 12-week courses; "Accepted Student Outreach" signs as "AK9I | BGK9 Team". Not changed.
+Notes on existing copy for Jonathan: "Preparing for Graduation" has a typo ("want to help"); "Active Student Outreach" says "midpoint" at 2 weeks, which is not the midpoint of 8- or 12-week courses; "Accepted Student Outreach" signs as "AK9I | BGK9 Team". Not changed.
 
 ## Source-tailored opening sentence (Lead Source x Status)
 
@@ -389,11 +389,11 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ## Consideration series by Lead Source x Status (added Oct 16, second build)
 
-Status: 42 templates `AK9I_C_<NU|IF|AP>_<Source>` deployed to cleanpipe with `available=false` in the hidden folder "AK9I Pipeline (Drafts)". They are sent only by Draft (inactive) flows, and every send goes through F0 (`AK9I_F0_Guarded_Send`). Lead Source values come from cleanpipe (14). Each combination's series:
+Status: 42 templates `AK9I_C_<NU|IF|AP>_<Source>` active (available) in cleanpipe, in the hidden folder "AK9I Pipeline (Drafts)". They are sent by active flows, and every send goes through F0 (`AK9I_F0_Guarded_Send`). Lead Source values come from cleanpipe (14). Each combination's series:
 
 | Status | Email 1 (tailored by source) | Follow-ups | F0 type |
 |---|---|---|---|
-| Nurture | `AK9I_C_NU_<Source>` (day 0, flow AK9I_Consideration_Series) | existing Nurture Campaign Emails 1-12 (not rewired) | marketing, unsolicited (needs Consent Confirmed) |
+| Nurture | `AK9I_C_NU_<Source>` (day 0, flow AK9I_Consideration_Series) | existing Nurture Campaign Emails 1-12, starting day 16 and spaced ≥16 days apart (see spacing below) | marketing, unsolicited (needs Consent Confirmed) |
 | Interested - Future | `AK9I_C_IF_<Source>` (day 0) | I2 at +60 days, I3 at +90 days | marketing, unsolicited |
 | Applicant (partial form) | `AK9I_C_AP_<Source>` (day 1, flow AK9I_Partial_Form_Series) | P2 at +4 days, P3 at +10 days | non-marketing, unsolicited (counts toward the 2-in-30-days cap) |
 
@@ -401,7 +401,7 @@ Placeholders: `{COURSE_INFO_URL}`, `{ENROLLMENT_FORM_URL}`, `{BGK9_RELATIONSHIP_
 
 ### C Nurture - YouTube (`AK9I_C_NU_YouTube`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on after our videos
+- **Subject:** Following up after our videos
 
 ```
 Hi {!Lead.FirstName},
@@ -425,7 +425,7 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Web (`AK9I_C_NU_Web`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on after your website visit
+- **Subject:** Following up after your website visit
 
 ```
 Hi {!Lead.FirstName},
@@ -1392,3 +1392,50 @@ enrollment@ak9i.com | (757) 304-9600
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
 American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 ```
+
+
+## Proofreading fixes (Oct 16, ~8:15 AM ET), applied in cleanpipe and the repo
+
+| Template | Before | After |
+|---|---|---|
+| `Email_1_1759772781323` | showed interest in American K-9 Interdiction recently | showed interest in American K-9 Interdiction |
+| `Email_1_1759772781323` | a few reason | a few reasons |
+| `Email_1_1759772781323` | real world K-9 | real-world K-9 |
+| `Email_2_1759776763898` | its bee, | it's been, |
+| `Email_7_1762785412096` | Its the perfect | It's the perfect |
+| `Email_7_1762785412096` | classes has limited opening | classes have limited openings |
+| `Active_Student_Outreach_1786019473236` | requirments | requirements |
+| `Preparing_for_Graduation_1786022209869` | want tot help | want to help |
+| `Preparing_for_Graduation_1786022209869` | Best regards | Best regards, |
+| `Applicant_Engagement_1785772436128` | 304 - 9600 | 304-9600 |
+| `Lead_Follow_up_1773244535494` | va benefits | VA benefits |
+| `Lead_Follow_up_Post_Voicemail_1758289438739` | va benefits | VA benefits |
+| `Lead_Follow_up_Post_Voicemail_1758289438739` | handler/ trainer | handler/trainer |
+| `New_Fin_Aid_Company_1746632517891` | Have questions? you can | Have questions? You can |
+| `Welcome_Email_1779376620315` | transcripts.. | transcripts. |
+| `Welcome_to_American_K_9_Interdiction_1758289459190` | 3-5 business day | 3-5 business days |
+| `Welcome_to_American_K_9_Interdiction_1758289459190` | Highschool | High school |
+| `K9_Sales_1775736635998` | Schedule and Evaluation | Schedule an Evaluation |
+| `K9_Sales_1775736635998` | agency specific | agency-specific |
+| `Sorry_we_missed_you_1718661460921` | have the enrollment sent digitally | have the enrollment form sent digitally |
+| `AK9I_C_NU_YouTube (subject)` | Following up on after our videos | Following up after our videos |
+| `AK9I_C_NU_Web (subject)` | Following up on after your website visit | Following up after your website visit |
+| `Generate_Stripe_Payment_Link (cancel URL)` | https://www.adkk9i.edu/?payment=cancelled | https://www.ak9i.edu/?payment=cancelled |
+
+The scan covered the 58 AK9I templates, Nurture Emails 1-12, EnrolledStudents (8), the AK9I unfiled templates and the Lightning-builder templates. Nothing else was changed. The 2 Lightning-builder templates were fixed by an Apex update of HtmlValue after a rollback dry run.
+
+Flagged but not changed (wording/meaning):
+- Welcome_Email has a truncated sentence ("Additionally, you can fill out ") and a stale date ("except July which will be Tuesday July 7").
+- Active Student Outreach says "midpoint" at 2 weeks.
+- Accepted / 30 Days Before Start sign "The AK9I | BGK9 Team".
+- Up_Coming_Courses, August flyers and Application_Review have no readable body text (image or blank).
+
+**Nurture spacing (cleanpipe, `Nurture_Email_Scheduler` v6, from Nurture Start Date):** Nurture 0 (`AK9I_C_NU_<Source>`) on day 0, then Email 1 at day 16, Email 2 day 32, Email 3 day 48, Email 4 day 64, Email 5 day 80, Email 6 day 96, Email 7 day 112, Email 8 day 130, Email 9 day 180, Email 10 day 200, Email 11 day 250, Email 12 day 275. The old schedule was 0/10/25/35/60/90/100/130/180/200/250/275. Every send is at least 16 days after the previous one, so any rolling 30-day window holds at most 2 unsolicited emails (F0 cap 2/30). Routine sends are no longer blocked unless a rep or another automation adds unsolicited touches.
+
+**Call notification (cleanpipe, `AK9I_Consideration_Series` v3):** after F0 allows Nurture 0, the flow does two things, whether or not the email was delivered:
+- It creates a High-priority task for the lead owner, due the next day: "Call Nurture lead - obtain email consent".
+- It sends an internal, ungated email to the custom label `AK9I_Enrollment_Inbox` (= enrollment@ak9i.com) with the lead's name, phone, mobile, email, Lead Source, status and a record link.
+
+Jonathan asked for enrollment@ak9i.edu, but the org's only verified org-wide address is enrollment@ak9i.com, and every existing AK9I email uses .com. So .com is used; change the label if needed.
+
+**OPEN ITEM (process, not automation):** on these Nurture calls, staff must obtain clear consent for follow-up emails and record it (AK9I Consent Status = Consent Confirmed, plus source, timestamp and evidence). The team needs training on how to ask for and record that consent. Owner and date: TBD (Jonathan).

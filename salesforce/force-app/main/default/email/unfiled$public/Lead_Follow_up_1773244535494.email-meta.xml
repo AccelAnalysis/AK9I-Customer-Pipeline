@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send to leads if not able to get on the phone.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Follow-up</name>
+    <pageDevName>Lead_Follow_up</pageDevName>
+    <relatedEntityType>Lead</relatedEntityType>
+    <style>none</style>
+    <subject>Following up</subject>
+    <textOnly>Hi {{{Recipient.FirstName}}},
+
+You had previously expressed interest in our K9 Handler or Trainer Certification program, so I just wanted to check in.
+
+Are you still interested in pursuing K9 training or handling? If so, I&apos;d be happy to answer any questions or help you explore upcoming class dates.
+
+Schedule a Call &lt; https://outlook.office365.com/book/Bookings@ccasora.onmicrosoft.com/?ismsaljsauthenabled=true &gt; 
+
+We&apos;re here to answer any questions about our programs, financial aid, va benefits or the enrollment process.Talk to you soon!
+
+Best regards,
+
+[Image alt text: AK9I PNG]
+
+Unleash Your Purpose
+
+The AK9I Team
+
+4007 Burdette Rd
+
+Carrsville, VA, 23315
+
+p: 757-304-9600
+
+This message was sent to you because you have expressed interest in our company AK9I.
+
+To stop receiving further emails, please reply with &quot;Unsubscribe&quot;and we will remove you from our list.</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

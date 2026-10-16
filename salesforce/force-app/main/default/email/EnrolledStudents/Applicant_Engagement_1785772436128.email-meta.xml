@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Phase 1: Applicant Engagement, Touchpoint 1: Day 0 - Application Received</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Application Received</name>
+    <pageDevName>Applicant_Engagement</pageDevName>
+    <style>none</style>
+    <subject>Applicant Engagement</subject>
+    <textOnly>Hello {{{Recipient.FirstName}}},
+
+Thank you for applying to the K9 Detection Program. We are excited to help you begin your journey toward certification and employment within the K9 industry.
+
+Your application has been received and is currently being reviewed. Over the next several days, a member of our team will contact you to discuss your goals, answer questions, and walk you through the next steps in the enrollment process.
+
+If you have any immediate questions, please feel free to reply to this email or contact us directly.
+
+We look forward to speaking with you soon.
+
+Best regards,
+
+The AK9I Team
+
+American K-9 Interdiction
+
+enrollment@ak9i.com
+
+(757) 304 - 9600</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>
