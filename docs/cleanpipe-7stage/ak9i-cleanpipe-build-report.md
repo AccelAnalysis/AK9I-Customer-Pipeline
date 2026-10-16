@@ -19,6 +19,35 @@
 - The Contact gets Status__c Applied and a valid Course__c (this fixes a restricted-picklist bug: the form was writing the Opportunity Program value).
 - The Opportunity gets Enrollment_Status__c Applied and Student_Contact__c.
 
+## 1b. Second build (Oct 16, ~7:30 AM ET): F0 and Consideration series
+| # | Dry run | Real deploy | Contents |
+|---|---|---|---|
+| L8 | 0AfO300000jOzLPKA0 | 0AfO300000jP4w9KAC | AK9I_Pipeline_Setting__mdt fields Unsolicited_Cap_30_Day__c (=2) and Cap_Window_Days__c (=30) on the Default record; flow **AK9I_F0_Guarded_Send** (active subflow; sends nothing, only decides and logs) |
+| L9 | 0AfO300000jP4zNKAS | 0AfO300000jP57RKAS | **AK9I_Consideration_Series** (new, Draft). F0 wired into the Draft flows Partial_Form_Series (day 1 now uses the source template), Interview_Scheduling_Email, Acceptance_Letter_and_Fee, Enrolled_Confirmation_Email and Employment_Survey_Send. **42 templates** AK9I_C_<NU/IF/AP>_<Source> (available = false) |
+
+**What F0 blocks:**
+- Do Not Contact.
+- HasOptedOutOfEmail, or consent Opted Out.
+- A bounced email: Contact IsEmailBounced, or Lead EmailBouncedDate set.
+- No email address.
+- A marketing send without AK9I_Consent_Status__c = Consent Confirmed.
+- An unsolicited send when 2 or more "Allowed" unsolicited Outreach Log rows exist in the last 30 days. The README guardrail sets 2 per rolling 30 days, configurable in the metadata.
+
+**How F0 decides:**
+- Solicited/transactional sends skip the cap.
+- Every decision is written to AK9I_Outreach_Log__c (Outcome "Allowed" or "Blocked: reason"), with the solicited flag, stage and consent snapshot.
+
+**What is not gated:** the internal emails to Michelle (interview not scheduled, start notice) are staff notices, not outbound contacts, so they don't call F0.
+
+**F0 test (11 cases, all as expected):**
+- Allowed ×2, then the 3rd unsolicited send was blocked by the cap.
+- A solicited send was allowed despite the cap.
+- Marketing without consent: blocked.
+- DNC, opted out, no email and no recipient: each blocked.
+- Contact with Consent Confirmed, marketing send: allowed.
+- Bounce couldn't be tested because the bounce fields can't be written. The bounce logic is a single field check.
+- Test records and logs deleted. Backups for this build are in `backup-20261016/b8`.
+
 ## 2. Tests (anonymous Apex in cleanpipe; all test records deleted afterwards)
 **Leads:**
 - New Lead → 1-Awareness; Interested, Nurture or Applicant → 2-Consideration.
@@ -68,6 +97,12 @@
 7. What caused the guest INSUFFICIENT_ACCESS error? Suspects: the managed autoconvert running as guest, the hardcoded owner 005Hs00000EQMxn, or the Course__c bug (now fixed in v12). Can you run a guest debug log to confirm?
 8. Which business-process name should "Applicant" become (for example "Student Lead")?
 
+9. F0 counts Outreach Log rows on the same record only. Should a Contact's cap also count the touches it got as a Lead before conversion?
+10. F0 logs "Allowed" before the email is sent, so a failed send still counts toward the cap. Is that acceptable, or should failed sends be logged as failed?
+11. Marketing consent = AK9I_Consent_Status__c "Consent Confirmed" only. Are there existing leads whose consent is recorded elsewhere (e.g. Consent_Informational__c)? If so, the Consideration series will skip them.
+12. What is BGK9's relationship to AK9I? It's needed for the {BGK9_RELATIONSHIP_NOTE} placeholder.
+13. Should texts and outbound calls also be logged to the Outreach Log so the cap covers every channel (README: all channels)? F0 only covers automated email now.
+
 ## 6. Setup clicks for Jonathan (metadata can't do these, or they are risky)
 1. Add "Interested - Future" to the Lead Applicant process. A deploy fails on the ">" character in that value.
 2. Rename the Lead process "Applicant".
@@ -88,7 +123,8 @@
 6. Deploy L1–L7 in the same order. Each one is a dry run first, then a real deploy.
 
 ## 8. Known gaps
-- No F0 30-day contact cap.
+- F0 covers automated email only; manual emails, texts and calls aren't logged.
+- The existing Nurture Campaign Emails 1-12 and Enrollment_Engagement_Strategy (active, existing emails) don't call F0 yet. Rewiring the active Engagement flow changes live behavior, so it needs Jonathan's OK.
 - The per Lead Source × Status series exists only as a structure (the Source intro formula plus the P/I/N0 templates); Lance's full copy is pending.
-- No consent check beyond HasOptedOutOfEmail/DNC in the Draft flows. Add F0 before recurring emails.
+- There's no recurring-products (R1) or alumni send flow yet. When one is built, it must call F0 as a marketing send.
 - Network/site metadata could not be retrieved (permissions).

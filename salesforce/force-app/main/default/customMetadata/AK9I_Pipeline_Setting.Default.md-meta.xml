@@ -3,4 +3,5 @@
     <label>Default</label>
     <protected>false</protected>
     <values><field>Self_Pay_Deposit_Amount__c</field><value xsi:type="xsd:double">0</value></values><values><field>Graduation_Offset_Days__c</field><value xsi:type="xsd:double">0</value></values><values><field>Admin_Fee_Amount__c</field><value xsi:type="xsd:double">100</value></values>
+    <values><field>Unsolicited_Cap_30_Day__c</field><value xsi:type="xsd:double">2</value></values><values><field>Cap_Window_Days__c</field><value xsi:type="xsd:double">30</value></values>
 </CustomMetadata>

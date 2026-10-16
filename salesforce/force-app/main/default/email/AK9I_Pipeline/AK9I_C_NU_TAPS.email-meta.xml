@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>DRAFT - pending wording approval. Consideration series, Lead Source = TAPS. Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>C Nurture - TAPS</name>
+    <style>none</style>
+    <subject>Following up on your transition plans</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

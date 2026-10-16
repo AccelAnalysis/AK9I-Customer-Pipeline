@@ -17,7 +17,7 @@ The instance URL must be a sandbox URL, and `IsSandbox` must be true. Production
 
 ## Guardrails
 
-VA 38 USC 3679(f) treats three or more unsolicited contacts in a month as persistent recruiting. AK9I's own cap is **at most 2 unsolicited contacts per person per rolling 30 days**, on every channel (email, text, and outbound calls). Flow F0 is the later enforcement point. It counts Outreach Log rows for the last 30 days where the touch was unsolicited, and it blocks a send that would exceed the cap.
+VA 38 USC 3679(f) treats three or more unsolicited contacts in a month as persistent recruiting. AK9I's own cap is **at most 2 unsolicited contacts per person per rolling 30 days**, on every channel (email, text, and outbound calls). Flow F0 (`AK9I_F0_Guarded_Send`, deployed to cleanpipe 2026-10-16) is the enforcement point for automated email. It counts "Allowed" Outreach Log rows for the last 30 days where the touch was unsolicited, and it blocks a send that would exceed the cap. The cap and window are in `AK9I_Pipeline_Setting__mdt.Default` (2 and 30). F0 also blocks Do Not Contact, opt-outs, bounces, a missing email, and marketing sends without `AK9I_Consent_Status__c` = Consent Confirmed. It logs every decision. Texts and calls aren't logged automatically yet.
 
 No flow, report, or dashboard in this project may count enrollments per recruiter for pay or quotas. **No incentive pay tied to enrollment.** Reports describe stage and lane.
 
@@ -34,8 +34,8 @@ Run commands from this `salesforce/` directory.
 | Phase 1 fields | 10 Lead fields and 23 Contact fields (pipeline, consent, and Contact copies of Lead fields that are lost at conversion today) | `force-app/main/default/objects/Lead/fields/`, `force-app/main/default/objects/Contact/fields/`, `force-app/main/default/permissionsets/AK9I_Pipeline_Fields.permissionset-meta.xml` | Yes. Not deployed. |
 | Phase 1 mapping | Lead-to-Contact field pairs merged onto the org's existing conversion mapping | `lead-convert-mappings.json`, `manifest/lead-convert.xml`, `scripts/merge_lead_convert.py`. The retrieved file belongs in `force-app/main/default/LeadConvertSettings/` and is not in git until it has been retrieved and merged. | Mapping inputs yes. `LeadConvertSettings` file no. |
 | Phase 1b fields | Do Not Contact, Application Status, five UTM text fields, and Lead copies of Branch and VA education benefit type, plus their conversion pairs and a permission-set update | Same Lead and Contact `fields/` directories, then a repeat of the conversion merge | No. Not authored yet. |
-| Outreach Log | Custom object `AK9I_Outreach_Log__c` (who was contacted, message type, template/version, sent at, stage at send, solicited flag, consent snapshot) | `force-app/main/default/objects/AK9I_Outreach_Log__c/` | Yes, from the phase-1 package. Not deployed. Required before F0. |
-| Flows F0–F13 | F0 guarded send, then F1–F13 (inquiry, follow-up, reminders, application, countdown, stop, course start, out-brief, graduation, outcomes, contract handoff, renewal, payment) | `force-app/main/default/flows/` as `*.flow-meta.xml` | 7-stage flows (AK9I_*) plus reworked existing flows, deployed to cleanpipe. The F0–F13 set is not authored; the new email flows are Drafts. |
+| Outreach Log | Custom object `AK9I_Outreach_Log__c` (who was contacted, message type, template/version, sent at, stage at send, solicited flag, consent snapshot) | `force-app/main/default/objects/AK9I_Outreach_Log__c/` | Yes. Deployed to cleanpipe; F0 writes to it. |
+| Flows F0–F13 | F0 guarded send, then F1–F13 (inquiry, follow-up, reminders, application, countdown, stop, course start, out-brief, graduation, outcomes, contract handoff, renewal, payment) | `force-app/main/default/flows/` as `*.flow-meta.xml` | 7-stage flows (AK9I_*) plus reworked existing flows, deployed to cleanpipe. F0 is built and active (it decides and logs; it sends nothing). Every new email flow calls F0 and is a Draft. F1–F13 aren't authored as named; the AK9I_* series flows cover them in part. |
 | Email templates T01–T20 | Lightning templates in a folder named AK9I Pipeline. They start as drafts. | `force-app/main/default/email/AK9I_Pipeline/` | 16 text templates (AK9I_P1 to AK9I_A1) plus the hidden folder, deployed to cleanpipe with available = false. Copy is a draft for Lance. |
 | Reports | Pipeline by stage/lane, the 30-day unsolicited-contact audit, red list / docs / payment, outcomes, and opt-outs/bounces | `force-app/main/default/reports/AK9I_Pipeline/` | R1, R1b, R2–R5 deployed to cleanpipe. The 30-day contact audit and opt-out reports are not authored yet. |
 | Layouts | Page layouts when a later change needs them | `force-app/main/default/layouts/` | No. Folder only. |
@@ -97,11 +97,11 @@ Phase 1b repeats this retrieve-backup-merge-dry-run-deploy sequence for its new 
 
 ### 3. Later metadata
 
-Use the same dry-run-then-deploy pattern for phase 1b fields, flows, templates, and reports. Retrieve an existing flow, template, or picklist before changing it (`sf project retrieve start --metadata "Flow:<ApiName>" --target-org ak9i-sandbox`). Every email flow goes through F0. F0 is not in source yet.
+Use the same dry-run-then-deploy pattern for phase 1b fields, flows, templates, and reports. Retrieve an existing flow, template, or picklist before changing it (`sf project retrieve start --metadata "Flow:<ApiName>" --target-org ak9i-sandbox`). Every automated outbound email flow calls F0 (`AK9I_F0_Guarded_Send`) before sending.
 
 ## Not in this tree yet
 
-Contract-lane Opportunity fields, queues, roles, the F0–F13 flow definitions, T01–T20 template bodies, and reports. Those wait for a later change in the homes above. Urgent org fixes (opt-outs, the enrollment form, Stripe triggers, record ownership) are sandbox or production operations, not files in this commit.
+Contract-lane Opportunity fields, queues, roles, the F1–F13 flow definitions, T01–T20 template bodies, and reports. Those wait for a later change in the homes above. Urgent org fixes (opt-outs, the enrollment form, Stripe triggers, record ownership) are sandbox or production operations, not files in this commit.
 
 ## Converted Lead Status: Converted (Applicant is not converted)
 
