@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <description>DRAFT - pending Jonathan's wording approval. Trigger: Stage 6-Recurring (survey received, not yet alumni)</description>
     <encodingKey>UTF-8</encodingKey>
     <name>A1 Alumni program invitation</name>
