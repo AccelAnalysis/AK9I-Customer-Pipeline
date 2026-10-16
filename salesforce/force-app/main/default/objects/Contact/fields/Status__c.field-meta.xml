@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>Enrollment Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Enrolled</fullName>
+                <default>false</default>
+                <label>Enrolled</label>
+            </value>
+            <value>
+                <fullName>Graduated</fullName>
+                <default>false</default>
+                <label>Graduated</label>
+            </value>
+            <value>
+                <fullName>Withdrew</fullName>
+                <default>false</default>
+                <label>Withdrew</label>
+            </value>
+            <value>
+                <fullName>Leave of Absence</fullName>
+                <default>false</default>
+                <label>Leave of Absence</label>
+            </value>
+            <value>
+                <fullName>Application Received</fullName>
+                <default>false</default>
+                <label>Application Received</label>
+            </value>
+        <value>
+                <fullName>Applied</fullName>
+                <default>false</default>
+                <label>Applied</label>
+            </value>
+            <value>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+                <label>Accepted</label>
+            </value>
+            <value>
+                <fullName>Active Student</fullName>
+                <default>false</default>
+                <label>Active Student</label>
+            </value>
+            </valueSetDefinition>
+    </valueSet>
+</CustomField>

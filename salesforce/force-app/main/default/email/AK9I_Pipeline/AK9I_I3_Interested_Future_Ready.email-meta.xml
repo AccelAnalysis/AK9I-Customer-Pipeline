@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>DRAFT - pending Jonathan's wording approval. Trigger: +90 days</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>I3 Interested - future: getting ready</name>
+    <style>none</style>
+    <subject>Getting ready for your start date</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

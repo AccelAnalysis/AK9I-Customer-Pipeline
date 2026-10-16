@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns><field>FIRST_NAME</field></columns><columns><field>LAST_NAME</field></columns><columns><field>EMAIL</field></columns><columns><field>PHONE1</field></columns><columns><field>Contact.Status__c</field></columns><columns><field>Contact.Course__c</field></columns><columns><field>Contact.Course_Start_Date__c</field></columns><columns><field>Contact.AK9I_Actual_Start_Date__c</field></columns>
+    <description>Course Start Date has passed and the student is not Active Student (still Enrolled or Accepted).</description>
+    <filter><criteriaItems><column>Contact.Course_Start_Date__c</column><columnToColumn>false</columnToColumn><isUnlocked>true</isUnlocked><operator>lessThan</operator><value>TODAY</value></criteriaItems><criteriaItems><column>Contact.Status__c</column><columnToColumn>false</columnToColumn><isUnlocked>true</isUnlocked><operator>equals</operator><value>Enrolled,Accepted</value></criteriaItems></filter>
+    <format>Tabular</format>
+    
+    <name>R3 No-Shows</name>
+    <params><name>co</name><value>1</value></params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter><dateColumn>CREATED_DATE</dateColumn><interval>INTERVAL_CUSTOM</interval></timeFrameFilter>
+</Report>

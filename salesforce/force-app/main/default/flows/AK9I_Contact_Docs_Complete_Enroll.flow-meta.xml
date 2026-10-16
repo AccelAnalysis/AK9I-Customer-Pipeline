@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+<apiVersion>67.0</apiVersion>
+<description>When all documents are received on a Contact, re-evaluate its Accepted Enrollment Opportunities (the Opportunity before-save flow sets Enrolled if the fee is Paid and funding is confirmed).</description>
+<environments>Default</environments>
+<interviewLabel>AK9I Contact Docs Complete Enroll {!$Flow.CurrentDateTime}</interviewLabel>
+<label>AK9I Contact Docs Complete Enroll</label>
+<processMetadataValues><name>BuilderType</name><value><stringValue>LightningFlowBuilder</stringValue></value></processMetadataValues><processMetadataValues><name>CanvasMode</name><value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value></processMetadataValues>
+<processType>AutoLaunchedFlow</processType>
+<recordUpdates><name>Touch_Opps</name><label>Touch Opps</label><locationX>0</locationX><locationY>0</locationY><filterLogic>and</filterLogic><filters><field>Student_Contact__c</field><operator>EqualTo</operator><value><elementReference>$Record.Id</elementReference></value></filters><filters><field>Enrollment_Status__c</field><operator>EqualTo</operator><value><stringValue>Accepted</stringValue></value></filters><inputAssignments><field>Enrollment_Status__c</field><value><stringValue>Accepted</stringValue></value></inputAssignments><object>Opportunity</object></recordUpdates>
+
+<start><locationX>0</locationX><locationY>0</locationY><connector><targetReference>Touch_Opps</targetReference></connector><doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria><filterLogic>and</filterLogic><filters><field>AK9I_Documents_Complete__c</field><operator>EqualTo</operator><value><booleanValue>true</booleanValue></value></filters><object>Contact</object><recordTriggerType>Update</recordTriggerType><triggerType>RecordAfterSave</triggerType></start>
+<status>Active</status>
+</Flow>

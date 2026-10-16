@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns><field>FIRST_NAME</field></columns><columns><field>LAST_NAME</field></columns><columns><field>EMAIL</field></columns><columns><field>Contact.Status__c</field></columns><columns><field>Contact.AK9I_Doc_Diploma_Transcript__c</field></columns><columns><field>Contact.AK9I_Doc_JST__c</field></columns><columns><field>Contact.AK9I_Doc_COE_SOB__c</field></columns>
+    <description>Applied or Accepted students missing one or more enrollment documents.</description>
+    <filter><criteriaItems><column>Contact.Status__c</column><columnToColumn>false</columnToColumn><isUnlocked>true</isUnlocked><operator>equals</operator><value>Applied,Accepted,Application Received</value></criteriaItems><criteriaItems><column>Contact.AK9I_Documents_Complete__c</column><columnToColumn>false</columnToColumn><isUnlocked>true</isUnlocked><operator>equals</operator><value>0</value></criteriaItems></filter>
+    <format>Tabular</format>
+    
+    <name>R4 Documents Outstanding</name>
+    <params><name>co</name><value>1</value></params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter><dateColumn>CREATED_DATE</dateColumn><interval>INTERVAL_CUSTOM</interval></timeFrameFilter>
+</Report>

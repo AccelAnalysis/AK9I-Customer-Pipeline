@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Layout</fullName>
+    <active>true</active>
+    <label>Contact Layout</label>
+    <picklistValues>
+        <picklist>AK9I_Employment_Status_30_Day__c</picklist>
+        <values>
+            <fullName>Continuing education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employed - K9 field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employed - other field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Military service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seeking employment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>AK9I_Student_Stage__c</picklist>
+        <values>
+            <fullName>Advocacy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awareness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consideration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loyalty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recurring Relationships</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training and Experience</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Course__c</picklist>
+        <values>
+            <fullName>AK9ITA-005%2C P%2FD Dog Handler</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AK9ITA-006%2C P%2FD Dog Trainer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AK9ITA-010%2C LEO P%2FD Dog Handler</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AK9ITA-011%2C Static Mobile Detector Dog Handler</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AK9ITA-012%2C Pet Dog Trainer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AK9ITA-013%2C Detector Dog Trainer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Detector Dog Handler 001</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Enrollment_Process__c</picklist>
+        <values>
+            <fullName>Acceptance Letter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Documents Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Interview</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>GenderIdentity</picklist>
+        <values>
+            <fullName>Female</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Male</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nonbinary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Listed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact Us</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job Fair</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Skillbridge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TAPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Word of mouth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YouTube</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Name</picklist>
+        <values>
+            <fullName>Dr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mrs%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ms%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mx%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prof%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pronouns</picklist>
+        <values>
+            <fullName>He%2FHim</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>He%2FThey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Listed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>She%2FHer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>She%2FThey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>They%2FThem</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Application Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrolled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Graduated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leave of Absence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Withdrew</fullName>
+            <default>false</default>
+        </values>
+    
+        <values>
+            <fullName>Applied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active Student</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

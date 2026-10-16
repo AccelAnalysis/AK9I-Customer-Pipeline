@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Interview_Scheduled_Date__c</fullName>
+    <description>Date/time of the phone interview with Student Services (from Microsoft Bookings or entered by Michelle).</description>
+    <externalId>false</externalId>
+    <label>Interview Scheduled</label>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Doc_Upload_Key__c</fullName>
+    <description>Random key used in the document-upload link. Set automatically. Do not share outside the student email.</description>
+    <externalId>false</externalId>
+    <label>Document Upload Key</label>
+    <length>64</length><required>false</required><unique>false</unique>
+    <type>Text</type>
+</CustomField>

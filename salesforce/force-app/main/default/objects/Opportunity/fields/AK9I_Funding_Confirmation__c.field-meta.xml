@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Funding_Confirmation__c</fullName>
+    <description>Enrolled requires a value here (plus all documents and the $100 fee).</description>
+    <externalId>false</externalId>
+    <label>Funding Confirmed</label>
+    <required>false</required><valueSet><restricted>true</restricted><valueSetDefinition><sorted>false</sorted><value><fullName>VA benefit confirmed</fullName><default>false</default><label>VA benefit confirmed</label></value><value><fullName>Self-pay deposit paid</fullName><default>false</default><label>Self-pay deposit paid</label></value><value><fullName>Other (SkillBridge, employer)</fullName><default>false</default><label>Other (SkillBridge, employer)</label></value></valueSetDefinition></valueSet>
+    <type>Picklist</type>
+</CustomField>

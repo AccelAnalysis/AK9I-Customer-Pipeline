@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+<apiVersion>67.0</apiVersion>
+<assignments><name>Set_Stage</name><label>Set Stage</label><locationX>0</locationX><locationY>0</locationY><assignmentItems><assignToReference>$Record.AK9I_Student_Stage__c</assignToReference><operator>Assign</operator><value><elementReference>fStage</elementReference></value></assignmentItems></assignments>
+<description>Sets AK9I_Student_Stage__c on Lead: 1-Awareness by default; 2-Consideration for Nurture, Interested - Future, or Applicant (partial enrollment form). Converted leads keep their stage (the Contact carries it from then on).</description>
+<environments>Default</environments>
+<formulas><name>fStage</name><dataType>String</dataType><expression>IF(OR(TEXT({!$Record.Status})=&quot;Nurture&quot;,TEXT({!$Record.Status})=&quot;Interested - Future Enrollment is &gt; 3 months&quot;,TEXT({!$Record.Status})=&quot;Applicant&quot;),&quot;Consideration&quot;,IF(ISBLANK(TEXT({!$Record.AK9I_Student_Stage__c})),&quot;Awareness&quot;,TEXT({!$Record.AK9I_Student_Stage__c})))</expression></formulas>
+<interviewLabel>AK9I Lead Student Stage {!$Flow.CurrentDateTime}</interviewLabel>
+<label>AK9I Lead Student Stage</label>
+<processMetadataValues><name>BuilderType</name><value><stringValue>LightningFlowBuilder</stringValue></value></processMetadataValues><processMetadataValues><name>CanvasMode</name><value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value></processMetadataValues>
+<processType>AutoLaunchedFlow</processType>
+
+<start><locationX>0</locationX><locationY>0</locationY><connector><targetReference>Set_Stage</targetReference></connector><object>Lead</object><recordTriggerType>CreateAndUpdate</recordTriggerType><triggerType>RecordBeforeSave</triggerType></start>
+<status>Active</status>
+</Flow>

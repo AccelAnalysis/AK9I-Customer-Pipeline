@@ -1,0 +1,12 @@
+Hi {!Contact.FirstName},
+
+We are still missing one or more of your enrollment documents. You can upload them here:
+{DOC_UPLOAD_URL}?key={!Contact.AK9I_Doc_Upload_Key__c}
+
+Need help? Contact Michelle Hartman at mhartman@ak9i.com or call (757) 304-9600.
+
+Best regards,
+The AK9I Team
+American K-9 Interdiction
+4007 Burdette Rd, Carrsville, VA 23315
+enrollment@ak9i.com | (757) 304-9600

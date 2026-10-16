@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+<apiVersion>67.0</apiVersion>
+<assignments><name>Set_Opt_Outs</name><label>Set Opt Outs</label><locationX>0</locationX><locationY>0</locationY><assignmentItems><assignToReference>$Record.HasOptedOutOfEmail</assignToReference><operator>Assign</operator><value><booleanValue>true</booleanValue></value></assignmentItems><assignmentItems><assignToReference>$Record.AK9I_Do_Not_Contact__c</assignToReference><operator>Assign</operator><value><booleanValue>true</booleanValue></value></assignmentItems></assignments>
+<description>When Do Not Contact is checked OR Lead Status = Do Not Contact: tick Do Not Contact and set email opt-out so other tools respect it.</description>
+<environments>Default</environments>
+<interviewLabel>AK9I Lead Do Not Contact Sync {!$Flow.CurrentDateTime}</interviewLabel>
+<label>AK9I Lead Do Not Contact Sync</label>
+<processMetadataValues><name>BuilderType</name><value><stringValue>LightningFlowBuilder</stringValue></value></processMetadataValues><processMetadataValues><name>CanvasMode</name><value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value></processMetadataValues>
+<processType>AutoLaunchedFlow</processType>
+
+<start><locationX>0</locationX><locationY>0</locationY><connector><targetReference>Set_Opt_Outs</targetReference></connector><filterFormula>OR({!$Record.AK9I_Do_Not_Contact__c}, TEXT({!$Record.Status})=&quot;Do Not Contact&quot;)</filterFormula><object>Lead</object><recordTriggerType>CreateAndUpdate</recordTriggerType><triggerType>RecordBeforeSave</triggerType></start>
+<status>Active</status>
+</Flow>

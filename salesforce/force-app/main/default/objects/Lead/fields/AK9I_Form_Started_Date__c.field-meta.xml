@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Form_Started_Date__c</fullName>
+    <description>When the person finished screen 1 of the enrollment form (partial save). Drives the partial-form series.</description>
+    <externalId>false</externalId>
+    <label>Enrollment Form Started</label>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>
