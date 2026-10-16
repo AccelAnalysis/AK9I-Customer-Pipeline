@@ -48,6 +48,40 @@
 - Bounce couldn't be tested because the bounce fields can't be written. The bounce logic is a single field check.
 - Test records and logs deleted. Backups for this build are in `backup-20261016/b8`.
 
+## 1c. Third build (Oct 16, ~7:50 AM ET): F0 on the active emails, and all copy-doc emails activated (Jonathan approved by voice)
+| # | Dry run | Real deploy | Contents |
+|---|---|---|---|
+| L10 | 0AfO300000jP6TJKA0 | 0AfO300000jP6Y9KAK | **F0** v1→v2 (runs in system mode so guest/webinar callers work). **Enrollment_Engagement_Strategy** v6→v7 (6 student sends gated, solicited). **Nurture_Email_Scheduler** v3→v5 (12 sends gated as marketing/unsolicited; rebuilt from active v3, and the old Draft v5 was overwritten; its JSON is in b9). **Webinar_Registration** v31→v32 (registrant confirmation gated; internal alert not gated). **Generate_Stripe_Payment_Link** v1→v2 (gated) |
+| L11 | 0AfO300000jP2nuKAC | 0AfO300000jP6ptKAC | **58 templates** set available = true (copy unchanged). **8 flows activated:** AK9I_Consideration_Series, Partial_Form_Series, Interview_Scheduling_Email, Interview_Not_Scheduled_Email (staff), Start_Notice_Email (staff), Acceptance_Letter_and_Fee (moved to an async path because of the Stripe callout), Enrolled_Confirmation_Email, Employment_Survey_Send (all v1) |
+| L12 | 0AfO300000jP6t7KAC | 0AfO300000jP6ujKAC | **Fault paths** on every send in those 8 flows, so a failed email can't roll back the record save. They're now version 2 |
+
+**Blocked sends:** when F0 blocks a send, the flow skips it and continues. In Nurture, the "email sent" marker still advances.
+
+**Tests** (test records deleted afterwards):
+
+| Case | F0 decision (logged) |
+|---|---|
+| Interested-Future lead with consent | Allowed (AK9I_C_IF_Web) |
+| Same lead, 2nd email | Allowed |
+| Same lead, 3rd email | Blocked: 30-day cap |
+| Lead without consent | Blocked: no marketing consent |
+| DNC lead | Blocked: Do Not Contact |
+| Student, Engagement email | Allowed |
+| Opted-out student, Engagement email | Blocked: opted out |
+| Applied Opportunity (E1 interview email) | Allowed |
+| Accepted Opportunity (async acceptance flow) | Allowed |
+
+**Deliverability:** cleanpipe has email delivery turned off ("The organization is not permitted to send email"). No email was sent and no EmailMessage records were created. Each send hit its fault path.
+
+**Could not test or deliver:**
+- **Nurture (status change):** a Nurture status change fails because the hardcoded campaign 701Po0000127zbP is missing. That's a pre-existing problem.
+- **Scheduled paths:** P1–P3, I2/I3, Nurture tiers and the survey weren't time-tested.
+- **Templates with no sending flow:** R1 recurring and A1 alumni (the templates are available, but nothing sends them).
+- **Enrollment form email:** the internal application review email is a staff alert, so it isn't gated.
+- **Placeholder links:** {BOOKINGS_URL}, {DOC_UPLOAD_URL}, {EMPLOYMENT_SURVEY_URL}, {ENROLLMENT_FORM_URL}, {COURSE_INFO_URL}, {ALUMNI_URL} and {BGK9_RELATIONSHIP_NOTE} are literal text, so those links are broken.
+- **Stripe:** there's no test account, so the fee link step is skipped.
+- **DocuSign:** not installed, so the survey sends only the email.
+
 ## 2. Tests (anonymous Apex in cleanpipe; all test records deleted afterwards)
 **Leads:**
 - New Lead → 1-Awareness; Interested, Nurture or Applicant → 2-Consideration.

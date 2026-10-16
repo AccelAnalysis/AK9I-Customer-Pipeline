@@ -1,6 +1,6 @@
 # AK9I pipeline email copy (DRAFT for Jonathan's approval)
 
-Status: all new templates are deployed to the cleanpipe sandbox as **classic text templates, not available for use** (`available=false`), in the hidden folder "AK9I Pipeline (Drafts)". No flow sends them yet. Every email-sending flow is inactive.
+Status (updated Oct 16, ~7:55 AM ET): all 58 new templates are **available (active) in cleanpipe only**, approved as-is by Jonathan; production is untouched. Originally deployed as classic text templates with `available=false`, in the hidden folder "AK9I Pipeline (Drafts)". No flow sends them yet. Every email-sending flow is inactive.
 
 Placeholders: `{ENROLLMENT_FORM_URL}` (form link; production domain pending) `{BOOKINGS_URL}`, `{DOC_UPLOAD_URL}`, `{EMPLOYMENT_SURVEY_URL}`, `{ALUMNI_URL}` (matching custom labels AK9I_Bookings_URL etc. exist for flows; replace when the real URLs are known).
 

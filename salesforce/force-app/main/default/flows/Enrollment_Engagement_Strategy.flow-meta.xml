@@ -321,7 +321,13 @@
             </value>
         </assignmentItems>
     </assignments>
-    <decisions>
+    <decisions><name>F0_Active_Student_Outreach_2_week_Check</name><label>F0 allowed? Active_Student_Outreach_2_weeks</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_Active_Student_Outreach_2_week_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_Active_Student_Outreach_2_week.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>Active_Student_Outreach_2_weeks</targetReference></connector><label>Allowed</label></rules></decisions>
+<decisions><name>F0_graduation_preparation_Check</name><label>F0 allowed? graduation_preparation</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_graduation_preparation_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_graduation_preparation.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>graduation_preparation</targetReference></connector><label>Allowed</label></rules></decisions>
+<decisions><name>F0_Send_Application_Received_Emai_Check</name><label>F0 allowed? Send_Application_Received_Email</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_Send_Application_Received_Emai_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_Send_Application_Received_Emai.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>Send_Application_Received_Email</targetReference></connector><label>Allowed</label></rules></decisions>
+<decisions><name>F0_Send_Graduation_Day_Email_Check</name><label>F0 allowed? Send_Graduation_Day_Email</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_Send_Graduation_Day_Email_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_Send_Graduation_Day_Email.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>Send_Graduation_Day_Email</targetReference></connector><label>Allowed</label></rules></decisions>
+<decisions><name>F0_X30_days_before_class_starts_Check</name><label>F0 allowed? X30_days_before_class_starts</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_X30_days_before_class_starts_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_X30_days_before_class_starts.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>X30_days_before_class_starts</targetReference></connector><label>Allowed</label></rules></decisions>
+<decisions><name>F0_X7_days_before_class_starts_em_Check</name><label>F0 allowed? X7_days_before_class_starts_email</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_X7_days_before_class_starts_em_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_X7_days_before_class_starts_em.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>X7_days_before_class_starts_email</targetReference></connector><label>Allowed</label></rules></decisions>
+<decisions>
         <name>Application_Received</name>
         <label>Application Received?</label>
         <locationX>0</locationX>
@@ -345,7 +351,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Send_Application_Received_Email</targetReference>
+                <targetReference>F0_Send_Application_Received_Emai</targetReference>
             </connector>
             <label>Application Received</label>
         </rules>
@@ -374,7 +380,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Send_Graduation_Day_Email</targetReference>
+                <targetReference>F0_Send_Graduation_Day_Email</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -403,7 +409,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>X30_days_before_class_starts</targetReference>
+                <targetReference>F0_X30_days_before_class_starts</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -432,7 +438,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>graduation_preparation</targetReference>
+                <targetReference>F0_graduation_preparation</targetReference>
             </connector>
             <label>2 weeks prior to graduation</label>
         </rules>
@@ -468,7 +474,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Active_Student_Outreach_2_weeks</targetReference>
+                <targetReference>F0_Active_Student_Outreach_2_week</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -497,7 +503,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>X7_days_before_class_starts_email</targetReference>
+                <targetReference>F0_X7_days_before_class_starts_em</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -598,6 +604,12 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+<subflows><name>F0_Active_Student_Outreach_2_week</name><label>F0 guarded send: Active_Student_Outreach_2_weeks</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_Active_Student_Outreach_2_week_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>Active_Student_Outreach_2_weeks</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
+<subflows><name>F0_graduation_preparation</name><label>F0 guarded send: graduation_preparation</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_graduation_preparation_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>graduation_preparation</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
+<subflows><name>F0_Send_Application_Received_Emai</name><label>F0 guarded send: Send_Application_Received_Email</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_Send_Application_Received_Emai_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>Send_Application_Received_Email</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
+<subflows><name>F0_Send_Graduation_Day_Email</name><label>F0 guarded send: Send_Graduation_Day_Email</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_Send_Graduation_Day_Email_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>Send_Graduation_Day_Email</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
+<subflows><name>F0_X30_days_before_class_starts</name><label>F0 guarded send: X30_days_before_class_starts</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_X30_days_before_class_starts_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>X30_days_before_class_starts</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
+<subflows><name>F0_X7_days_before_class_starts_em</name><label>F0 guarded send: X7_days_before_class_starts_email</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_X7_days_before_class_starts_em_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>X7_days_before_class_starts_email</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
     <variables>
         <name>varEmailError</name>
         <dataType>String</dataType>

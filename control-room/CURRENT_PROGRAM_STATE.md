@@ -1,6 +1,6 @@
 # Current Program State
 
-**As of:** 2026-08-17 (Salesforce status updated 2026-10-16; the August baseline below was not re-verified)
+**As of:** 2026-08-17 (Salesforce status updated 2026-10-16 ~8 AM ET; the August baseline below was not re-verified)
 
 ## Current wave
 
@@ -20,7 +20,7 @@
     - Docs upload flow; form v12 as a Draft.
     - F0 guarded send (`AK9I_F0_Guarded_Send`): blocks DNC, opt-outs, bounces and marketing sends without consent; enforces the 2-unsolicited-per-30-days cap; logs to the Outreach Log.
     - 58 email templates (`available=false`).
-  - **Inactive:** every new email-sending flow is a Draft, and no email was sent.
+  - **Email automation (cleanpipe only, approved by Jonathan 2026-10-16):** all copy-doc email flows and the 58 templates are **active**. Every active automated email to a lead or student goes through F0 first: the existing Engagement, Nurture, Webinar and Stripe-link flows, plus the new series. Cleanpipe has email delivery turned off, so nothing was delivered; firing and Outreach Log entries were verified.
   - **Tests:** sandbox Apex tests passed. Guest form submission, Stripe test mode, actual email delivery and DocuSign are **not verified**.
   - **Production:** no metadata has been deployed. Production promotion, domain mapping and Lead Status delete/replace need Jonathan's approval.
   - **Details:** `docs/cleanpipe-7stage/` (build report, plan, email copy). Copy wording is pending Jonathan's and Lance's approval.

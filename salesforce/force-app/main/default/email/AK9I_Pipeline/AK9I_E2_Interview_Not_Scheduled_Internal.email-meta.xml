@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <description>DRAFT - pending Jonathan's wording approval. Trigger: 2 days after Applied, no Interview Scheduled date (to Michelle)</description>
     <encodingKey>UTF-8</encodingKey>
     <name>E2 Internal: interview not scheduled</name>
