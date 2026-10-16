@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>DRAFT - pending Jonathan's wording approval. Trigger: Lead Status = Applicant (form started, not submitted) + 1 day</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>P1 Partial form - day 1</name>
+    <style>none</style>
+    <subject>Your AK9I enrollment form is saved</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

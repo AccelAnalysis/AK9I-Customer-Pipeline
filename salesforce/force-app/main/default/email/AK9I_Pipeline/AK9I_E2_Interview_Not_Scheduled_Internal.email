@@ -1,0 +1,9 @@
+Michelle,
+
+{!Contact.Name} applied two days ago and has not booked a phone interview yet.
+
+Email: {!Contact.Email}
+Phone: {!Contact.Phone}
+Course: {!Contact.Course__c}
+
+A Salesforce task has also been created for you. Please reach out to schedule the interview.

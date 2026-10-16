@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Employment_Status_30_Day__c</fullName>
+    <description>Answer from the 30-day employment confirmation survey.</description>
+    <externalId>false</externalId>
+    <label>30-Day Employment Status</label>
+    <required>false</required><valueSet><restricted>true</restricted><valueSetDefinition><sorted>false</sorted><value><fullName>Employed - K9 field</fullName><default>false</default><label>Employed - K9 field</label></value><value><fullName>Employed - other field</fullName><default>false</default><label>Employed - other field</label></value><value><fullName>Seeking employment</fullName><default>false</default><label>Seeking employment</label></value><value><fullName>Continuing education</fullName><default>false</default><label>Continuing education</label></value><value><fullName>Military service</fullName><default>false</default><label>Military service</label></value><value><fullName>Other</fullName><default>false</default><label>Other</label></value></valueSetDefinition></valueSet>
+    <type>Picklist</type>
+</CustomField>

@@ -1,0 +1,14 @@
+Hi {!Contact.FirstName},
+
+Congratulations! Your enrollment is complete. We have received your documents, your administrative fee and your funding confirmation.
+
+Your course: {!Contact.Course__c}
+Start date: {!Contact.Course_Start_Date__c}
+
+We will be in touch before your start date with what to bring and where to go. If you have questions in the meantime, reply to this email or call (757) 304-9600.
+
+Best regards,
+The AK9I Team
+American K-9 Interdiction
+4007 Burdette Rd, Carrsville, VA 23315
+enrollment@ak9i.com | (757) 304-9600

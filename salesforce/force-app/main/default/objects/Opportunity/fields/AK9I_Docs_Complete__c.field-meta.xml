@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Docs_Complete__c</fullName>
+    <description>All three enrollment documents received on the Student Contact.</description>
+    <externalId>false</externalId>
+    <label>Student Docs Complete</label>
+    <formula>Student_Contact__r.AK9I_Documents_Complete__c</formula><formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <type>Checkbox</type>
+</CustomField>

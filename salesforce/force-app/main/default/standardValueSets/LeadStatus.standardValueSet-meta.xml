@@ -41,6 +41,12 @@
         <fullName>Applicant</fullName>
         <default>false</default>
         <label>Applicant</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Converted</fullName>
+        <default>false</default>
+        <label>Converted</label>
         <converted>true</converted>
     </standardValue>
 </StandardValueSet>

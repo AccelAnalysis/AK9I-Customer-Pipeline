@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+<apiVersion>67.0</apiVersion>
+<actionCalls><name>Send</name><label>Send</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailAddresses</name><value><elementReference>Get_Michelle.Email</elementReference></value></inputParameters><inputParameters><name>emailSubject</name><value><stringValue>Applicant has not scheduled a phone interview</stringValue></value></inputParameters><inputParameters><name>emailBody</name><value><elementReference>ttBody</elementReference></value></inputParameters><inputParameters><name>sendRichBody</name><value><booleanValue>false</booleanValue></value></inputParameters></actionCalls>
+<decisions><name>Still_Not_Scheduled</name><label>Still Not Scheduled</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Default</defaultConnectorLabel><rules><name>Still_Not_Scheduled_Yes</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>Get_Contact.AK9I_Interview_Scheduled_Date__c</leftValueReference><operator>IsNull</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><conditions><leftValueReference>Get_Opp_Now.Enrollment_Status__c</leftValueReference><operator>EqualTo</operator><rightValue><stringValue>Applied</stringValue></rightValue></conditions><connector><targetReference>Get_Michelle</targetReference></connector><label>Still Not Scheduled Yes</label></rules></decisions>
+<description>INACTIVE pending approval. Email to Michelle Hartman 2 days after Applied when no interview is scheduled (task is created by the active flow AK9I_Interview_Not_Scheduled_Task).</description>
+<environments>Default</environments>
+<interviewLabel>AK9I Interview Not Scheduled Email {!$Flow.CurrentDateTime}</interviewLabel>
+<label>AK9I Interview Not Scheduled Email</label>
+<processMetadataValues><name>BuilderType</name><value><stringValue>LightningFlowBuilder</stringValue></value></processMetadataValues><processMetadataValues><name>CanvasMode</name><value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value></processMetadataValues>
+<processType>AutoLaunchedFlow</processType>
+<recordLookups><name>Get_Contact</name><label>Get Contact</label><locationX>0</locationX><locationY>0</locationY><assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound><connector><targetReference>Get_Opp_Now</targetReference></connector><filterLogic>and</filterLogic><filters><field>Id</field><operator>EqualTo</operator><value><elementReference>$Record.Student_Contact__c</elementReference></value></filters><getFirstRecordOnly>true</getFirstRecordOnly><object>Contact</object><storeOutputAutomatically>true</storeOutputAutomatically></recordLookups>
+<recordLookups><name>Get_Opp_Now</name><label>Get Opp Now</label><locationX>0</locationX><locationY>0</locationY><assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound><connector><targetReference>Still_Not_Scheduled</targetReference></connector><filterLogic>and</filterLogic><filters><field>Id</field><operator>EqualTo</operator><value><elementReference>$Record.Id</elementReference></value></filters><getFirstRecordOnly>true</getFirstRecordOnly><object>Opportunity</object><storeOutputAutomatically>true</storeOutputAutomatically></recordLookups>
+<recordLookups><name>Get_Michelle</name><label>Get Michelle</label><locationX>0</locationX><locationY>0</locationY><assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound><connector><targetReference>Send</targetReference></connector><filterLogic>and</filterLogic><filters><field>Email</field><operator>StartsWith</operator><value><stringValue>mhartman@ak9i.com</stringValue></value></filters><filters><field>IsActive</field><operator>EqualTo</operator><value><booleanValue>true</booleanValue></value></filters><getFirstRecordOnly>true</getFirstRecordOnly><object>User</object><storeOutputAutomatically>true</storeOutputAutomatically></recordLookups>
+
+<start><locationX>0</locationX><locationY>0</locationY><filterFormula>AND(TEXT({!$Record.Enrollment_Status__c})=&quot;Applied&quot;,NOT(ISBLANK({!$Record.Student_Contact__c})))</filterFormula><object>Opportunity</object><recordTriggerType>Create</recordTriggerType><scheduledPaths><name>Two_Days_After_Applied</name><connector><targetReference>Get_Contact</targetReference></connector><label>Two Days After Applied</label><offsetNumber>2</offsetNumber><offsetUnit>Days</offsetUnit><recordField>CreatedDate</recordField><timeSource>RecordField</timeSource></scheduledPaths><triggerType>RecordAfterSave</triggerType></start>
+<status>Draft</status>
+<textTemplates><name>ttBody</name><isViewedAsPlainText>true</isViewedAsPlainText><text>Michelle,
+
+{!Get_Contact.FirstName} {!Get_Contact.LastName} applied two days ago and has not booked a phone interview yet.
+
+Email: {!Get_Contact.Email}
+Phone: {!Get_Contact.Phone}
+
+A Salesforce task has also been created for you.</text></textTemplates>
+</Flow>

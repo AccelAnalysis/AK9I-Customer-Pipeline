@@ -1,0 +1,5 @@
+Michelle,
+
+An actual start date of {!Contact.AK9I_Actual_Start_Date__c} was recorded for {!Contact.Name} ({!Contact.Course__c}).
+
+Please confirm attendance and set Enrollment Status to Active Student on the Enrollment Opportunity. If the student did not attend, record a no-show.

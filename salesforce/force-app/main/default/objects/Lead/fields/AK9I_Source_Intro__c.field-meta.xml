@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Source_Intro__c</fullName>
+    <description>Source-tailored opening sentence merged into Stage 2 (Consideration) emails. Edit the wording here.</description>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(LeadSource),
+"Advertisement", "Thank you for responding to our ad.",
+"Contact Us", "Thank you for reaching out to us through our website.",
+"Instagram", "Thanks for connecting with us on Instagram.",
+"Facebook", "Thanks for connecting with us on Facebook.",
+"Job Fair", "It was great to meet you at the job fair.",
+"Trade Show", "It was great to meet you at the trade show.",
+"Referral", "We are glad someone you know pointed you our way.",
+"Skillbridge", "Thank you for your interest in training with us through the DoD SkillBridge program.",
+"TAPS", "Thank you for connecting with us through your transition (TAP) program.",
+"Web", "Thank you for visiting our website.",
+"Word of mouth", "We are glad you heard about us.",
+"YouTube", "Thanks for watching our videos on YouTube.",
+"Other", "Thank you for your interest in American K-9 Interdiction.",
+"BGK9", "Thank you for your interest through BGK9.",
+"Thank you for your interest in American K-9 Interdiction.")</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Source Intro (email)</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

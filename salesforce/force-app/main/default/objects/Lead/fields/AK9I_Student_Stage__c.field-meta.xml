@@ -13,37 +13,37 @@
             <value>
                 <fullName>Awareness</fullName>
                 <default>false</default>
-                <label>Awareness</label>
+                <label>1-Awareness</label>
             </value>
             <value>
                 <fullName>Consideration</fullName>
                 <default>false</default>
-                <label>Consideration</label>
+                <label>2-Consideration</label>
             </value>
             <value>
                 <fullName>Enrollment</fullName>
                 <default>false</default>
-                <label>Enrollment</label>
+                <label>3-Enrollment</label>
             </value>
             <value>
                 <fullName>Training and Experience</fullName>
                 <default>false</default>
-                <label>Training and Experience</label>
+                <label>4-Training &amp; Experience</label>
             </value>
             <value>
                 <fullName>Loyalty</fullName>
                 <default>false</default>
-                <label>Loyalty</label>
+                <label>5-Loyalty</label>
             </value>
             <value>
                 <fullName>Recurring Relationships</fullName>
                 <default>false</default>
-                <label>Recurring Relationships</label>
+                <label>6-Recurring</label>
             </value>
             <value>
                 <fullName>Advocacy</fullName>
                 <default>false</default>
-                <label>Advocacy</label>
+                <label>7-Advocacy</label>
             </value>
         </valueSetDefinition>
     </valueSet>

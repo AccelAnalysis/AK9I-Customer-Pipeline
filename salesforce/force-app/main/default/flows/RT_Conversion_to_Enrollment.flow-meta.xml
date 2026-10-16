@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>64.0</apiVersion>
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>Is_Student_Account</name>
         <label>Is Student Account</label>
@@ -23,7 +24,7 @@
             <label>Check Student Account</label>
         </rules>
     </decisions>
-    <description>Record Type Conversion to Enrollment after lead is converted to account S: Student</description>
+    <description>Record Type Conversion to Enrollment after a lead is converted (IsConverted = true; Lead Status Converted) to account S: Student. Repointed 2026-10-16 from Status = Applicant.</description>
     <environments>Default</environments>
     <interviewLabel>RT Conversion to Enrollment {!$Flow.CurrentDateTime}</interviewLabel>
     <label>RT Conversion to Enrollment</label>
@@ -143,12 +144,13 @@
         <connector>
             <targetReference>Get_ConvertedContactEnrolled</targetReference>
         </connector>
-        <filterLogic>1</filterLogic>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
         <filters>
-            <field>Status</field>
+            <field>IsConverted</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Applicant</stringValue>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <object>Lead</object>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns><field>FIRST_NAME</field></columns><columns><field>LAST_NAME</field></columns><columns><field>EMAIL</field></columns><columns><field>PHONE1</field></columns><columns><field>CREATED_DATE</field></columns><columns><field>Contact.Status__c</field></columns>
+    <description>Applied students with no phone interview booked more than 2 days after their Contact was created (converted).</description>
+    <filter><criteriaItems><column>Contact.Status__c</column><columnToColumn>false</columnToColumn><isUnlocked>true</isUnlocked><operator>equals</operator><value>Applied,Application Received</value></criteriaItems><criteriaItems><column>Contact.AK9I_Interview_Scheduled_Date__c</column><columnToColumn>false</columnToColumn><isUnlocked>true</isUnlocked><operator>equals</operator><value></value></criteriaItems><criteriaItems><column>CREATED_DATE</column><columnToColumn>false</columnToColumn><isUnlocked>true</isUnlocked><operator>lessThan</operator><value>N_DAYS_AGO:2</value></criteriaItems></filter>
+    <format>Tabular</format>
+    
+    <name>R5 Interview Not Scheduled</name>
+    <params><name>co</name><value>1</value></params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter><dateColumn>CREATED_DATE</dateColumn><interval>INTERVAL_CUSTOM</interval></timeFrameFilter>
+</Report>

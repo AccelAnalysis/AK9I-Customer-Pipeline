@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>DRAFT - pending Jonathan's wording approval. Trigger: Still Applicant + 10 days (last partial-form email)</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>P3 Partial form - day 10</name>
+    <style>none</style>
+    <subject>We saved your spot in the process</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

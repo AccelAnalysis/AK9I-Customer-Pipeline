@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AK9I_Employment_Survey_Received__c</fullName>
+    <description>Date the 30-day employment confirmation survey was received. Drives Student Stage 6 (Recurring).</description>
+    <externalId>false</externalId>
+    <label>Employment Survey Received</label>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>
