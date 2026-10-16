@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
+<actionCalls>
         <name>Active_Student_Outreach_2_weeks</name>
         <label>Active Student Outreach 2 weeks</label>
         <locationX>0</locationX>
@@ -51,7 +51,7 @@
         <offset>0</offset>
         <versionString>3.0.1</versionString>
     </actionCalls>
-    <actionCalls>
+<actionCalls>
         <name>graduation_preparation</name>
         <label>graduation preparation</label>
         <locationX>0</locationX>
@@ -102,7 +102,7 @@
         <offset>0</offset>
         <versionString>3.0.1</versionString>
     </actionCalls>
-    <actionCalls>
+<actionCalls>
         <name>Send_Application_Received_Email</name>
         <label>Send Application Received Email</label>
         <locationX>0</locationX>
@@ -153,7 +153,7 @@
         <offset>0</offset>
         <versionString>3.0.1</versionString>
     </actionCalls>
-    <actionCalls>
+<actionCalls>
         <name>Send_Graduation_Day_Email</name>
         <label>Send Graduation Day Email</label>
         <locationX>0</locationX>
@@ -204,7 +204,7 @@
         <offset>0</offset>
         <versionString>3.0.1</versionString>
     </actionCalls>
-    <actionCalls>
+<actionCalls>
         <name>X30_days_before_class_starts</name>
         <label>30 days before class starts</label>
         <locationX>0</locationX>
@@ -255,7 +255,7 @@
         <offset>0</offset>
         <versionString>3.0.1</versionString>
     </actionCalls>
-    <actionCalls>
+<actionCalls>
         <name>X7_days_before_class_starts_email</name>
         <label>7 days before class starts</label>
         <locationX>0</locationX>
@@ -306,9 +306,9 @@
         <offset>0</offset>
         <versionString>3.0.1</versionString>
     </actionCalls>
-    <apiVersion>67.0</apiVersion>
-    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
+<apiVersion>67.0</apiVersion>
+<areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+<assignments>
         <name>Email_Send_Failed</name>
         <label>Email Send Failed</label>
         <locationX>0</locationX>
@@ -321,7 +321,7 @@
             </value>
         </assignmentItems>
     </assignments>
-    <decisions><name>F0_Active_Student_Outreach_2_week_Check</name><label>F0 allowed? Active_Student_Outreach_2_weeks</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_Active_Student_Outreach_2_week_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_Active_Student_Outreach_2_week.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>Active_Student_Outreach_2_weeks</targetReference></connector><label>Allowed</label></rules></decisions>
+<decisions><name>F0_Active_Student_Outreach_2_week_Check</name><label>F0 allowed? Active_Student_Outreach_2_weeks</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_Active_Student_Outreach_2_week_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_Active_Student_Outreach_2_week.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>Active_Student_Outreach_2_weeks</targetReference></connector><label>Allowed</label></rules></decisions>
 <decisions><name>F0_graduation_preparation_Check</name><label>F0 allowed? graduation_preparation</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_graduation_preparation_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_graduation_preparation.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>graduation_preparation</targetReference></connector><label>Allowed</label></rules></decisions>
 <decisions><name>F0_Send_Application_Received_Emai_Check</name><label>F0 allowed? Send_Application_Received_Email</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_Send_Application_Received_Emai_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_Send_Application_Received_Emai.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>Send_Application_Received_Email</targetReference></connector><label>Allowed</label></rules></decisions>
 <decisions><name>F0_Send_Graduation_Day_Email_Check</name><label>F0 allowed? Send_Graduation_Day_Email</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Blocked by F0 (skip send)</defaultConnectorLabel><rules><name>F0_Send_Graduation_Day_Email_Allowed</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>F0_Send_Graduation_Day_Email.outCanSend</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>Send_Graduation_Day_Email</targetReference></connector><label>Allowed</label></rules></decisions>
@@ -335,7 +335,7 @@
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes_Application_Received</name>
-            <conditionLogic>or</conditionLogic>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Status__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -350,13 +350,20 @@
                     <stringValue>Applied</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>fStatusNewlyReceived</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>F0_Send_Application_Received_Emai</targetReference>
             </connector>
             <label>Application Received</label>
         </rules>
     </decisions>
-    <decisions>
+<decisions>
         <name>Graduation_Day_Email_Active_Student</name>
         <label>Graduation Day Email</label>
         <locationX>0</locationX>
@@ -385,7 +392,7 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <decisions>
+<decisions>
         <name>Is_student_accepted</name>
         <label>30 days prior to class start</label>
         <locationX>0</locationX>
@@ -409,12 +416,12 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>F0_X30_days_before_class_starts</targetReference>
+                <targetReference>Get_Recent_E5_30</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
-    <decisions>
+<decisions>
         <name>X2_weeks_before_graduation</name>
         <label>2 weeks before graduation</label>
         <locationX>0</locationX>
@@ -443,7 +450,7 @@
             <label>2 weeks prior to graduation</label>
         </rules>
     </decisions>
-    <decisions>
+<decisions>
         <name>x2_weeks_into_course</name>
         <label>2 weeks into course</label>
         <locationX>0</locationX>
@@ -479,7 +486,7 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <decisions>
+<decisions>
         <name>X7_days_before_class_start</name>
         <label>7 days before class start</label>
         <locationX>0</locationX>
@@ -503,34 +510,42 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>F0_X7_days_before_class_starts_em</targetReference>
+                <targetReference>Get_Recent_E5_7</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
-    <environments>Default</environments>
-    <interviewLabel>Enrollment Engagement Strategy {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Enrollment Engagement Strategy</label>
-    <processMetadataValues>
+<decisions><name>Reminder_30_Spacing</name><label>-30 reminder still useful?</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Skip (window passed or E5 within 2 days)</defaultConnectorLabel><rules><name>Reminder_30_OK</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>fWindowOpen_30</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><conditions><leftValueReference>Get_Recent_E5_30</leftValueReference><operator>IsNull</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>F0_X30_days_before_class_starts</targetReference></connector><label>Send</label></rules></decisions>
+<decisions><name>Reminder_7_Spacing</name><label>-7 reminder still useful?</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Skip (window passed or E5 within 2 days)</defaultConnectorLabel><rules><name>Reminder_7_OK</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>fWindowOpen_7</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><conditions><leftValueReference>Get_Recent_E5_7</leftValueReference><operator>IsNull</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>F0_X7_days_before_class_starts_em</targetReference></connector><label>Send</label></rules></decisions>
+<environments>Default</environments>
+<formulas><name>fWindowOpen_30</name><dataType>Boolean</dataType><expression>AND(NOT(ISBLANK({!$Record.Course_Start_Date__c})),{!$Record.Course_Start_Date__c} - 30 &gt;= {!$Flow.CurrentDate})</expression></formulas>
+<formulas><name>fWindowOpen_7</name><dataType>Boolean</dataType><expression>AND(NOT(ISBLANK({!$Record.Course_Start_Date__c})),{!$Record.Course_Start_Date__c} - 7 &gt;= {!$Flow.CurrentDate})</expression></formulas>
+<formulas><name>fE5WindowStart</name><dataType>DateTime</dataType><expression>{!$Flow.CurrentDateTime} - 2</expression></formulas>
+<formulas><name>fStatusNewlyReceived</name><description>True only when Status__c moved into Applied/Application Received on this save (or the Contact was created there), so ordinary edits at Applied do not resend.</description><dataType>Boolean</dataType><expression>OR(ISNEW(), AND(ISCHANGED({!$Record.Status__c}), NOT(ISPICKVAL(PRIORVALUE({!$Record.Status__c}),&quot;Applied&quot;)), NOT(ISPICKVAL(PRIORVALUE({!$Record.Status__c}),&quot;Application Received&quot;))))</expression></formulas>
+<interviewLabel>Enrollment Engagement Strategy {!$Flow.CurrentDateTime}</interviewLabel>
+<label>Enrollment Engagement Strategy</label>
+<processMetadataValues>
         <name>BuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
-    <processMetadataValues>
+<processMetadataValues>
         <name>CanvasMode</name>
         <value>
             <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
-    <processMetadataValues>
+<processMetadataValues>
         <name>OriginBuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
-    <processType>AutoLaunchedFlow</processType>
-    <start>
+<processType>AutoLaunchedFlow</processType>
+<recordLookups><name>Get_Recent_E5_30</name><label>E5 sent in last 2 days? (-30)</label><locationX>0</locationX><locationY>0</locationY><assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound><connector><targetReference>Reminder_30_Spacing</targetReference></connector><filterLogic>and</filterLogic><filters><field>Contact__c</field><operator>EqualTo</operator><value><elementReference>$Record.Id</elementReference></value></filters><filters><field>Template_Version__c</field><operator>EqualTo</operator><value><stringValue>AK9I_E5_Enrollment_Complete</stringValue></value></filters><filters><field>Outcome__c</field><operator>StartsWith</operator><value><stringValue>Allowed</stringValue></value></filters><filters><field>Sent_At__c</field><operator>GreaterThanOrEqualTo</operator><value><elementReference>fE5WindowStart</elementReference></value></filters><getFirstRecordOnly>true</getFirstRecordOnly><object>AK9I_Outreach_Log__c</object><queriedFields>Id</queriedFields><storeOutputAutomatically>true</storeOutputAutomatically></recordLookups>
+<recordLookups><name>Get_Recent_E5_7</name><label>E5 sent in last 2 days? (-7)</label><locationX>0</locationX><locationY>0</locationY><assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound><connector><targetReference>Reminder_7_Spacing</targetReference></connector><filterLogic>and</filterLogic><filters><field>Contact__c</field><operator>EqualTo</operator><value><elementReference>$Record.Id</elementReference></value></filters><filters><field>Template_Version__c</field><operator>EqualTo</operator><value><stringValue>AK9I_E5_Enrollment_Complete</stringValue></value></filters><filters><field>Outcome__c</field><operator>StartsWith</operator><value><stringValue>Allowed</stringValue></value></filters><filters><field>Sent_At__c</field><operator>GreaterThanOrEqualTo</operator><value><elementReference>fE5WindowStart</elementReference></value></filters><getFirstRecordOnly>true</getFirstRecordOnly><object>AK9I_Outreach_Log__c</object><queriedFields>Id</queriedFields><storeOutputAutomatically>true</storeOutputAutomatically></recordLookups>
+<start>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
@@ -603,14 +618,14 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+<status>Active</status>
 <subflows><name>F0_Active_Student_Outreach_2_week</name><label>F0 guarded send: Active_Student_Outreach_2_weeks</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_Active_Student_Outreach_2_week_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>Active_Student_Outreach_2_weeks</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
 <subflows><name>F0_graduation_preparation</name><label>F0 guarded send: graduation_preparation</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_graduation_preparation_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>graduation_preparation</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
 <subflows><name>F0_Send_Application_Received_Emai</name><label>F0 guarded send: Send_Application_Received_Email</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_Send_Application_Received_Emai_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>Send_Application_Received_Email</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
 <subflows><name>F0_Send_Graduation_Day_Email</name><label>F0 guarded send: Send_Graduation_Day_Email</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_Send_Graduation_Day_Email_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>Send_Graduation_Day_Email</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
 <subflows><name>F0_X30_days_before_class_starts</name><label>F0 guarded send: X30_days_before_class_starts</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_X30_days_before_class_starts_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>X30_days_before_class_starts</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
 <subflows><name>F0_X7_days_before_class_starts_em</name><label>F0 guarded send: X7_days_before_class_starts_email</label><locationX>0</locationX><locationY>0</locationY><connector><targetReference>F0_X7_days_before_class_starts_em_Check</targetReference></connector><flowName>AK9I_F0_Guarded_Send</flowName><inputAssignments><name>inContactId</name><value><elementReference>$Record.Id</elementReference></value></inputAssignments><inputAssignments><name>inTemplateName</name><value><stringValue>X7_days_before_class_starts_email</stringValue></value></inputAssignments><inputAssignments><name>inIsMarketing</name><value><booleanValue>false</booleanValue></value></inputAssignments><inputAssignments><name>inIsSolicited</name><value><booleanValue>true</booleanValue></value></inputAssignments><storeOutputAutomatically>true</storeOutputAutomatically></subflows>
-    <variables>
+<variables>
         <name>varEmailError</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
