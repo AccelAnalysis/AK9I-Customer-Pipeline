@@ -1,6 +1,6 @@
 # Current Program State
 
-**As of:** 2026-08-17 (Salesforce source note added 2026-10-14; the August baseline below was not re-verified)
+**As of:** 2026-08-17 (Salesforce status updated 2026-10-16; the August baseline below was not re-verified)
 
 ## Current wave
 
@@ -11,7 +11,20 @@
 - Control Room operating model: installed and merged to `main`.
 - Customer journey architecture: established at initial-governance level.
 - Shared contracts: established at initial-governance level; physical CRM/system implementation is **not verified**.
-- Salesforce DX source (2026-10-14): `salesforce/` now holds undeployed pipeline metadata (phase-1 Lead/Contact fields, `AK9I_Outreach_Log__c`, the `AK9I_Pipeline_Fields` permission set, and lead-conversion merge inputs). Empty homes exist for phase 1b fields, flows F0–F13, email templates T01–T20, reports, and layouts. This repository has not deployed that metadata and has not connected to any org. The later sandbox target named in that source is alias `ak9i-sandbox` (sandbox name cleanpipe). Files in git are not CRM implementation.
+- Salesforce pipeline (2026-10-16): **SANDBOX-VERIFIED in `cleanpipe` only; production UNTOUCHED.**
+  - **Deployed to cleanpipe (targeted deploys, dry run first, test records deleted):**
+    - Phase 1/1b fields and `AK9I_Outreach_Log__c`.
+    - The 7-stage model (Student Stage 1-Awareness … 7-Advocacy) and its stage-setter flows.
+    - The Converted/Applicant Lead Status rework (merged as PR #23).
+    - Reports R1–R5.
+    - Docs upload flow; form v12 as a Draft.
+    - F0 guarded send (`AK9I_F0_Guarded_Send`): blocks DNC, opt-outs, bounces and marketing sends without consent; enforces the 2-unsolicited-per-30-days cap; logs to the Outreach Log.
+    - 58 email templates (`available=false`).
+  - **Inactive:** every new email-sending flow is a Draft, and no email was sent.
+  - **Tests:** sandbox Apex tests passed. Guest form submission, Stripe test mode, actual email delivery and DocuSign are **not verified**.
+  - **Production:** no metadata has been deployed. Production promotion, domain mapping and Lead Status delete/replace need Jonathan's approval.
+  - **Details:** `docs/cleanpipe-7stage/` (build report, plan, email copy). Copy wording is pending Jonathan's and Lance's approval.
+  - Sandbox verification is not production CRM implementation and not evidence of pipeline performance.
 - Actual operating baseline: **UNKNOWN — BASELINE REQUIRED** overall.
 - Advocacy baseline: partial public evidence is now recorded under ADV-001; internal process/system evidence, ownership, consent/provenance, request events, and closed-loop referral measurement remain **UNKNOWN — INTERNAL BASELINE REQUIRED**.
 - Outcomes baseline: partial evidence now confirms public career/placement assistance, employer-facing recruiting capability, and historical verification controls; the current 2026 operating process, systems, accountable owner, stage tracking, verification workflow, follow-up, and outcome metrics remain **UNKNOWN — INTERNAL BASELINE REQUIRED**.
@@ -52,7 +65,7 @@ No work packet is marked BLOCKED. Several items are YELLOW contract-dependent an
 ## Top risks
 
 1. Unknown actual systems/data/process baseline.
-2. Risk of prematurely treating conceptual fields as implemented CRM fields.
+2. Risk of prematurely treating conceptual fields as implemented CRM fields. (Salesforce pipeline metadata is now implemented in the cleanpipe sandbox only, not production.)
 3. Risk of reporting conversion before enrollment/stage definitions are validated.
 4. Risk of sensitive information entering a public repository; the privacy boundary must be enforced.
 5. Risk of treating visible testimonials/reviews as current, consent-valid, outcome-verified, or pipeline-attributed proof without authoritative provenance and eligibility evidence.
