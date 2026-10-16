@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata"><fullName>AK9I_Do_Not_Contact__c</fullName><description>Blocks all outreach on every channel. F0 checks this before any send.</description><label>Do Not Contact</label><defaultValue>false</defaultValue><trackHistory>false</trackHistory><type>Checkbox</type></CustomField>

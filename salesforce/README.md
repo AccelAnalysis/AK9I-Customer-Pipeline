@@ -100,3 +100,13 @@ Use the same dry-run-then-deploy pattern for phase 1b fields, flows, templates, 
 ## Not in this tree yet
 
 Picklist edits on fields that already exist in the org, contract-lane Opportunity fields, queues, roles, the F0–F13 flow definitions, T01–T20 template bodies, and reports. Those wait for a later change in the homes above. Urgent org fixes (opt-outs, the enrollment form, Stripe triggers, record ownership) are sandbox or production operations, not files in this commit.
+
+## Converted Lead Status: Applicant
+
+On 2026-10-15 in sandbox `cleanpipe`, the converted Lead Status changed from label "Qualified" with API value `Enrolled` to **Applicant**, which is now both the label and the API value. Existing leads moved to the new value through Setup's delete-and-replace step, and the old `Enrolled` value is gone. A converted Lead means the person submitted the enrollment form and is an applicant, not an enrolled student. Count enrollments on the Contact with `AK9I_Actual_Start_Date__c`, never with Lead Status.
+
+These changes went with it:
+- Flow `RT_Conversion_to_Enrollment` (active v3) now triggers on Status = `Applicant`. It sets the Enrollment Contact record type only when the converted Account is named "S: Student". This is existing behavior and was confirmed by a test conversion.
+- Lead process renamed from `Enrolled` to `Applicant` in Setup (same record, ID 019Po00000BIJAjIAP) and includes the `Applicant` status.
+- `Status__c` = "Enrolled" on Contact and Opportunity is a different field and is untouched. It means truly enrolled.
+- Production still has `Enrolled`. Repeat these steps in this order before promoting: add the value, update the process, deploy the flow, then delete and replace.
