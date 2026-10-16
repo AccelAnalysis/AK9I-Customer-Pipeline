@@ -1,10 +1,10 @@
 # AK9I pipeline email copy (approved by Jonathan; active in cleanpipe only)
 
-Status (updated Oct 16, ~7:55 AM ET): all 58 new templates are **available (active) in cleanpipe only**, approved as-is by Jonathan; production is untouched. They are classic text templates in the hidden folder "AK9I Pipeline (Drafts)" (folder name unchanged) and are sent by the active flows in cleanpipe, each send through F0.
+Status (updated Oct 16, L14 wording revision): all 58 new templates are **available (active) in cleanpipe only**, approved as-is by Jonathan; production is untouched. They are classic text templates in the hidden folder "AK9I Pipeline (Drafts)" (folder name unchanged) and are sent by the active flows in cleanpipe, each send through F0.
 
-Placeholders: `{ENROLLMENT_FORM_URL}` (form link; production domain pending) `{BOOKINGS_URL}`, `{DOC_UPLOAD_URL}`, `{EMPLOYMENT_SURVEY_URL}`, `{ALUMNI_URL}` (matching custom labels AK9I_Bookings_URL etc. exist for flows; replace when the real URLs are known).
+Links (revised Oct 16, L14): no editorial placeholders remain in any of the 58 templates. Course pages: https://ak9i.edu/courses/ (checked, loads). No public enrollment form, Bookings, document upload, survey or alumni link could be verified as working, so those emails now ask the reader to reply or call (757) 304-9600 instead (documents go to Student Services at mhartman@ak9i.com, as in the existing Welcome email). Only Salesforce merge fields such as `{!Lead.FirstName}` remain. All AK9I flow emails are sent from the org-wide address enrollment@ak9i.com ("AK9I | BGK9 Admission & Sales"), so replies go there.
 
-Facts used only from existing AK9I emails: address, phone, enrollment@ak9i.com, classes start the first Monday of every month, hands-on training with working dogs, VA / SkillBridge / VR&E. No prices or new claims. Marketing emails carry the existing unsubscribe wording plus the postal address; any email that says "GI Bill" carries the trademark notice.
+Facts used only from existing AK9I emails: address, phone, enrollment@ak9i.com, hands-on training with working dogs, VA / SkillBridge / VR&E. No prices or new claims. Marketing emails carry the existing unsubscribe wording plus the postal address; any email that says "GI Bill" carries the trademark notice.
 
 ## Existing templates reused (wording unchanged)
 
@@ -45,15 +45,14 @@ Every Stage 2 email (Nurture N0, Interested I1, partial-form P1) opens with a se
 
 ### P1 Partial form - day 1 (`AK9I_P1_Partial_Form_Day1`)
 - Object: Lead  |  Trigger: Lead Status = Applicant (form started, not submitted) + 1 day  |  Transactional/solicited
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
 Thank you for starting your enrollment form with American K-9 Interdiction. {!Lead.AK9I_Source_Intro__c}
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
+When you are ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link.
 
 If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
 
@@ -81,8 +80,7 @@ Our team can help with:
 - VA education benefits, SkillBridge and VR&E
 - what documents you will need
 
-Finish your form: {ENROLLMENT_FORM_URL}
-Or call (757) 304-9600.
+To finish your form, reply to this email or call (757) 304-9600 and we'll send you the application link.
 
 Best regards,
 The AK9I Team
@@ -96,14 +94,14 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### P3 Partial form - day 10 (`AK9I_P3_Partial_Form_Day10`)
 - Object: Lead  |  Trigger: Still Applicant + 10 days (last partial-form email)  |  Transactional/solicited
-- **Subject:** We saved your spot in the process
+- **Subject:** Still interested in completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Just one more note about your enrollment form. Classes start the first Monday of every month, so there is always an upcoming start date to plan around.
+Just one more note: your enrollment form hasn't been submitted yet. Our team can help you review upcoming start dates for the course you're considering.
 
-When you are ready, you can finish the form here: {ENROLLMENT_FORM_URL}
+When you are ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link.
 
 If now is not the right time, simply reply and let us know. We are glad to help whenever you are ready.
 
@@ -126,7 +124,7 @@ Hi {!Lead.FirstName},
 
 Thank you for letting us know you are planning ahead. {!Lead.AK9I_Source_Intro__c}
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. When you are closer to your date, we will check in. In the meantime, you are welcome to call us with any questions about courses, housing or benefits.
+Our team can help you review upcoming start dates for the course you're considering. When you are closer to your date, we will check in. In the meantime, you are welcome to call us with any questions about courses, housing or benefits.
 
 Best regards,
 The AK9I Team
@@ -168,7 +166,7 @@ Hi {!Lead.FirstName},
 
 If your start date is getting closer, now is a good time to begin your enrollment form. It takes care of the agreement and lets our Student Services team schedule your phone interview.
 
-Start here: {ENROLLMENT_FORM_URL}
+To start, reply to this email or call (757) 304-9600 and we'll send you the application link.
 
 Best regards,
 The AK9I Team
@@ -189,7 +187,7 @@ Hi {!Lead.FirstName},
 
 {!Lead.AK9I_Source_Intro__c}
 
-At American K-9 Interdiction, our training is hands-on with working dogs, and our programs start the first Monday of every month. If you have questions about courses, housing or education benefits, our team is happy to help.
+At American K-9 Interdiction, our training is hands-on with working dogs, and our team can help you review upcoming start dates for the course you're considering. If you have questions about courses, housing or education benefits, our team is happy to help.
 
 Call (757) 304-9600 or reply to this email.
 
@@ -212,8 +210,7 @@ Hi {!Contact.FirstName},
 
 Thank you for submitting your enrollment form. The next step is a short phone interview with Michelle Hartman in Student Services.
 
-Please choose a time that works for you:
-{BOOKINGS_URL}
+Please reply to this email with a few days and times that work for you, or call (757) 304-9600, and we will schedule it.
 
 When you book, you can also confirm (optional):
 - your course
@@ -258,8 +255,7 @@ To complete your enrollment, please upload these documents:
 - Joint Service Transcript (JST)
 - VA Certificate of Eligibility or Statement of Benefits
 
-Upload them securely here:
-{DOC_UPLOAD_URL}?key={!Contact.AK9I_Doc_Upload_Key__c}
+Please send them to Student Services at mhartman@ak9i.com.
 
 If you are using a funding source other than VA benefits, or you do not have one of these documents, reply to this email and Student Services will tell you what to send instead.
 
@@ -279,8 +275,7 @@ GI Bill(R) is a registered trademark of the U.S. Department of Veterans Affairs 
 ```
 Hi {!Contact.FirstName},
 
-We are still missing one or more of your enrollment documents. You can upload them here:
-{DOC_UPLOAD_URL}?key={!Contact.AK9I_Doc_Upload_Key__c}
+We are still missing one or more of your enrollment documents. Please send them to Student Services at mhartman@ak9i.com.
 
 Need help? Contact Michelle Hartman at mhartman@ak9i.com or call (757) 304-9600.
 
@@ -333,8 +328,7 @@ Hi {!Contact.FirstName},
 
 Congratulations again on graduating from American K-9 Interdiction. As part of our graduate follow-up, we ask every graduate to complete a short employment confirmation about 30 days after graduation.
 
-Please complete and sign it here:
-{EMPLOYMENT_SURVEY_URL}
+Please reply to this email and we will send you the confirmation form to complete and sign.
 
 It only takes a few minutes, and it helps us support you and future students.
 
@@ -375,7 +369,7 @@ Hi {!Contact.FirstName},
 
 We would love to stay connected. The AK9I Alumni program keeps graduates in touch with each other and with our team.
 
-Register here: {ALUMNI_URL}
+To register, reply to this email and we will add you.
 
 Best regards,
 The AK9I Team
@@ -397,26 +391,32 @@ Status: 42 templates `AK9I_C_<NU|IF|AP>_<Source>` active (available) in cleanpip
 | Interested - Future | `AK9I_C_IF_<Source>` (day 0) | I2 at +60 days, I3 at +90 days | marketing, unsolicited |
 | Applicant (partial form) | `AK9I_C_AP_<Source>` (day 1, flow AK9I_Partial_Form_Series) | P2 at +4 days, P3 at +10 days | non-marketing, unsolicited (counts toward the 2-in-30-days cap) |
 
-Placeholders: `{COURSE_INFO_URL}`, `{ENROLLMENT_FORM_URL}`, `{BGK9_RELATIONSHIP_NOTE}` (what is BGK9's relationship to AK9I? Lance/Jonathan to fill in). No prices, dates, or outcomes are stated. Every email ends with the existing unsubscribe line and the postal address.
+Revised Oct 16 (L14) per the PR #24 review:
+- Openers make no claim of a personal interaction. Each email has one acknowledgment: "Thank you for your interest in American K-9 Interdiction (AK9I)." or a soft-source line such as "We're glad you found us through YouTube." TAPS, BGK9 and Other use the neutral line. Referral emails do not ask who referred the reader.
+- The BGK9 relationship sentence was removed. **FLAG:** confirm what BGK9's relationship to AK9I is before any BGK9-specific wording is added.
+- "First Monday of every month" is replaced by "Our team can help you review upcoming start dates for the course you're considering." The repeated "hands-on with working dogs" line is gone.
+- One next step per family: Nurture asks what K9 work or course interests the reader; Interested - Future asks for a preferred month or season; Applicant asks the reader to finish the application or tell us what is holding them up.
+- Subjects: Nurture "Which AK9I course fits your goals?"; Interested - Future "Let's plan around your training timeline"; Applicant "Questions about completing your AK9I application?".
+- Applicant emails no longer say the form is saved; they say only that the application has not been submitted yet. The enrollment form link is not verifiable, so the email says "reply to this email or call (757) 304-9600 and we'll send you the application link".
+- The postal address appears once, in the unsubscribe footer; the signature keeps the email and phone.
 
 ### C Nurture - YouTube (`AK9I_C_NU_YouTube`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up after our videos
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thanks for watching our videos on YouTube. Our training is hands-on with working dogs, and we are happy to answer any questions the videos raised.
+We're glad you found us through YouTube. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -425,22 +425,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Web (`AK9I_C_NU_Web`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up after your website visit
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for visiting our website. If you did not find an answer there, our team can walk you through courses, start dates and education benefits by phone.
+We're glad you found us through our website. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -449,22 +448,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Other (`AK9I_C_NU_Other`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Thanks for your interest in American K-9 Interdiction
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for your interest in American K-9 Interdiction. Our team can walk you through courses, start dates and education benefits whenever you are ready.
+Thank you for your interest in American K-9 Interdiction (AK9I). Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -473,22 +471,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Skillbridge (`AK9I_C_NU_Skillbridge`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on SkillBridge
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for your interest in training with us through the DoD SkillBridge program. SkillBridge timing depends on your separation date and your command's approval, so it helps to plan early. Our team can explain how SkillBridge works with our course start dates.
+We're glad you found us through SkillBridge. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -497,22 +494,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Referral (`AK9I_C_NU_Referral`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on your referral
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-We are glad someone you know pointed you our way. If you tell us who referred you, we would like to thank them. And if they shared their experience with you, we are happy to fill in the details.
+We're glad you found us through a referral. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -521,22 +517,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Job Fair (`AK9I_C_NU_Job_Fair`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on the job fair
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-It was great to meet you at the job fair. Thank you for stopping by our table. If you thought of questions after the event, we are glad to answer them.
+We're glad you found us through a job fair. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -545,22 +540,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Contact Us (`AK9I_C_NU_Contact_Us`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on your message
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for reaching out to us through our website. If we have not fully answered your question yet, reply to this email and we will.
+Thank you for contacting AK9I through our website. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -569,22 +563,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Advertisement (`AK9I_C_NU_Advertisement`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Thanks for your interest in American K-9 Interdiction
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for responding to our ad. We are glad it caught your attention, and our team is ready to answer your questions.
+We're glad you found us through one of our ads. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -593,22 +586,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Facebook (`AK9I_C_NU_Facebook`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on Facebook
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thanks for connecting with us on Facebook. You can message us there at any time, or simply reply to this email.
+We're glad you found us on Facebook. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -617,22 +609,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - TAPS (`AK9I_C_NU_TAPS`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on your transition plans
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for connecting with us through your transition (TAP) program. If you plan to use VA education benefits, SkillBridge or VR&E, our team can explain how each one works with our programs.
+Thank you for your interest in American K-9 Interdiction (AK9I). Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -641,22 +632,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Word of mouth (`AK9I_C_NU_Word_of_mouth`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Thanks for your interest in American K-9 Interdiction
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-We are glad you heard about us. Whatever you have heard, we are happy to give you the full picture of our courses and start dates.
+We're glad word about AK9I reached you. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -665,22 +655,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Instagram (`AK9I_C_NU_Instagram`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on Instagram
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thanks for connecting with us on Instagram. You can message us there at any time, or simply reply to this email.
+We're glad you found us on Instagram. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -689,22 +678,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - BGK9 (`AK9I_C_NU_BGK9`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on BGK9
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for your interest through BGK9. {BGK9_RELATIONSHIP_NOTE}
+Thank you for your interest in American K-9 Interdiction (AK9I). Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -713,22 +701,21 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Nurture - Trade Show (`AK9I_C_NU_Trade_Show`)
 - Trigger: Lead Status = Nurture, not converted (day 0). Follow-ups: existing Nurture Campaign Emails 1-12.  |  Marketing
-- **Subject:** Following up on the trade show
+- **Subject:** Which AK9I course fits your goals?
 
 ```
 Hi {!Lead.FirstName},
 
-It was great to meet you at the trade show. Thank you for stopping by our booth. If you thought of questions after the show, we are glad to answer them.
+We're glad you found us through a trade show. Our team can help you review upcoming start dates for the course you're considering.
 
-At American K-9 Interdiction, training is hands-on with working dogs, and our programs start the first Monday of every month. When you would like to look at courses, housing or education benefits, our team is happy to help.
+To point you in the right direction: what kind of K9 work interests you most, or which course are you considering? You can see our courses here:
+https://ak9i.edu/courses/
 
-Course information: {COURSE_INFO_URL}
-Call (757) 304-9600 or reply to this email.
+Just reply to this email with your answer, or call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -737,21 +724,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - YouTube (`AK9I_C_IF_YouTube`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (after our videos)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thanks for watching our videos on YouTube. Thank you for letting us know you are planning ahead. Our training is hands-on with working dogs, and we are happy to answer any questions the videos raised.
+We're glad you found us through YouTube. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -760,21 +744,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Web (`AK9I_C_IF_Web`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (after your website visit)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for visiting our website. Thank you for letting us know you are planning ahead. If you did not find an answer there, our team can walk you through courses, start dates and education benefits by phone.
+We're glad you found us through our website. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -783,21 +764,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Other (`AK9I_C_IF_Other`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your future start at AK9I
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for your interest in American K-9 Interdiction. Thank you for letting us know you are planning ahead. Our team can walk you through courses, start dates and education benefits whenever you are ready.
+Thank you for your interest in American K-9 Interdiction (AK9I). Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -806,21 +784,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Skillbridge (`AK9I_C_IF_Skillbridge`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (SkillBridge)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for your interest in training with us through the DoD SkillBridge program. Thank you for letting us know you are planning ahead. SkillBridge timing depends on your separation date and your command's approval, so it helps to plan early. Our team can explain how SkillBridge works with our course start dates.
+We're glad you found us through SkillBridge. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -829,21 +804,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Referral (`AK9I_C_IF_Referral`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (your referral)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-We are glad someone you know pointed you our way. Thank you for letting us know you are planning ahead. If you tell us who referred you, we would like to thank them. And if they shared their experience with you, we are happy to fill in the details.
+We're glad you found us through a referral. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -852,21 +824,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Job Fair (`AK9I_C_IF_Job_Fair`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (the job fair)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-It was great to meet you at the job fair. Thank you for letting us know you are planning ahead. Thank you for stopping by our table. If you thought of questions after the event, we are glad to answer them.
+We're glad you found us through a job fair. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -875,21 +844,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Contact Us (`AK9I_C_IF_Contact_Us`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (your message)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for reaching out to us through our website. Thank you for letting us know you are planning ahead. If we have not fully answered your question yet, reply to this email and we will.
+Thank you for contacting AK9I through our website. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -898,21 +864,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Advertisement (`AK9I_C_IF_Advertisement`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your future start at AK9I
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for responding to our ad. Thank you for letting us know you are planning ahead. We are glad it caught your attention, and our team is ready to answer your questions.
+We're glad you found us through one of our ads. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -921,21 +884,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Facebook (`AK9I_C_IF_Facebook`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (Facebook)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thanks for connecting with us on Facebook. Thank you for letting us know you are planning ahead. You can message us there at any time, or simply reply to this email.
+We're glad you found us on Facebook. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -944,21 +904,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - TAPS (`AK9I_C_IF_TAPS`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (your transition plans)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for connecting with us through your transition (TAP) program. Thank you for letting us know you are planning ahead. If you plan to use VA education benefits, SkillBridge or VR&E, our team can explain how each one works with our programs.
+Thank you for your interest in American K-9 Interdiction (AK9I). Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -967,21 +924,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Word of mouth (`AK9I_C_IF_Word_of_mouth`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your future start at AK9I
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-We are glad you heard about us. Thank you for letting us know you are planning ahead. Whatever you have heard, we are happy to give you the full picture of our courses and start dates.
+We're glad word about AK9I reached you. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -990,21 +944,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Instagram (`AK9I_C_IF_Instagram`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (Instagram)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thanks for connecting with us on Instagram. Thank you for letting us know you are planning ahead. You can message us there at any time, or simply reply to this email.
+We're glad you found us on Instagram. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1013,21 +964,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - BGK9 (`AK9I_C_IF_BGK9`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (BGK9)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for your interest through BGK9. Thank you for letting us know you are planning ahead. {BGK9_RELATIONSHIP_NOTE}
+Thank you for your interest in American K-9 Interdiction (AK9I). Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1036,21 +984,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Interested - Future - Trade Show (`AK9I_C_IF_Trade_Show`)
 - Trigger: Lead Status = Interested - Future Enrollment is > 3 months (day 0). Follow-ups: I2 (+60 days), I3 (+90 days).  |  Marketing
-- **Subject:** Planning your AK9I start date (the trade show)
+- **Subject:** Let's plan around your training timeline
 
 ```
 Hi {!Lead.FirstName},
 
-It was great to meet you at the trade show. Thank you for letting us know you are planning ahead. Thank you for stopping by our booth. If you thought of questions after the show, we are glad to answer them.
+We're glad you found us through a trade show. Since you're planning ahead, our team can help you review upcoming start dates for the course you're considering.
 
-Our programs start the first Monday of every month, so we can help you pick a start date that fits your timeline. We will check in as your date gets closer. In the meantime, you are welcome to call us with questions about courses, housing or benefits.
-
-Call (757) 304-9600 or reply to this email.
+What month or season would you like to start training? Reply to this email with your preferred timeframe and we will follow up closer to that time. You can also call us at (757) 304-9600.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1059,22 +1004,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - YouTube (`AK9I_C_AP_YouTube`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thanks for watching our videos on YouTube. Our training is hands-on with working dogs, and we are happy to answer any questions the videos raised.
+We're glad you found us through YouTube. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1083,22 +1024,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Web (`AK9I_C_AP_Web`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thank you for visiting our website. If you did not find an answer there, our team can walk you through courses, start dates and education benefits by phone.
+We're glad you found us through our website. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1107,22 +1044,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Other (`AK9I_C_AP_Other`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thank you for your interest in American K-9 Interdiction. Our team can walk you through courses, start dates and education benefits whenever you are ready.
+Thank you for your interest in American K-9 Interdiction (AK9I). Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1131,22 +1064,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Skillbridge (`AK9I_C_AP_Skillbridge`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thank you for your interest in training with us through the DoD SkillBridge program. SkillBridge timing depends on your separation date and your command's approval, so it helps to plan early. Our team can explain how SkillBridge works with our course start dates.
+We're glad you found us through SkillBridge. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1155,22 +1084,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Referral (`AK9I_C_AP_Referral`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. We are glad someone you know pointed you our way. If you tell us who referred you, we would like to thank them. And if they shared their experience with you, we are happy to fill in the details.
+We're glad you found us through a referral. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1179,22 +1104,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Job Fair (`AK9I_C_AP_Job_Fair`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. It was great to meet you at the job fair. Thank you for stopping by our table. If you thought of questions after the event, we are glad to answer them.
+We're glad you found us through a job fair. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1203,22 +1124,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Contact Us (`AK9I_C_AP_Contact_Us`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thank you for reaching out to us through our website. If we have not fully answered your question yet, reply to this email and we will.
+Thank you for contacting AK9I through our website. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1227,22 +1144,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Advertisement (`AK9I_C_AP_Advertisement`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thank you for responding to our ad. We are glad it caught your attention, and our team is ready to answer your questions.
+We're glad you found us through one of our ads. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1251,22 +1164,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Facebook (`AK9I_C_AP_Facebook`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thanks for connecting with us on Facebook. You can message us there at any time, or simply reply to this email.
+We're glad you found us on Facebook. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1275,22 +1184,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - TAPS (`AK9I_C_AP_TAPS`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thank you for connecting with us through your transition (TAP) program. If you plan to use VA education benefits, SkillBridge or VR&E, our team can explain how each one works with our programs.
+Thank you for your interest in American K-9 Interdiction (AK9I). Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1299,22 +1204,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Word of mouth (`AK9I_C_AP_Word_of_mouth`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. We are glad you heard about us. Whatever you have heard, we are happy to give you the full picture of our courses and start dates.
+We're glad word about AK9I reached you. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1323,22 +1224,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Instagram (`AK9I_C_AP_Instagram`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thanks for connecting with us on Instagram. You can message us there at any time, or simply reply to this email.
+We're glad you found us on Instagram. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1347,22 +1244,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - BGK9 (`AK9I_C_AP_BGK9`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. Thank you for your interest through BGK9. {BGK9_RELATIONSHIP_NOTE}
+Thank you for your interest in American K-9 Interdiction (AK9I). Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.
@@ -1371,22 +1264,18 @@ American K-9 Interdiction, 4007 Burdette Rd, Carrsville, VA 23315
 
 ### C Applicant (partial form) - Trade Show (`AK9I_C_AP_Trade_Show`)
 - Trigger: Lead Status = Applicant (form started, not submitted) + 1 day. Follow-ups: P2 (+4 days), P3 (+10 days).  |  Non-marketing
-- **Subject:** Your AK9I enrollment form is saved
+- **Subject:** Questions about completing your AK9I application?
 
 ```
 Hi {!Lead.FirstName},
 
-Thank you for starting your enrollment form with American K-9 Interdiction. It was great to meet you at the trade show. Thank you for stopping by our booth. If you thought of questions after the show, we are glad to answer them.
+We're glad you found us through a trade show. Your AK9I application has been started but hasn't been submitted yet.
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
-
-If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
+When you're ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link. If something is holding you up, such as a question about documents, funding or start dates, reply and tell us what it is so we can help.
 
 Best regards,
 The AK9I Team
 American K-9 Interdiction
-4007 Burdette Rd, Carrsville, VA 23315
 enrollment@ak9i.com | (757) 304-9600
 
 You are receiving this email because you expressed interest in American K-9 Interdiction. To stop receiving these emails, reply with "Unsubscribe" and we will remove you from our list.

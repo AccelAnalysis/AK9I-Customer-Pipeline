@@ -1,10 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
 <apiVersion>67.0</apiVersion>
-<actionCalls><name>Notify_Enrollment</name><label>Notify Enrollment</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Notify_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailAddresses</name><value><elementReference>$Label.AK9I_Enrollment_Inbox</elementReference></value></inputParameters><inputParameters><name>emailSubject</name><value><elementReference>fNotifySubject</elementReference></value></inputParameters><inputParameters><name>emailBody</name><value><elementReference>ttCallBody</elementReference></value></inputParameters><inputParameters><name>sendRichBody</name><value><booleanValue>false</booleanValue></value></inputParameters></actionCalls>
-<actionCalls><name>Send_Day0</name><label>Send Day0</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><connector><targetReference>Is_Nurture_Notify</targetReference></connector><faultConnector><targetReference>Day0_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day0.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
-<actionCalls><name>Send_Day_60</name><label>Send Day 60</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_60.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
-<actionCalls><name>Send_Day_90</name><label>Send Day 90</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_90.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
+<actionCalls><name>Notify_Enrollment</name><label>Notify Enrollment</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Notify_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>enrollment@ak9i.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters><name>emailAddresses</name><value><elementReference>$Label.AK9I_Enrollment_Inbox</elementReference></value></inputParameters><inputParameters><name>emailSubject</name><value><elementReference>fNotifySubject</elementReference></value></inputParameters><inputParameters><name>emailBody</name><value><elementReference>ttCallBody</elementReference></value></inputParameters><inputParameters><name>sendRichBody</name><value><booleanValue>false</booleanValue></value></inputParameters></actionCalls>
+<actionCalls><name>Send_Day0</name><label>Send Day0</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><connector><targetReference>Is_Nurture_Notify</targetReference></connector><faultConnector><targetReference>Day0_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>enrollment@ak9i.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day0.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
+<actionCalls><name>Send_Day_60</name><label>Send Day 60</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>enrollment@ak9i.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_60.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
+<actionCalls><name>Send_Day_90</name><label>Send Day 90</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>enrollment@ak9i.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_90.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
 <assignments><name>Notify_Failed</name><label>Notify Failed</label><locationX>0</locationX><locationY>0</locationY><assignmentItems><assignToReference>varNotifyError</assignToReference><operator>Assign</operator><value><elementReference>$Flow.FaultMessage</elementReference></value></assignmentItems></assignments>
 <assignments><name>Day0_Send_Failed</name><label>Day0 Send Failed</label><locationX>0</locationX><locationY>0</locationY><assignmentItems><assignToReference>varEmailError</assignToReference><operator>Assign</operator><value><elementReference>$Flow.FaultMessage</elementReference></value></assignmentItems><connector><targetReference>Is_Nurture_Notify</targetReference></connector></assignments>
 <assignments><name>Email_Send_Failed</name><label>Email Send Failed</label><locationX>0</locationX><locationY>0</locationY><assignmentItems><assignToReference>varEmailError</assignToReference><operator>Assign</operator><value><elementReference>$Flow.FaultMessage</elementReference></value></assignmentItems></assignments>

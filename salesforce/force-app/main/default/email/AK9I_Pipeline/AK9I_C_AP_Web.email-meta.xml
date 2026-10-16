@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>C Applicant (partial form) - Web</name>
     <style>none</style>
-    <subject>Your AK9I enrollment form is saved</subject>
+    <subject>Questions about completing your AK9I application?</subject>
     <type>text</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>
