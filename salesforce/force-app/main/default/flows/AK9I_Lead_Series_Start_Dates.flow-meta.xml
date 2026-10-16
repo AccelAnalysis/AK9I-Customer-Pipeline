@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+<apiVersion>67.0</apiVersion>
+<assignments><name>Stamp_Start_Dates</name><label>Stamp Start Dates</label><locationX>0</locationX><locationY>0</locationY><assignmentItems><assignToReference>$Record.Nurture_Start_Date__c</assignToReference><operator>Assign</operator><value><elementReference>fNurtureStart</elementReference></value></assignmentItems><assignmentItems><assignToReference>$Record.Interested_Future_Start_Date__c</assignToReference><operator>Assign</operator><value><elementReference>fIFStart</elementReference></value></assignmentItems></assignments>
+<description>Before save, Lead. When a lead enters Nurture or Interested - Future (create or Status change), stamp that series' own start date only if it is blank or more than 90 days old (then restart from today). Otherwise leave it, so the series resumes where it left off and no second day-0 email goes out. The other series' date is untouched; each series' emails check Status, so moving Nurture to Interested - Future stops Nurture and starts Interested - Future.</description>
+<environments>Default</environments>
+<formulas><name>fNurtureStart</name><dataType>Date</dataType><expression>IF(AND(TEXT({!$Record.Status})=&quot;Nurture&quot;,OR(ISBLANK({!$Record.Nurture_Start_Date__c}),{!$Record.Nurture_Start_Date__c} &lt; TODAY()-90)),TODAY(),{!$Record.Nurture_Start_Date__c})</expression></formulas>
+<formulas><name>fIFStart</name><dataType>Date</dataType><expression>IF(AND(TEXT({!$Record.Status})=&quot;Interested - Future Enrollment is &gt; 3 months&quot;,OR(ISBLANK({!$Record.Interested_Future_Start_Date__c}),{!$Record.Interested_Future_Start_Date__c} &lt; TODAY()-90)),TODAY(),{!$Record.Interested_Future_Start_Date__c})</expression></formulas>
+<interviewLabel>AK9I Lead Series Start Dates {!$Flow.CurrentDateTime}</interviewLabel>
+<label>AK9I Lead Series Start Dates</label>
+<processMetadataValues><name>BuilderType</name><value><stringValue>LightningFlowBuilder</stringValue></value></processMetadataValues><processMetadataValues><name>CanvasMode</name><value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value></processMetadataValues>
+<processType>AutoLaunchedFlow</processType>
+<start><locationX>0</locationX><locationY>0</locationY><connector><targetReference>Stamp_Start_Dates</targetReference></connector><filterFormula>AND(OR(ISNEW(),ISCHANGED({!$Record.Status})),OR(TEXT({!$Record.Status})=&quot;Nurture&quot;,TEXT({!$Record.Status})=&quot;Interested - Future Enrollment is &gt; 3 months&quot;),NOT({!$Record.IsConverted}))</filterFormula><object>Lead</object><recordTriggerType>CreateAndUpdate</recordTriggerType><triggerType>RecordBeforeSave</triggerType></start>
+<status>Active</status>
+</Flow>
