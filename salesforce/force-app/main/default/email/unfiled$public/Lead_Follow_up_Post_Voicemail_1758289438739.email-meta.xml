@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to leads after a phone call attempt where voice mail was left.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Follow-up (Post-Voicemail)</name>
+    <pageDevName>Lead_Follow_up_Post_Voicemail1</pageDevName>
+    <relatedEntityType>Lead</relatedEntityType>
+    <style>none</style>
+    <subject>Tried to Reach You Today</subject>
+    <textOnly>Hi {{{Recipient.FirstName}}},
+
+I just tried giving you a call and left a voicemail. I&apos;d love to connect with you about your interest in our canine handler/ trainer programs.
+
+If you have a few minutes this week, you can reply directly to this email or schedule a quick call at a time that works best for you
+
+Schedule a Call &lt; https://outlook.office365.com/book/Bookings@ccasora.onmicrosoft.com/?ismsaljsauthenabled=true &gt; 
+
+We&apos;re here to answer any questions about our programs, financial aid, va benefits or the enrollment process.Talk to you soon!
+
+Warm regards,
+
+{{{Sender.FirstName}}}
+
+[Image alt text: AK9I PNG]
+
+Unleash Your Purpose
+
+{{{Sender.Name}}}
+
+{{{Sender.Title}}}
+
+4007 Burdette Rd
+
+Carrsville, VA, 23315
+
+p: 757-304-9600
+
+f: 757-304-9678
+
+This message was sent to you because you have expressed interest in our company AK9I.
+
+To stop receiving further emails, please reply with &quot;Unsubscribe&quot;and we will remove you from our list.</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

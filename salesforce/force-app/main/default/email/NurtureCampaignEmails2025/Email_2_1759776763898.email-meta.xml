@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>180+ days since last interaction</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email 12</name>
+    <pageDevName>Email_2</pageDevName>
+    <relatedEntityType>Lead</relatedEntityType>
+    <style>none</style>
+    <subject>Your Journey Isn&apos;t Over Yet</subject>
+    <textOnly>Hi {{{Recipient.FirstName}}},
+
+No matter how long its bee, your goal of working with dogs doesn&apos;t have an expiration date. If now feels like the right time to start your journey, we&apos;re ready when you are.
+
+Our team can help you enroll quickly and make your transition seamless.
+
+Enroll Now &lt; https://ak9i.edu/enrollment-form/ &gt; 
+
+All the best,
+
+The AK9I Team
+
+4007 Burdette Rd
+
+Carrsville, VA, 23315
+
+www.ak9i.edu &lt; https://www.ak9i.edu &gt; 
+
+p: 757-304-9600
+
+This message was sent to you because you have expressed interest in our company AK9I.
+
+To stop receiving further emails, please reply with &quot;Unsubscribe&quot;and we will remove you from our list.</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

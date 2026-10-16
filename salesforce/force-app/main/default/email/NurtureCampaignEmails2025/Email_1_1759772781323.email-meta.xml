@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>0-30 Days since last interaction</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email 1</name>
+    <pageDevName>Email_1</pageDevName>
+    <relatedEntityType>Lead</relatedEntityType>
+    <style>none</style>
+    <subject>Still Thinking About Enrolling?</subject>
+    <textOnly>Hi {{{Recipient.FirstName}}},
+
+We noticed that you recently showed interest in American K-9 Interdiction recently - but haven&apos;t taken the next step. At American K-9 Interdiction, our mission is to help you turn your passion for dogs into a rewarding career.
+
+Here are a few reason students choose us: 
+ - Hands-on training with working dogs (not just classroom theory)
+ - Exposure to real world K-9 operations prior to graduation
+ - We are nationally accredited through ACCET and SCHEV as a trade school 
+ - Over 150 acres of dedicated onsite training space as well as a plethora of offsite training locations
+ - Onsite housing
+
+Our next class is starting soon - don&apos;t miss your spot!
+
+Enroll Now &lt; https:// &gt; 
+
+Sincerely,
+
+The AK9I Team
+
+American K-9 Interdiction, LLC
+
+4007 Burdette Rd. 
+
+Carrsville, VA, 23315
+
+p: 757-304-9600
+
+f: 757-304-9678
+
+This message was sent to you because you have expressed interest in our company AK9I.
+
+To stop receiving further emails, please reply with &quot;Unsubscribe&quot;and we will remove you from our list.</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

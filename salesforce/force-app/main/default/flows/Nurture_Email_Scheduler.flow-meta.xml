@@ -1406,7 +1406,7 @@
                 <targetReference>Check_Eligibility_Tier_1_email_1</targetReference>
             </connector>
             <label>Email 1</label>
-            <offsetNumber>0</offsetNumber>
+            <offsetNumber>16</offsetNumber>
             <offsetUnit>Days</offsetUnit>
             <recordField>Nurture_Start_Date__c</recordField>
             <timeSource>RecordField</timeSource>
@@ -1417,7 +1417,7 @@
                 <targetReference>Check_Eligibility_Tier_1_email_2</targetReference>
             </connector>
             <label>Email 2</label>
-            <offsetNumber>10</offsetNumber>
+            <offsetNumber>32</offsetNumber>
             <offsetUnit>Days</offsetUnit>
             <recordField>Nurture_Start_Date__c</recordField>
             <timeSource>RecordField</timeSource>
@@ -1428,7 +1428,7 @@
                 <targetReference>Check_Eligibility_Tier_1_email_3</targetReference>
             </connector>
             <label>Email 3</label>
-            <offsetNumber>25</offsetNumber>
+            <offsetNumber>48</offsetNumber>
             <offsetUnit>Days</offsetUnit>
             <recordField>Nurture_Start_Date__c</recordField>
             <timeSource>RecordField</timeSource>
@@ -1439,7 +1439,7 @@
                 <targetReference>Check_Eligibility_Tier_2_email_1</targetReference>
             </connector>
             <label>Email 4</label>
-            <offsetNumber>35</offsetNumber>
+            <offsetNumber>64</offsetNumber>
             <offsetUnit>Days</offsetUnit>
             <recordField>Nurture_Start_Date__c</recordField>
             <timeSource>RecordField</timeSource>
@@ -1450,7 +1450,7 @@
                 <targetReference>Check_Eligibility_Tier_2_email_2</targetReference>
             </connector>
             <label>Email 5</label>
-            <offsetNumber>60</offsetNumber>
+            <offsetNumber>80</offsetNumber>
             <offsetUnit>Days</offsetUnit>
             <recordField>Nurture_Start_Date__c</recordField>
             <timeSource>RecordField</timeSource>
@@ -1461,7 +1461,7 @@
                 <targetReference>Check_Eligibility_Tier_2_email_3</targetReference>
             </connector>
             <label>Email 6</label>
-            <offsetNumber>90</offsetNumber>
+            <offsetNumber>96</offsetNumber>
             <offsetUnit>Days</offsetUnit>
             <recordField>Nurture_Start_Date__c</recordField>
             <timeSource>RecordField</timeSource>
@@ -1472,7 +1472,7 @@
                 <targetReference>Check_Eligibility_Tier_3_email_1</targetReference>
             </connector>
             <label>Email 7</label>
-            <offsetNumber>100</offsetNumber>
+            <offsetNumber>112</offsetNumber>
             <offsetUnit>Days</offsetUnit>
             <recordField>Nurture_Start_Date__c</recordField>
             <timeSource>RecordField</timeSource>
