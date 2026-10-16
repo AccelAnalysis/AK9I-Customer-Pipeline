@@ -2,8 +2,7 @@ Hi {!Lead.FirstName},
 
 Thank you for starting your enrollment form with American K-9 Interdiction. {!Lead.AK9I_Source_Intro__c}
 
-Your contact information is saved, so you can pick up where you left off. When you are ready, finish the form here:
-{ENROLLMENT_FORM_URL}
+When you are ready to finish, reply to this email or call (757) 304-9600 and we'll send you the application link.
 
 If anything on the form is unclear, reply to this email or call us at (757) 304-9600 and we will walk you through it.
 

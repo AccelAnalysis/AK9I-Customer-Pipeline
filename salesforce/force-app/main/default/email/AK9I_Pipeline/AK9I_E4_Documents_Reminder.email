@@ -1,7 +1,6 @@
 Hi {!Contact.FirstName},
 
-We are still missing one or more of your enrollment documents. You can upload them here:
-{DOC_UPLOAD_URL}?key={!Contact.AK9I_Doc_Upload_Key__c}
+We are still missing one or more of your enrollment documents. Please send them to Student Services at mhartman@ak9i.com.
 
 Need help? Contact Michelle Hartman at mhartman@ak9i.com or call (757) 304-9600.
 

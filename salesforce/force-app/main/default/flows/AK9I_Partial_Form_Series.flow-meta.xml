@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
 <apiVersion>67.0</apiVersion>
-<actionCalls><name>Send_Day_1</name><label>Send Day 1</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_1.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
-<actionCalls><name>Send_Day_4</name><label>Send Day 4</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_4.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
-<actionCalls><name>Send_Day_10</name><label>Send Day 10</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_10.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
+<actionCalls><name>Send_Day_1</name><label>Send Day 1</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>enrollment@ak9i.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_1.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
+<actionCalls><name>Send_Day_4</name><label>Send Day 4</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>enrollment@ak9i.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_4.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
+<actionCalls><name>Send_Day_10</name><label>Send Day 10</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>enrollment@ak9i.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters><name>emailTemplateId</name><value><elementReference>Tmpl_Day_10.Id</elementReference></value></inputParameters><inputParameters><name>recipientId</name><value><elementReference>$Record.Id</elementReference></value></inputParameters><inputParameters><name>useLineBreaks</name><value><booleanValue>false</booleanValue></value></inputParameters><inputParameters><name>logEmailOnSend</name><value><booleanValue>true</booleanValue></value></inputParameters></actionCalls>
 <assignments><name>Email_Send_Failed</name><label>Email Send Failed</label><locationX>0</locationX><locationY>0</locationY><assignmentItems><assignToReference>varEmailError</assignToReference><operator>Assign</operator><value><elementReference>$Flow.FaultMessage</elementReference></value></assignmentItems></assignments>
 <decisions><name>Check_Day_1</name><label>Check Day 1</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Default</defaultConnectorLabel><rules><name>Check_Day_1_Yes</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>$Record.HasOptedOutOfEmail</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>false</booleanValue></rightValue></conditions><conditions><leftValueReference>$Record.AK9I_Do_Not_Contact__c</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>false</booleanValue></rightValue></conditions><conditions><leftValueReference>$Record.Email</leftValueReference><operator>IsNull</operator><rightValue><booleanValue>false</booleanValue></rightValue></conditions><conditions><leftValueReference>$Record.EmailBouncedReason</leftValueReference><operator>IsNull</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><connector><targetReference>Lead_Now_Day_1</targetReference></connector><label>Check Day 1 Yes</label></rules></decisions>
 <decisions><name>Still_Day_1</name><label>Still Day 1</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Default</defaultConnectorLabel><rules><name>Still_Day_1_Yes</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>Lead_Now_Day_1.Status</leftValueReference><operator>EqualTo</operator><rightValue><stringValue>Applicant</stringValue></rightValue></conditions><conditions><leftValueReference>Lead_Now_Day_1.IsConverted</leftValueReference><operator>EqualTo</operator><rightValue><booleanValue>false</booleanValue></rightValue></conditions><connector><targetReference>F0_Day_1</targetReference></connector><label>Still Day 1 Yes</label></rules></decisions>

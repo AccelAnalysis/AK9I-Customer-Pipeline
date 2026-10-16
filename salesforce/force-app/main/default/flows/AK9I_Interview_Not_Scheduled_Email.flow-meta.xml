@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
 <apiVersion>67.0</apiVersion>
-<actionCalls><name>Send</name><label>Send</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters><name>emailAddresses</name><value><elementReference>Get_Michelle.Email</elementReference></value></inputParameters><inputParameters><name>emailSubject</name><value><stringValue>Applicant has not scheduled a phone interview</stringValue></value></inputParameters><inputParameters><name>emailBody</name><value><elementReference>ttBody</elementReference></value></inputParameters><inputParameters><name>sendRichBody</name><value><booleanValue>false</booleanValue></value></inputParameters></actionCalls>
+<actionCalls><name>Send</name><label>Send</label><locationX>0</locationX><locationY>0</locationY><actionName>emailSimple</actionName><actionType>emailSimple</actionType><faultConnector><targetReference>Email_Send_Failed</targetReference></faultConnector><flowTransactionModel>CurrentTransaction</flowTransactionModel><inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>enrollment@ak9i.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters><name>emailAddresses</name><value><elementReference>Get_Michelle.Email</elementReference></value></inputParameters><inputParameters><name>emailSubject</name><value><stringValue>Applicant has not scheduled a phone interview</stringValue></value></inputParameters><inputParameters><name>emailBody</name><value><elementReference>ttBody</elementReference></value></inputParameters><inputParameters><name>sendRichBody</name><value><booleanValue>false</booleanValue></value></inputParameters></actionCalls>
 <assignments><name>Email_Send_Failed</name><label>Email Send Failed</label><locationX>0</locationX><locationY>0</locationY><assignmentItems><assignToReference>varEmailError</assignToReference><operator>Assign</operator><value><elementReference>$Flow.FaultMessage</elementReference></value></assignmentItems></assignments>
 <decisions><name>Still_Not_Scheduled</name><label>Still Not Scheduled</label><locationX>0</locationX><locationY>0</locationY><defaultConnectorLabel>Default</defaultConnectorLabel><rules><name>Still_Not_Scheduled_Yes</name><conditionLogic>and</conditionLogic><conditions><leftValueReference>Get_Contact.AK9I_Interview_Scheduled_Date__c</leftValueReference><operator>IsNull</operator><rightValue><booleanValue>true</booleanValue></rightValue></conditions><conditions><leftValueReference>Get_Opp_Now.Enrollment_Status__c</leftValueReference><operator>EqualTo</operator><rightValue><stringValue>Applied</stringValue></rightValue></conditions><connector><targetReference>Get_Michelle</targetReference></connector><label>Still Not Scheduled Yes</label></rules></decisions>
 <description>INACTIVE pending approval. Email to Michelle Hartman 2 days after Applied when no interview is scheduled (task is created by the active flow AK9I_Interview_Not_Scheduled_Task).</description>

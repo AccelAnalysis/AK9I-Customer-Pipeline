@@ -180,3 +180,12 @@
 - The per Lead Source × Status series exists only as a structure (the Source intro formula plus the P/I/N0 templates); Lance's full copy is pending.
 - There's no recurring-products (R1) or alumni send flow yet. When one is built, it must call F0 as a marketing send.
 - Network/site metadata could not be retrieved (permissions).
+
+## 1e. L14: Consideration series wording revision and org-wide sender (Oct 16, deployed ~9:35 AM ET)
+
+- The 42 `AK9I_C_{NU,IF,AP}_*` templates were rewritten per the PR #24 review and kept available. Openers use soft-source or neutral wording with one acknowledgment; there is one next step per family; the new subjects are "Which AK9I course fits your goals?", "Let's plan around your training timeline" and "Questions about completing your AK9I application?". "First Monday" was replaced, the address now appears once, and the BGK9 sentence was removed (FLAG).
+- Placeholders were removed from the other new templates P1, P2, P3, I3, E1, E3, E4, L1 and A1. In their place, those emails ask the reader to reply, call, or send documents to mhartman@ak9i.com. P1 and P3 no longer use "saved" in the subject, and the "first Monday" wording in I1 and N0 was replaced.
+- Eight active AK9I flows now set senderType=OrgWideEmailAddress and senderAddress=enrollment@ak9i.com on all 16 emailSimple sends: Acceptance_Letter_and_Fee, Consideration_Series, Employment_Survey_Send, Enrolled_Confirmation_Email, Interview_Not_Scheduled_Email, Interview_Scheduling_Email, Partial_Form_Series and Start_Notice_Email. AK9I_Enrollment_Form (Draft v12) was left unchanged.
+- Deploy (66 components: 58 templates + 8 flows): dry run 0AfO300000jPGfZKAW, real 0AfO300000jPGpFKAW, 0 errors. Jonathan approved. AK9I_Enrollment_Form was not deployed (the local file was restored from backup b13).
+- Verified from a cleanpipe retrieve: 58 templates, all available=true; 0 editorial `{TOKEN}` placeholders and no `{` other than `{!` merge fields; no "first Monday", "saved" or "pick up where" left; the 42 C subjects are the 3 new ones (14 each); the Consideration and Partial Form flows carry enrollment@ak9i.com.
+- Test: Nurture leads without consent (YouTube, Job Fair) → F0 logged "Blocked: No marketing consent" for AK9I_C_NU_YouTube and _Job_Fair. A Consent Confirmed lead (TAPS) → "Allowed" for AK9I_C_NU_TAPS, the lead saved (the send stops at the fault path because deliverability is off), and the call task was created. All test leads, logs and tasks were deleted.
